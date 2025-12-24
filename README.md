@@ -1,4 +1,4 @@
-# Conectando cidadese e unindo corações
+# Conectando cidades e unindo corações
 Painel digital interativo baseado na história: Conectando cidades e unindo corações
 
 ## Funcionalidades
