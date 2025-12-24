@@ -1,6 +1,9 @@
 (function () {
     "use-strict";
 
+    // =========================================================================
+    // CONFIGURAÇÃO DOS DADOS
+    // =========================================================================
     const CONFIG = {
         DATES: {
             dela: { month: 7, day: 12 },
@@ -10,11 +13,11 @@
         QUOTES: [
             { text: "Meu amor é profundo: quanto mais te dou, mais tenho.", author: "William Shakespeare" },
             { text: "Em algum lugar, algo incrível está esperando para ser descoberto.", author: "Carl Sagan" },
-            { text: "Depois de tudo o que passamos juntos. De tudo o que eu fiz. Não pode ser em vão.", author: "Ellie Miller" },
+            { text: "Depois de tudo o que passamos juntos, não pode ser em vão.", author: "Ellie Miller" },
             { text: "Mesmo na escuridão, eu te encontraria.", author: "Sarah J. Maas" },
-            { text: "A única maneira de livrar-se de uma tentação é ceder a ela.", author: "Oscar Wild" },
+            { text: "A única maneira de livrar-se de uma tentação é ceder a ela.", author: "Oscar Wilde" },
             { text: "É um amor pobre aquele que se pode medir.", author: "William Shakespeare" },
-            { text: "Você não pode ser um homem ruim e esperar que coisas boas aconteçam com você", author: "Arthur Morgan" }
+            { text: "Você não pode ser um homem ruim e esperar que coisas boas aconteçam.", author: "Arthur Morgan" }
         ],
         BOOKS: [
             {
@@ -70,59 +73,88 @@
         ]
     };
 
+    // =========================================================================
+    // LÓGICA DE ATUALIZAÇÃO DA UI
+    // =========================================================================
+
     const updateUI = () => {
         const now = new Date();
-        const dayIdx = now.getDay();
+        const hour = now.getHours();
+        const dayIdx = now.getDay(); // 0 (Dom) a 6 (Sab)
 
-        // Data e Saudação
-        document.getElementById('current-date').textContent = now.toLocaleDateString('pt-BR', { weekday: 'long', day: 'numeric', month: 'long' });
+        // 1. Saudação Dinâmica
+        const greetingElement = document.getElementById('greeting-text');
+        if (greetingElement) {
+            let saudacao = "";
+            if (hour >= 5 && hour < 12) saudacao = "Bom dia, meu bem 🤍";
+            else if (hour >= 12 && hour < 18) saudacao = "Boa tarde, meu bem 🤍";
+            else saudacao = "Boa noite, meu bem 🤍";
+            greetingElement.textContent = saudacao;
+        }
 
-        // Contagens
-        const getDays = (m, d) => {
-            let next = new Date(now.getFullYear(), m, d);
-            if (next < now) next.setFullYear(now.getFullYear() + 1);
-            return Math.ceil((next - now) / 86400000);
-        };
-        //document.getElementById('cd-ela').textContent = `Faltam ${getDays(CONFIG.DATES.dela.month, CONFIG.DATES.dela.day)} dias`;
-        //document.getElementById('cd-ele').textContent = `Faltam ${getDays(CONFIG.DATES.dele.month, CONFIG.DATES.dele.day)} dias`;
+        // 2. Data Atual
+        const dateElement = document.getElementById('current-date');
+        if (dateElement) {
+            dateElement.textContent = now.toLocaleDateString('pt-BR', {
+                weekday: 'long', day: 'numeric', month: 'long'
+            });
+        }
 
-        const meet = new Date(CONFIG.DATES.encontro.year, CONFIG.DATES.encontro.month, CONFIG.DATES.encontro.day);
-        const diffDays = Math.ceil((meet - now) / 86400000);
-        //document.getElementById('cd-encontro').textContent = diffDays > 0 ? `Faltam ${diffDays} dias` : `${Math.abs(diffDays)} dias de história`;
+        // 3. Frase do Dia
+        const quote = CONFIG.QUOTES[dayIdx];
+        document.getElementById('quote-text').textContent = `"${quote.text}"`;
+        document.getElementById('quote-author').textContent = quote.author;
 
-        // Conteúdo Diário
-        document.getElementById('quote-text').textContent = `"${CONFIG.QUOTES[dayIdx].text}"`;
-        document.getElementById('quote-author').textContent = CONFIG.QUOTES[dayIdx].author;
-
+        // 4. Livro do Dia
         const book = CONFIG.BOOKS[dayIdx];
         document.getElementById('book-title').textContent = book.title;
         document.getElementById('book-author').textContent = book.author;
         document.getElementById('book-desc').textContent = book.desc;
         document.getElementById('book-cover').src = book.cover;
 
-        // Músicas (iTunes Fetch)
+        // 5. Músicas do Dia (iTunes Fetch)
         CONFIG.MUSIC[dayIdx].forEach((s, i) => {
             const idx = i + 1;
-            document.getElementById(`music-title-${idx}`).textContent = s.t;
-            document.getElementById(`music-artist-${idx}`).textContent = s.a;
+            const titleEl = document.getElementById(`music-title-${idx}`);
+            const artistEl = document.getElementById(`music-artist-${idx}`);
+            const imgEl = document.getElementById(`music-img-${idx}`);
+
+            if (titleEl) titleEl.textContent = s.t;
+            if (artistEl) artistEl.textContent = s.a;
+
             fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(s.t + ' ' + s.a)}&limit=1`)
-                .then(r => r.json()).then(d => {
-                    if (d.results[0]) document.getElementById(`music-img-${idx}`).src = d.results[0].artworkUrl100;
-                });
+                .then(r => r.json())
+                .then(d => {
+                    if (d.results[0] && imgEl) imgEl.src = d.results[0].artworkUrl100;
+                })
+                .catch(() => { if (imgEl) imgEl.src = 'https://via.placeholder.com/100'; });
         });
     };
 
-    // Clima Simplificado (wttr.in)
+    // =========================================================================
+    // API DE CLIMA (wttr.in)
+    // =========================================================================
     const fetchWeather = (city, tempId, descId) => {
-        fetch(`https://wttr.in/${city}?format=j1`).then(r => r.json()).then(d => {
-            document.getElementById(tempId).textContent = `${d.current_condition[0].temp_C}°`;
-            document.getElementById(descId).textContent = d.current_condition[0].lang_pt[0].value;
-        });
+        fetch(`https://wttr.in/${city}?format=j1`)
+            .then(r => r.json())
+            .then(d => {
+                const temp = d.current_condition[0].temp_C;
+                const desc = d.current_condition[0].lang_pt[0].value;
+                document.getElementById(tempId).textContent = `${temp}°`;
+                document.getElementById(descId).textContent = desc;
+            })
+            .catch(() => {
+                document.getElementById(tempId).textContent = "--°";
+            });
     };
 
+    // =========================================================================
+    // INICIALIZAÇÃO
+    // =========================================================================
     document.addEventListener('DOMContentLoaded', () => {
         updateUI();
         fetchWeather('Manaus', 'temp-manaus', 'desc-manaus');
         fetchWeather('Bambui', 'temp-bambui', 'desc-bambui');
     });
+
 })();
