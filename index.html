@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosso Cantinho</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+    <div class="page-container">
+        <div class="dashboard-wrapper">
+            <header class="dashboard-header">
+                <div class="header-greeting">
+                    <h1 id="greeting-text">Bom dia, meu bem 🤍</h1>
+                    <p>Um resumo do dia de hoje e algumas leituras.</p>
+                </div>
+                <div class="header-info">
+                    <div class="info-pill">
+                        <span class="material-symbols-outlined">calendar_today</span>
+                        <span id="current-date">...</span>
+                    </div>
+                </div>
+            </header>
+
+            <main class="dashboard-layout">
+                <section class="layout-col-left">
+                    <article class="card">
+                        <div class="card__header">
+                            <span class="material-symbols-outlined">event</span>
+                            <h3>Datas Especiais</h3>
+                        </div>
+                        <div class="dates-grid">
+                            <div class="date-box">
+                                <span class="date-label">Aniversário dela</span>
+                                <span class="date-value">12 de Agosto</span>
+                            </div>
+                            <div class="date-box">
+                                <span class="date-label">Aniversário dele</span>
+                                <span class="date-value">27 de Junho</span>
+                            </div>
+                            <div class="date-box date-box--wide">
+                                <span class="date-label">Nossa história</span>
+                                <span class="date-value">22 de Dezembro de 2025</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div class="card__header">
+                            <span class="material-symbols-outlined">thermostat</span>
+                            <h3>Clima nas Cidades</h3>
+                        </div>
+                        <div class="weather-display">
+                            <div class="city-weather">
+                                <span class="city-name">Manaus, AM</span>
+                                <div class="weather-main">
+                                    <span class="temp" id="temp-manaus">--°</span>
+                                    <span class="material-symbols-outlined icon">cloud</span>
+                                </div>
+                                <p class="desc" id="desc-manaus">Carregando...</p>
+                            </div>
+                            <div class="weather-divider"></div>
+                            <div class="city-weather">
+                                <span class="city-name">Bambuí, MG</span>
+                                <div class="weather-main">
+                                    <span class="temp" id="temp-bambui">--°</span>
+                                    <span class="material-symbols-outlined icon">cloud</span>
+                                </div>
+                                <p class="desc" id="desc-bambui">Carregando...</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div class="card__header">
+                            <span class="material-symbols-outlined">library_music</span>
+                            <h3>Músicas para hoje</h3>
+                        </div>
+                        <div class="music-container">
+                            <div class="music-card">
+                                <img src="" id="music-img-1" class="music-img">
+                                <div class="music-details">
+                                    <strong id="music-title-1">...</strong>
+                                    <span id="music-artist-1">...</span>
+                                </div>
+                            </div>
+                            <div class="music-card">
+                                <img src="" id="music-img-2" class="music-img">
+                                <div class="music-details">
+                                    <strong id="music-title-2">...</strong>
+                                    <span id="music-artist-2">...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </section>
+
+                <section class="layout-col-right">
+                    <article class="card card--quote">
+                        <span class="card-tag">Frase do dia</span>
+                        <div class="quote-content">
+                            <p id="quote-text">"..."</p>
+                            <cite id="quote-author">...</cite>
+                        </div>
+                    </article>
+
+                    <article class="card card--book">
+                        <div class="book-flex">
+                            <div class="book-cover-area">
+                                <img src="" id="book-cover" class="book-cover-shadow">
+                            </div>
+                            <div class="book-info-area">
+                                <span class="card-tag">Livro do dia</span>
+                                <h2 id="book-title">...</h2>
+                                <h4 id="book-author">...</h4>
+                                <div class="synopsis-box">
+                                    <p id="book-desc">...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </section>
+            </main>
+        </div>
+    </div>
+</body>
+</html>
