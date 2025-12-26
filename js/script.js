@@ -17,44 +17,17 @@
             { text: "Você não pode ser um homem ruim e esperar que coisas boas aconteçam.", author: "Arthur Morgan" }
         ],
         BOOKS: [
-            {
-                title: "Corte de Espinhos e Rosas", author: "Sarah J. Maas",
-                desc: "Feyre Archeron é uma caçadora. A pele de um lobo poderia trazer ouro o suficiente para alimentar sua família por um mês inteiro. Mas tirar a vida de uma criatura mágica tem um custo alto, e Feyre acabou de matar o lobo errado.",
-                cover: "https://m.media-amazon.com/images/I/91-HZzQ3naL._SY342_.jpg"
-            },
-            {
-                title: "Quarta Asa", author: "Rebecca Yarros",
-                desc: "Em Quarta Asa, conhecemos Violet Sorrengail, uma jovem destinada a lutar pela sobrevivência em universo onde coragem, poder e desejo se entrelaçam em meio a dragões, batalhas e segredos que podem mudar tudo.",
-                cover: "https://m.media-amazon.com/images/I/61rNwZ710JL._SY342_.jpg"
-            },
-            {
-                title: "Helena", author: "Machado de Assis",
-                desc: "Narrado em terceira pessoa, este romance machadiano ambientado durante o século XIX traduz as surpresas e desgraças de um amor proibido.",
-                cover: "https://m.media-amazon.com/images/I/61KDbIA7t6L._SY342_.jpg"
-            },
-            {
-                title: "Hamlet", author: "William Shakespeare",
-                desc: "Neste clássico da literatura mundial, um jovem príncipe se reúne com o fantasma de seu pai, que alega que seu próprio irmão, agora casado com sua viúva, o assassinou.",
-                cover: "https://m.media-amazon.com/images/I/41FcApYkpIL._SY445_SX342_ControlCacheEqualizer_.jpg"
-            },
-            {
-                title: "Suicidas", author: "Raphael Montes",
-                desc: "Conhecemos a história de Alê e seus colegas, jovens da elite carioca encontrados mortos no porão do sítio em condições misteriosas que indicam que os nove amigos participaram de um perigoso e fatídico jogo de roleta russa.",
-                cover: "https://m.media-amazon.com/images/I/81XqiNjr5OL._SY342_.jpg"
-            },
-            {
-                title: "O Retrato de Dorian Gray", author: "Oscar Wilde",
-                desc: "Um personagem que leva uma vida dupla, mantendo uma aparência de virtude enquanto se entrega ao hedonismo mais extremado.",
-                cover: "https://m.media-amazon.com/images/I/51REmr5NmnL._SY342_.jpg"
-            },
-            {
-                title: "Império do Vampiro", author: "Jay Kristoff",
-                desc: "Já se passaram 27 longos anos desde o último nascer do sol. Por quase três décadas, os vampiros travaram uma guerra contra a humanidade, gora, apenas algumas pequenas faíscas de luz perduram em um mar de escuridão. Gabriel de León, metade humano e metade monstro, é o último Santo de Prata e narra a historia.",
-                cover: "https://m.media-amazon.com/images/I/51cZ0MS4hmL._SY445_SX342_ControlCacheEqualizer_.jpg"
-            }
+            { title: "Corte de Espinhos e Rosas", author: "Sarah J. Maas", desc: "Feyre Archeron é uma caçadora. A pele de um lobo poderia trazer ouro o suficiente para alimentar sua família por um mês inteiro. Mas tirar a vida de uma criatura mágica tem um custo alto, e Feyre acabou de matar o lobo errado.", cover: "https://m.media-amazon.com/images/I/91-HZzQ3naL._SY342_.jpg" },
+            { title: "Quarta Asa", author: "Rebecca Yarros", desc: "Em Quarta Asa, conhecemos Violet Sorrengail, uma jovem destinada a lutar pela sobrevivência em universo onde coragem, poder e desejo se entrelaçam em meio a dragões, batalhas e segredos que podem mudar tudo.", cover: "https://m.media-amazon.com/images/I/61rNwZ710JL._SY342_.jpg" },
+            { title: "Helena", author: "Machado de Assis", desc: "Narrado em terceira pessoa, este romance machadiano ambientado durante o século XIX traduz as surpresas e desgraças de um amor proibido.", cover: "https://m.media-amazon.com/images/I/61KDbIA7t6L._SY342_.jpg" },
+            { title: "Hamlet", author: "William Shakespeare", desc: "Neste clássico da literatura mundial, um jovem príncipe se reúne com o fantasma de seu pai, que alega que seu próprio irmão, agora casado com sua viúva, o assassinou.", cover: "https://m.media-amazon.com/images/I/41FcApYkpIL._SY445_SX342_ControlCacheEqualizer_.jpg" },
+            { title: "Suicidas", author: "Raphael Montes", desc: "Conhecemos a história de Alê e seus colegas, jovens da elite carioca encontrados mortos no porão do sítio em condições misteriosas que indicam que os nove amigos participaram de um perigoso e fatídico jogo de roleta russa.", cover: "https://m.media-amazon.com/images/I/81XqiNjr5OL._SY342_.jpg" },
+            { title: "O Retrato de Dorian Gray", author: "Oscar Wilde", desc: "Um personagem que leva uma vida dupla, mantendo uma aparência de virtude enquanto se entrega ao hedonismo mais extremado.", cover: "https://m.media-amazon.com/images/I/51REmr5NmnL._SY342_.jpg" },
+            { title: "Império do Vampiro", author: "Jay Kristoff", desc: "Já se passaram 27 longos anos desde o último nascer do sol. Por quase três décadas, os vampiros travaram uma guerra contra a humanidade, gora, apenas algumas pequenas faíscas de luz perduram em um mar de escuridão. Gabriel de León, metade humano e metade monstro, é o último Santo de Prata e narra a historia.", cover: "https://m.media-amazon.com/images/I/51cZ0MS4hmL._SY445_SX342_ControlCacheEqualizer_.jpg" }
         ],
         MOVIES: [
-            { title: "O amor move ondas", year: "2022", stars: 5, date: "25 de Dezembro de 2025 ", quote: "Onde tudo começou. Um bom filme que se tornou eterno para nós por ser o primeiro da nossa história assistida a dois.", cover: "https://images.justwatch.com/poster/263410867/s166/pod-wiatr-2022.avif" }
+            { title: "O amor move ondas", year: "2022", stars: 5, date: "25 de Dezembro de 2025 ", quote: "Onde tudo começou. Um bom filme que se tornou eterno para nós por ser o primeiro da nossa história assistida a dois.", cover: "https://images.justwatch.com/poster/263410867/s166/pod-wiatr-2022.avif" },
+            { title: "Nosso último verão", year: "2019", stars: 5, date: "26 de Dezembro de 2025 ", quote: "Onde tudo começou. Um bom filme que se tornou eterno para nós por ser o primeiro da nossa história assistida a dois.", cover: "https://images.justwatch.com/poster/127004339/s166/the-last-summer.avif" }
         ],
         MUSIC: [
             [{ t: "Sweater Weather", a: "The Neighbourhood" }, { t: "Softcore", a: "The Neighbourhood" }],
@@ -83,7 +56,7 @@
             const star = document.createElement('span');
             star.className = 'material-symbols-outlined';
             star.textContent = 'star';
-            if (i < movie.stars) star.style.fontVariationSettings = "'FILL' 1";
+            star.style.fontVariationSettings = (i < movie.stars) ? "'FILL' 1" : "'FILL' 0";
             starsContainer.appendChild(star);
         }
     };
@@ -121,13 +94,23 @@
             const titleEl = document.getElementById(`music-title-${idx}`);
             const artistEl = document.getElementById(`music-artist-${idx}`);
             const imgEl = document.getElementById(`music-img-${idx}`);
+            const linkEl = document.getElementById(`music-link-${idx}`);
+
             if (titleEl) titleEl.textContent = s.t;
             if (artistEl) artistEl.textContent = s.a;
 
-            fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(s.t + ' ' + s.a)}&limit=1`)
+            
+            fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(s.t + ' ' + s.a)}&entity=musicTrack&limit=1`)
                 .then(r => r.json())
-                .then(d => { if (d.results[0] && imgEl) imgEl.src = d.results[0].artworkUrl100; })
-                .catch(() => { if (imgEl) imgEl.src = 'https://via.placeholder.com/100'; });
+                .then(d => {
+                    if (d.results[0]) {
+                    
+                        const highResImg = d.results[0].artworkUrl100.replace('100x100bb.jpg', '600x600bb.jpg');
+                        if (imgEl) imgEl.src = highResImg;
+                        if (linkEl) linkEl.href = d.results[0].trackViewUrl;
+                    }
+                })
+                .catch(() => { if (imgEl) imgEl.src = 'https://via.placeholder.com/600'; });
         });
     };
 
