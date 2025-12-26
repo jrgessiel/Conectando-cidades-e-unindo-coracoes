@@ -1,3 +1,39 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getDatabase, ref, onValue, set, onDisconnect } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyA1Z1IlvPTn9AmHTj5yeT3SvqfOSdzqgd0",
+    authDomain: "nosso-cantinho-d78ac.firebaseapp.com",
+    projectId: "nosso-cantinho-d78ac",
+    storageBucket: "nosso-cantinho-d78ac.firebasestorage.app",
+    messagingSenderId: "588619956786",
+    appId: "1:588619956786:web:8f7f1f3dd6bf368b57722b",
+    databaseURL: "https://nosso-cantinho-d78ac-default-rtdb.firebaseio.com"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+
+const myPresenceRef = ref(db, 'online/' + Math.random().toString(36).substr(2, 9));
+const allPresenceRef = ref(db, 'online/');
+
+set(myPresenceRef, true);
+onDisconnect(myPresenceRef).remove();
+
+onValue(allPresenceRef, (snapshot) => {
+    const onlineCount = snapshot.size;
+    const heart = document.getElementById('heart-icon');
+    if (heart) {
+        if (onlineCount >= 2) {
+            heart.classList.add('pulse-heart');
+            heart.textContent = '❤️';
+        } else {
+            heart.classList.remove('pulse-heart');
+            heart.textContent = '🤍';
+        }
+    }
+});
+
 (function () {
     "use-strict";
 
@@ -27,7 +63,7 @@
         ],
         MOVIES: [
             { title: "O amor move ondas", year: "2022", stars: 5, date: "25 de Dezembro de 2025 ", quote: "Onde tudo começou. Um bom filme que se tornou eterno para nós por ser o primeiro da nossa história assistida a dois.", cover: "https://images.justwatch.com/poster/263410867/s166/pod-wiatr-2022.avif" },
-            { title: "Nosso último verão", year: "2019", stars: 5, date: "26 de Dezembro de 2025 ", quote: "Um filme leve sobre o verão e novas descobertas, ele marca nossa jornada e planos que ainda vamos realizar.", cover: "https://images.justwatch.com/poster/127004339/s166/the-last-summer.avif" }
+            { title: "Nosso último verão", year: "2019", stars: 5, date: "26 de Dezembro de 2025 ", quote: "Onde o tempo parece parar e o verão se torna eterno. Um filme que reflete a leveza e a cumplicidade de estarmos construindo o nosso próprio caminho juntos.", cover: "https://images.justwatch.com/poster/127004339/s166/the-last-summer.avif" }
         ],
         MUSIC: [
             [{ t: "Sweater Weather", a: "The Neighbourhood" }, { t: "Softcore", a: "The Neighbourhood" }],
@@ -68,8 +104,8 @@
 
         const greetingElement = document.getElementById('greeting-text');
         if (greetingElement) {
-            let saudacao = hour >= 5 && hour < 12 ? "Bom dia, meu bem 🤍" : hour >= 12 && hour < 18 ? "Boa tarde, meu bem 🤍" : "Boa noite, meu bem 🤍";
-            greetingElement.textContent = saudacao;
+            let saudacao = hour >= 5 && hour < 12 ? "Bom dia, meu bem" : hour >= 12 && hour < 18 ? "Boa tarde, meu bem" : "Boa noite, meu bem";
+            greetingElement.innerHTML = `${saudacao} <span id="heart-icon">🤍</span>`;
         }
 
         const dateElement = document.getElementById('current-date');
@@ -99,12 +135,10 @@
             if (titleEl) titleEl.textContent = s.t;
             if (artistEl) artistEl.textContent = s.a;
 
-            
             fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(s.t + ' ' + s.a)}&entity=musicTrack&limit=1`)
                 .then(r => r.json())
                 .then(d => {
                     if (d.results[0]) {
-                    
                         const highResImg = d.results[0].artworkUrl100.replace('100x100bb.jpg', '600x600bb.jpg');
                         if (imgEl) imgEl.src = highResImg;
                         if (linkEl) linkEl.href = d.results[0].trackViewUrl;
@@ -140,5 +174,4 @@
             updateMovieUI(currentMovieIdx);
         };
     });
-
 })();
