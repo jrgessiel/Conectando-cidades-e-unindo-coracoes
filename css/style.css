@@ -168,6 +168,17 @@ body {
     gap: 1.8rem;
 }
 
+.music-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: transform 0.2s;
+}
+
+.music-card-link:hover {
+    transform: translateX(5px);
+}
+
 .music-card {
     display: flex;
     align-items: center;
@@ -179,6 +190,11 @@ body {
     height: 5.5rem;
     border-radius: 8px;
     object-fit: cover;
+    background: #eee;
+}
+
+.music-details {
+    flex: 1;
 }
 
 .music-details strong {
@@ -189,6 +205,16 @@ body {
 .music-details span {
     font-size: 1.3rem;
     color: var(--text-muted);
+}
+
+.play-icon {
+    color: var(--text-extra-muted);
+    font-size: 2.8rem;
+    transition: color 0.2s;
+}
+
+.music-card-link:hover .play-icon {
+    color: var(--text-main);
 }
 
 .card--quote {
@@ -248,7 +274,6 @@ body {
 
 .book-cover-shadow {
     width: 100%;
-    max-width: 140px;
     box-shadow: 8px 12px 25px rgba(0, 0, 0, 0.1);
     border-radius: 4px;
 }
@@ -322,7 +347,6 @@ body {
 
 .movie-rating span {
     font-size: 1.8rem;
-    font-variation-settings: 'FILL' 1;
 }
 
 .movie-meta {
@@ -373,4 +397,3 @@ body {
         width: 100%;
     }
 }
-
