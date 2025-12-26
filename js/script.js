@@ -27,7 +27,7 @@
         ],
         MOVIES: [
             { title: "O amor move ondas", year: "2022", stars: 5, date: "25 de Dezembro de 2025 ", quote: "Onde tudo começou. Um bom filme que se tornou eterno para nós por ser o primeiro da nossa história assistida a dois.", cover: "https://images.justwatch.com/poster/263410867/s166/pod-wiatr-2022.avif" },
-            { title: "Nosso último verão", year: "2019", stars: 5, date: "26 de Dezembro de 2025 ", quote: "Onde tudo começou. Um bom filme que se tornou eterno para nós por ser o primeiro da nossa história assistida a dois.", cover: "https://images.justwatch.com/poster/127004339/s166/the-last-summer.avif" }
+            { title: "Nosso último verão", year: "2019", stars: 5, date: "26 de Dezembro de 2025 ", quote: "Um filme leve sobre o verão e novas descobertas, ele marca nossa jornada e planos que ainda vamos realizar.", cover: "https://images.justwatch.com/poster/127004339/s166/the-last-summer.avif" }
         ],
         MUSIC: [
             [{ t: "Sweater Weather", a: "The Neighbourhood" }, { t: "Softcore", a: "The Neighbourhood" }],
