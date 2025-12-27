@@ -24,7 +24,7 @@
             <header class="dashboard-header">
                 <div class="header-greeting">
                     <h1 id="greeting-text">Bom dia, meu bem <span id="heart-icon">🤍</span></h1>
-                    <p>Um resumo do dia de hoje e algumas leituras.</p>
+                    <p>Um resumo de hoje e parte da nossa história.</p>
                 </div>
                 <div class="header-info">
                     <div class="info-pill">
@@ -42,70 +42,54 @@
                             <h3>Datas Especiais</h3>
                         </div>
                         <div class="dates-grid">
-                            <div class="date-box">
-                                <span class="date-label">Aniversário dela</span>
-                                <span class="date-value">12 de Agosto</span>
-                            </div>
-                            <div class="date-box">
-                                <span class="date-label">Aniversário dele</span>
-                                <span class="date-value">27 de Junho</span>
-                            </div>
-                            <div class="date-box date-box--wide">
-                                <span class="date-label">Nossa história</span>
-                                <span class="date-value">22 de Dezembro de 2025</span>
-                            </div>
+                            <div class="date-box"><span class="date-label">Aniversário dela</span><span
+                                    class="date-value">12 de Agosto</span></div>
+                            <div class="date-box"><span class="date-label">Aniversário dele</span><span
+                                    class="date-value">27 de Junho</span></div>
+                            <div class="date-box date-box--wide"><span class="date-label">Nossa história</span><span
+                                    class="date-value">22 de Dezembro de 2025</span></div>
                         </div>
                     </article>
 
                     <article class="card">
-                        <div class="card__header">
-                            <span class="material-symbols-outlined">thermostat</span>
+                        <div class="card__header"><span class="material-symbols-outlined">thermostat</span>
                             <h3>Clima nas Cidades</h3>
                         </div>
                         <div class="weather-display">
                             <div class="city-weather">
                                 <span class="city-name">Manaus, AM</span>
-                                <div class="weather-main">
-                                    <span class="temp" id="temp-manaus">--°</span>
-                                    <span class="material-symbols-outlined icon">cloud</span>
-                                </div>
+                                <div class="weather-main"><span class="temp" id="temp-manaus">--°</span><span
+                                        class="material-symbols-outlined icon">cloud</span></div>
                                 <p class="desc" id="desc-manaus">Carregando...</p>
                             </div>
                             <div class="weather-divider"></div>
                             <div class="city-weather">
                                 <span class="city-name">Bambuí, MG</span>
-                                <div class="weather-main">
-                                    <span class="temp" id="temp-bambui">--°</span>
-                                    <span class="material-symbols-outlined icon">cloud</span>
-                                </div>
+                                <div class="weather-main"><span class="temp" id="temp-bambui">--°</span><span
+                                        class="material-symbols-outlined icon">cloud</span></div>
                                 <p class="desc" id="desc-bambui">Carregando...</p>
                             </div>
                         </div>
                     </article>
 
                     <article class="card">
-                        <div class="card__header">
-                            <span class="material-symbols-outlined">library_music</span>
+                        <div class="card__header"><span class="material-symbols-outlined">library_music</span>
                             <h3>Músicas para hoje</h3>
                         </div>
                         <div class="music-container">
                             <a href="#" id="music-link-1" target="_blank" class="music-card-link">
                                 <div class="music-card">
                                     <img src="" id="music-img-1" class="music-img">
-                                    <div class="music-details">
-                                        <strong id="music-title-1">...</strong>
-                                        <span id="music-artist-1">...</span>
-                                    </div>
+                                    <div class="music-details"><strong id="music-title-1">...</strong><span
+                                            id="music-artist-1">...</span></div>
                                     <span class="material-symbols-outlined play-icon">play_circle</span>
                                 </div>
                             </a>
                             <a href="#" id="music-link-2" target="_blank" class="music-card-link">
                                 <div class="music-card">
                                     <img src="" id="music-img-2" class="music-img">
-                                    <div class="music-details">
-                                        <strong id="music-title-2">...</strong>
-                                        <span id="music-artist-2">...</span>
-                                    </div>
+                                    <div class="music-details"><strong id="music-title-2">...</strong><span
+                                            id="music-artist-2">...</span></div>
                                     <span class="material-symbols-outlined play-icon">play_circle</span>
                                 </div>
                             </a>
@@ -117,16 +101,13 @@
                     <article class="card card--quote">
                         <span class="card-tag">Frase do dia</span>
                         <div class="quote-content">
-                            <p id="quote-text">"..."</p>
-                            <cite id="quote-author">...</cite>
+                            <p id="quote-text">"..."</p><cite id="quote-author">...</cite>
                         </div>
                     </article>
 
                     <article class="card card--book">
                         <div class="book-flex">
-                            <div class="book-cover-area">
-                                <img src="" id="book-cover" class="book-cover-shadow">
-                            </div>
+                            <div class="book-cover-area"><img src="" id="book-cover" class="book-cover-shadow"></div>
                             <div class="book-info-area">
                                 <span class="card-tag">Livro do dia</span>
                                 <h2 id="book-title">...</h2>
@@ -140,9 +121,7 @@
 
                     <article class="card card--movie">
                         <div class="movie-flex">
-                            <div class="book-cover-area">
-                                <img src="" id="movie-cover" class="book-cover-shadow">
-                            </div>
+                            <div class="book-cover-area"><img src="" id="movie-cover" class="book-cover-shadow"></div>
                             <div class="book-info-area">
                                 <div class="movie-header-nav">
                                     <span class="card-tag">Filme Assistido</span>
@@ -156,10 +135,33 @@
                                     <span id="movie-year" class="movie-year-tag">...</span>
                                 </div>
                                 <div class="movie-rating" id="movie-stars"></div>
-                                <div class="movie-meta">
-                                    <span id="movie-watch-date">...</span>
-                                </div>
+                                <div class="movie-meta"><span id="movie-watch-date">...</span></div>
                                 <p id="movie-quote" class="movie-quote-text">"..."</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card card--series">
+                        <div class="movie-flex">
+                            <div class="book-cover-area"><img src="" id="series-cover" class="book-cover-shadow"></div>
+                            <div class="book-info-area">
+                                <div class="movie-header-nav">
+                                    <span class="card-tag">Série Assistida</span>
+                                    <div class="nav-arrows">
+                                        <span class="material-symbols-outlined" id="prev-series">chevron_left</span>
+                                        <span class="material-symbols-outlined" id="next-series">chevron_right</span>
+                                    </div>
+                                </div>
+                                <div class="movie-title-row">
+                                    <h2 id="series-title">...</h2>
+                                    <span id="series-year" class="movie-year-tag">...</span>
+                                </div>
+                                <div class="movie-rating" id="series-stars"></div>
+                                <div class="movie-meta"><span id="series-watch-date">...</span></div>
+                                <div class="series-progress-container">
+                                    <span class="progress-label">PARAMOS EM</span>
+                                    <h3 id="series-progress" class="progress-value">...</h3>
+                                </div>
                             </div>
                         </div>
                     </article>
