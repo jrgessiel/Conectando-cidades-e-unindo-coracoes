@@ -13,10 +13,8 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
-
 const myPresenceRef = ref(db, 'online/' + Math.random().toString(36).substr(2, 9));
 const allPresenceRef = ref(db, 'online/');
-
 set(myPresenceRef, true);
 onDisconnect(myPresenceRef).remove();
 
@@ -24,19 +22,13 @@ onValue(allPresenceRef, (snapshot) => {
     const onlineCount = snapshot.size;
     const heart = document.getElementById('heart-icon');
     if (heart) {
-        if (onlineCount >= 2) {
-            heart.classList.add('pulse-heart');
-            heart.textContent = '❤️';
-        } else {
-            heart.classList.remove('pulse-heart');
-            heart.textContent = '🤍';
-        }
+        if (onlineCount >= 2) { heart.classList.add('pulse-heart'); heart.textContent = '❤️'; }
+        else { heart.classList.remove('pulse-heart'); heart.textContent = '🤍'; }
     }
 });
 
 (function () {
     "use-strict";
-
     const CONFIG = {
         DATES: {
             her: { month: 7, day: 12 },
@@ -65,6 +57,9 @@ onValue(allPresenceRef, (snapshot) => {
             { title: "O amor move ondas", year: "2022", stars: 5, date: "25 de Dezembro de 2025 ", quote: "Onde tudo começou. Um bom filme que se tornou eterno para nós por ser o primeiro da nossa história assistida a dois.", cover: "https://images.justwatch.com/poster/263410867/s166/pod-wiatr-2022.avif" },
             { title: "Nosso último verão", year: "2019", stars: 5, date: "26 de Dezembro de 2025 ", quote: "Onde o tempo parece parar e o verão se torna eterno. Um filme que reflete a leveza e a cumplicidade de estarmos construindo o nosso próprio caminho juntos.", cover: "https://images.justwatch.com/poster/127004339/s166/the-last-summer.avif" }
         ],
+	 SERIES: [
+            { title: "Outlander", year: "2014", stars: 5, date: "27 de Dezembro de 2025", progress: "T1 : E1", cover: "https://images.justwatch.com/poster/253355386/s166/outlander.avif" },
+        ],
         MUSIC: [
             [{ t: "Sweater Weather", a: "The Neighbourhood" }, { t: "Softcore", a: "The Neighbourhood" }],
             [{ t: "Wires", a: "The Neighbourhood" }, { t: "505", a: "Arctic Monkeys" }],
@@ -77,24 +72,39 @@ onValue(allPresenceRef, (snapshot) => {
     };
 
     let currentMovieIdx = 0;
+    let currentSeriesIdx = 0;
 
-    const updateMovieUI = (idx) => {
-        const movie = CONFIG.MOVIES[idx];
-        document.getElementById('movie-title').textContent = movie.title;
-        document.getElementById('movie-year').textContent = movie.year;
-        document.getElementById('movie-watch-date').textContent = movie.date;
-        document.getElementById('movie-quote').textContent = `"${movie.quote}"`;
-        document.getElementById('movie-cover').src = movie.cover;
-
-        const starsContainer = document.getElementById('movie-stars');
-        starsContainer.innerHTML = '';
+    const renderStars = (containerId, rating) => {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+        container.innerHTML = '';
         for (let i = 0; i < 5; i++) {
             const star = document.createElement('span');
             star.className = 'material-symbols-outlined';
             star.textContent = 'star';
-            star.style.fontVariationSettings = (i < movie.stars) ? "'FILL' 1" : "'FILL' 0";
-            starsContainer.appendChild(star);
+            star.style.fontVariationSettings = (i < rating) ? "'FILL' 1" : "'FILL' 0";
+            container.appendChild(star);
         }
+    };
+
+    const updateMovieUI = (idx) => {
+        const m = CONFIG.MOVIES[idx];
+        document.getElementById('movie-title').textContent = m.title;
+        document.getElementById('movie-year').textContent = m.year;
+        document.getElementById('movie-watch-date').textContent = m.date;
+        document.getElementById('movie-quote').textContent = `"${m.quote}"`;
+        document.getElementById('movie-cover').src = m.cover;
+        renderStars('movie-stars', m.stars);
+    };
+
+    const updateSeriesUI = (idx) => {
+        const s = CONFIG.SERIES[idx];
+        document.getElementById('series-title').textContent = s.title;
+        document.getElementById('series-year').textContent = s.year;
+        document.getElementById('series-watch-date').textContent = s.date;
+        document.getElementById('series-progress').textContent = s.progress;
+        document.getElementById('series-cover').src = s.cover;
+        renderStars('series-stars', s.stars);
     };
 
     const updateUI = () => {
@@ -102,62 +112,43 @@ onValue(allPresenceRef, (snapshot) => {
         const hour = now.getHours();
         const dayIdx = now.getDay();
 
-        const greetingElement = document.getElementById('greeting-text');
-        if (greetingElement) {
-            let saudacao = hour >= 5 && hour < 12 ? "Bom dia, meu bem" : hour >= 12 && hour < 18 ? "Boa tarde, meu bem" : "Boa noite, meu bem";
-            greetingElement.innerHTML = `${saudacao} <span id="heart-icon">🤍</span>`;
-        }
+        let saudacao = hour >= 5 && hour < 12 ? "Bom dia, meu bem" : hour >= 12 && hour < 18 ? "Boa tarde, meu bem" : "Boa noite, meu bem";
+        document.getElementById('greeting-text').innerHTML = `${saudacao} <span id="heart-icon">🤍</span>`;
+        document.getElementById('current-date').textContent = now.toLocaleDateString('pt-BR', { weekday: 'long', day: 'numeric', month: 'long' });
 
-        const dateElement = document.getElementById('current-date');
-        if (dateElement) {
-            dateElement.textContent = now.toLocaleDateString('pt-BR', { weekday: 'long', day: 'numeric', month: 'long' });
-        }
+        const q = CONFIG.QUOTES[dayIdx];
+        document.getElementById('quote-text').textContent = `"${q.text}"`;
+        document.getElementById('quote-author').textContent = q.author;
 
-        const quote = CONFIG.QUOTES[dayIdx];
-        document.getElementById('quote-text').textContent = `"${quote.text}"`;
-        document.getElementById('quote-author').textContent = quote.author;
-
-        const book = CONFIG.BOOKS[dayIdx];
-        document.getElementById('book-title').textContent = book.title;
-        document.getElementById('book-author').textContent = book.author;
-        document.getElementById('book-desc').textContent = book.desc;
-        document.getElementById('book-cover').src = book.cover;
+        const b = CONFIG.BOOKS[dayIdx];
+        document.getElementById('book-title').textContent = b.title;
+        document.getElementById('book-author').textContent = b.author;
+        document.getElementById('book-desc').textContent = b.desc;
+        document.getElementById('book-cover').src = b.cover;
 
         updateMovieUI(currentMovieIdx);
+        updateSeriesUI(currentSeriesIdx);
 
         CONFIG.MUSIC[dayIdx].forEach((s, i) => {
             const idx = i + 1;
-            const titleEl = document.getElementById(`music-title-${idx}`);
-            const artistEl = document.getElementById(`music-artist-${idx}`);
-            const imgEl = document.getElementById(`music-img-${idx}`);
-            const linkEl = document.getElementById(`music-link-${idx}`);
-
-            if (titleEl) titleEl.textContent = s.t;
-            if (artistEl) artistEl.textContent = s.a;
-
+            document.getElementById(`music-title-${idx}`).textContent = s.t;
+            document.getElementById(`music-artist-${idx}`).textContent = s.a;
             fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(s.t + ' ' + s.a)}&entity=musicTrack&limit=1`)
-                .then(r => r.json())
-                .then(d => {
+                .then(r => r.json()).then(d => {
                     if (d.results[0]) {
-                        const highResImg = d.results[0].artworkUrl100.replace('100x100bb.jpg', '600x600bb.jpg');
-                        if (imgEl) imgEl.src = highResImg;
-                        if (linkEl) linkEl.href = d.results[0].trackViewUrl;
+                        document.getElementById(`music-img-${idx}`).src = d.results[0].artworkUrl100.replace('100x100bb.jpg', '600x600bb.jpg');
+                        document.getElementById(`music-link-${idx}`).href = d.results[0].trackViewUrl;
                     }
-                })
-                .catch(() => { if (imgEl) imgEl.src = 'https://via.placeholder.com/600'; });
+                });
         });
     };
 
     const fetchWeather = (city, tempId, descId) => {
         fetch(`https://wttr.in/${city}?format=j1`)
-            .then(r => r.json())
-            .then(d => {
-                const temp = d.current_condition[0].temp_C;
-                const desc = d.current_condition[0].lang_pt[0].value;
-                document.getElementById(tempId).textContent = `${temp}°`;
-                document.getElementById(descId).textContent = desc;
-            })
-            .catch(() => { document.getElementById(tempId).textContent = "--°"; });
+            .then(r => r.json()).then(d => {
+                document.getElementById(tempId).textContent = `${d.current_condition[0].temp_C}°`;
+                document.getElementById(descId).textContent = d.current_condition[0].lang_pt[0].value;
+            });
     };
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -165,13 +156,9 @@ onValue(allPresenceRef, (snapshot) => {
         fetchWeather('Manaus', 'temp-manaus', 'desc-manaus');
         fetchWeather('Bambui', 'temp-bambui', 'desc-bambui');
 
-        document.getElementById('next-movie').onclick = () => {
-            currentMovieIdx = (currentMovieIdx + 1) % CONFIG.MOVIES.length;
-            updateMovieUI(currentMovieIdx);
-        };
-        document.getElementById('prev-movie').onclick = () => {
-            currentMovieIdx = (currentMovieIdx - 1 + CONFIG.MOVIES.length) % CONFIG.MOVIES.length;
-            updateMovieUI(currentMovieIdx);
-        };
+        document.getElementById('next-movie').onclick = () => { currentMovieIdx = (currentMovieIdx + 1) % CONFIG.MOVIES.length; updateMovieUI(currentMovieIdx); };
+        document.getElementById('prev-movie').onclick = () => { currentMovieIdx = (currentMovieIdx - 1 + CONFIG.MOVIES.length) % CONFIG.MOVIES.length; updateMovieUI(currentMovieIdx); };
+        document.getElementById('next-series').onclick = () => { currentSeriesIdx = (currentSeriesIdx + 1) % CONFIG.SERIES.length; updateSeriesUI(currentSeriesIdx); };
+        document.getElementById('prev-series').onclick = () => { currentSeriesIdx = (currentSeriesIdx - 1 + CONFIG.SERIES.length) % CONFIG.SERIES.length; updateSeriesUI(currentSeriesIdx); };
     });
 })();
