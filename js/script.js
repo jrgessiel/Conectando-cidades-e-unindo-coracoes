@@ -29,6 +29,37 @@ onValue(allPresenceRef, (snapshot) => {
 
 (function () {
     "use-strict";
+
+    function seededRandom(seed) {
+        var x = Math.sin(seed++) * 10000;
+        return x - Math.floor(x);
+    }
+
+    const getDayOfYear = () => {
+        const now = new Date();
+        const start = new Date(now.getFullYear(), 0, 0);
+        const diff = now - start;
+        const oneDay = 1000 * 60 * 60 * 24;
+        return Math.floor(diff / oneDay);
+    };
+
+    const getShuffledItem = (array, offset = 0) => {
+        if (!array || array.length === 0) return null;
+        const now = new Date();
+        const dayOfYear = getDayOfYear();
+        const year = now.getFullYear();
+        const cycle = Math.floor((dayOfYear + offset) / array.length);
+        const indexInCycle = (dayOfYear + offset) % array.length;
+        let indices = Array.from({ length: array.length }, (_, i) => i);
+        let seed = year + (cycle * 128276) + offset;
+        for (let i = indices.length - 1; i > 0; i--) {
+            const j = Math.floor(seededRandom(seed) * (i + 1));
+            [indices[i], indices[j]] = [indices[j], indices[i]];
+            seed++;
+        }
+        return array[indices[indexInCycle]];
+    };
+
     const CONFIG = {
         DATES: {
             her: { month: 7, day: 12 },
@@ -42,7 +73,23 @@ onValue(allPresenceRef, (snapshot) => {
             { text: "Mesmo na escuridão, eu te encontraria.", author: "Sarah J. Maas" },
             { text: "A única maneira de livrar-se de uma tentação é ceder a ela.", author: "Oscar Wilde" },
             { text: "É um amor pobre aquele que se pode medir.", author: "William Shakespeare" },
-            { text: "Você não pode ser um homem ruim e esperar que coisas boas aconteçam.", author: "Arthur Morgan" }
+            { text: "Você não pode ser um homem ruim e esperar que coisas boas aconteçam.", author: "Arthur Morgan" },
+            { text: "Perdoe-me, por todas as coisas que fiz, mas principalmente por aquelas que não fiz.", author: "Donna Tartt" },
+            { text: "Não há nada tão bárbaro e selvagem que não possa ser domado pela arte e pelo hábito.", author: "William Shakespeare" },
+            { text: "Ela era como uma borboleta rara, e eu a queria para mim.", author: "John Fowles" },
+            { text: "Não há nada mais difícil do que ser honesto consigo mesmo.", author: "Fiódor Dostoiévski" },
+            { text: "O coração humano é um mistério insondável.", author: "Fiódor Dostoiévski" },
+            { text: "Há mais coisas entre o céu e a terra do que sonha a nossa vã filosofia.", author: "William Shakespeare" },
+            { text: "O amor é uma fumaça feita do vapor dos suspiros.", author: "William Shakespeare" },
+            { text: "Se eu fosse perder você, eu certamente me perderia.", author: "Joel Miller" },
+            { text: "Tudo em mim ama tudo em você.", author: "John Legend" },
+            { text: "Eu gostaria de poder dizer que estou fazendo a diferença, mas não sei.", author: "Batman" },
+            { text: "Paramos de procurar monstros embaixo da nossa cama quando percebemos que eles estão dentro de nós.", author: "Batman" },
+            { text: "Eu prefiro confiar e me arrepender, do que duvidar e me arrepender.", author: "Kirito Kirigaya" },
+            { text: "Não conte com o arrependimento. Ele vem tarde demais.", author: "Kratos" },
+            { text: "O amor é a única coisa que somos capazes de perceber que transcende as dimensões do tempo e do espaço.", author: "Amelia Brand" },
+            { text: "Em todo o tempo em que estivemos juntos, eu nunca quis estar em nenhum outro lugar.", author: "Joel Miller" },
+            { text: "Ninguém pode nos dizer quem somos. Nós mesmos decidimos o nosso destino.", author: "Markus" }
         ],
         BOOKS: [
             { title: "Corte de Espinhos e Rosas", author: "Sarah J. Maas", desc: "Feyre Archeron é uma caçadora. A pele de um lobo poderia trazer ouro o suficiente para alimentar sua família por um mês inteiro. Mas tirar a vida de uma criatura mágica tem um custo alto, e Feyre acabou de matar o lobo errado.", cover: "https://m.media-amazon.com/images/I/91-HZzQ3naL._SY342_.jpg" },
@@ -56,19 +103,35 @@ onValue(allPresenceRef, (snapshot) => {
         MOVIES: [
             { title: "O amor move ondas", year: "2022", stars: 5, date: "25 de Dezembro de 2025 ", quote: "Onde tudo começou. Um bom filme que se tornou eterno para nós por ser o primeiro da nossa história assistida a dois.", cover: "https://images.justwatch.com/poster/263410867/s166/pod-wiatr-2022.avif" },
             { title: "Nosso último verão", year: "2019", stars: 5, date: "26 de Dezembro de 2025 ", quote: "Onde o tempo parece parar e o verão se torna eterno. Um filme que reflete a leveza e a cumplicidade de estarmos construindo o nosso próprio caminho juntos.", cover: "https://images.justwatch.com/poster/127004339/s166/the-last-summer.avif" },
-			{ title: "O par perfeito", year: "2019", stars: 5, date: "29 de Dezembro de 2025 ", quote: "Um lembrete de que pares perfeitos não precisam de grandes produções, apenas da pessoa certa. E um lembrete de que a minha pessoa certa é você!", cover: "https://images.justwatch.com/poster/124413876/s166/the-perfect-date.avif" }
+            { title: "O par perfeito", year: "2019", stars: 5, date: "29 de Dezembro de 2025 ", quote: "Um lembrete de que pares perfeitos não precisam de grandes produções, apenas da pessoa certa. E um lembrete de que a minha pessoa certa é você!", cover: "https://images.justwatch.com/poster/124413876/s166/the-perfect-date.avif" }
         ],
-	 SERIES: [
+        SERIES: [
             { title: "Outlander", year: "2014", stars: 5, date: "27 de Dezembro de 2025", progress: "T1 : E1", cover: "https://images.justwatch.com/poster/253355386/s166/outlander.avif" },
         ],
         MUSIC: [
-            [{ t: "Sweater Weather", a: "The Neighbourhood" }, { t: "Softcore", a: "The Neighbourhood" }],
-            [{ t: "Wires", a: "The Neighbourhood" }, { t: "505", a: "Arctic Monkeys" }],
-            [{ t: "Meddle About", a: "Chase Atlantic" }, { t: "Don't Cry", a: "Guns N' Roses" }],
-            [{ t: "No. 1 Party Anthem", a: "Arctic Monkeys" }, { t: "Sad Girl", a: "Lana Del Rey" }],
-            [{ t: "Shut up My Moms Calling", a: "Hotel Ugly" }, { t: "RU Mine?", a: "Arctic Monkeys" }],
-            [{ t: "Daddy Issues", a: "The Neighbourhood" }, { t: "Is There Someone Else?", a: "The Weeknd" }],
-            [{ t: "Lose Control", a: "Teddy Swims" }, { t: "West Coast", a: "Lana Del Rey" }]
+            { t: "Sweater Weather", a: "The Neighbourhood" }, { t: "Softcore", a: "The Neighbourhood" },
+            { t: "Wires", a: "The Neighbourhood" }, { t: "505", a: "Arctic Monkeys" },
+            { t: "Meddle About", a: "Chase Atlantic" }, { t: "Don't Cry", a: "Guns N' Roses" },
+            { t: "No. 1 Party Anthem", a: "Arctic Monkeys" }, { t: "Sad Girl", a: "Lana Del Rey" },
+            { t: "Shut up My Moms Calling", a: "Hotel Ugly" }, { t: "RU Mine?", a: "Arctic Monkeys" },
+            { t: "Daddy Issues", a: "The Neighbourhood" }, { t: "Is There Someone Else?", a: "The Weeknd" },
+            { t: "Lose Control", a: "Teddy Swims" }, { t: "West Coast", a: "Lana Del Rey" },
+            { t: "Snuff", a: "Corey Taylor" }, { t: "Bother", a: "Stone Sour" },
+            { t: "Like a Stone", a: "Audioslave" }, { t: "I'll Keep Coming", a: "Low Roar" },
+            { t: "Imperfect", a: "Stone Sour" }, { t: "True Faith", a: "Ashley Johnson" },
+            { t: "Home", a: "Corey Taylor" }, { t: "Taciturn", a: "Stone Sour" },
+            { t: "To the Wilder feat. Elle Fanning", a: "WOODKID" }, { t: "Raindrops Keep Falling on my Head", a: "B J Thomas" },
+            { t: "Soldier Side", a: "System of a Down" }, { t: "Don't Be so Serious", a: "Low Roar" },
+            { t: "Through the Valley", a: "Ashley Johnson" }, { t: "Future Days", a: "Troy Baker" },
+            { t: "Put It on Me", a: "Matt Maeson" }, { t: "Red Hearts", a: "Marlon Funaki" },
+            { t: "Love is a Bitch", a: "Two Feet" }, { t: "Nervous", a: "The Neighbourhood" },
+            { t: "Butterflies", a: "Abe Parker" }, { t: "Flawless", a: "The Neighbourhood" },
+            { t: "Moth To a Flame", a: "The Weeknd" }, { t: "Until Now", a: "Abe Parker" },
+            { t: "Something in The Way", a: "Nirvana" }, { t: "Fire In My Head", a: "Two Feet" },
+            { t: "My Life Is Going On", a: "Cecilia Krull" }, { t: "Cloud", a: "Elias" },
+            { t: "Last First Kiss", a: "Abe Parker" }, { t: "Sleep On The Floor", a: "The Lumineers" },
+            { t: "Exile (feat. Bon Iver)", a: "Taylor Swift" }, { t: "Crazy About You", a: "Abe Parker" },
+            { t: "Forever and a day", a: "Abe Parker" }, { t: "Sitting, Waiting, Wishing", a: "Jack Johnson" }
         ]
     };
 
@@ -111,26 +174,22 @@ onValue(allPresenceRef, (snapshot) => {
     const updateUI = () => {
         const now = new Date();
         const hour = now.getHours();
-        const dayIdx = now.getDay();
-
         let saudacao = hour >= 5 && hour < 12 ? "Bom dia, meu bem" : hour >= 12 && hour < 18 ? "Boa tarde, meu bem" : "Boa noite, meu bem";
         document.getElementById('greeting-text').innerHTML = `${saudacao} <span id="heart-icon">🤍</span>`;
         document.getElementById('current-date').textContent = now.toLocaleDateString('pt-BR', { weekday: 'long', day: 'numeric', month: 'long' });
-
-        const q = CONFIG.QUOTES[dayIdx];
+        const q = getShuffledItem(CONFIG.QUOTES);
         document.getElementById('quote-text').textContent = `"${q.text}"`;
         document.getElementById('quote-author').textContent = q.author;
-
-        const b = CONFIG.BOOKS[dayIdx];
+        const b = getShuffledItem(CONFIG.BOOKS);
         document.getElementById('book-title').textContent = b.title;
         document.getElementById('book-author').textContent = b.author;
         document.getElementById('book-desc').textContent = b.desc;
         document.getElementById('book-cover').src = b.cover;
-
         updateMovieUI(currentMovieIdx);
         updateSeriesUI(currentSeriesIdx);
-
-        CONFIG.MUSIC[dayIdx].forEach((s, i) => {
+        const music1 = getShuffledItem(CONFIG.MUSIC, 0);
+        const music2 = getShuffledItem(CONFIG.MUSIC, 1);
+        [music1, music2].forEach((s, i) => {
             const idx = i + 1;
             document.getElementById(`music-title-${idx}`).textContent = s.t;
             document.getElementById(`music-artist-${idx}`).textContent = s.a;
@@ -156,11 +215,9 @@ onValue(allPresenceRef, (snapshot) => {
         updateUI();
         fetchWeather('Manaus', 'temp-manaus', 'desc-manaus');
         fetchWeather('Bambui', 'temp-bambui', 'desc-bambui');
-
         document.getElementById('next-movie').onclick = () => { currentMovieIdx = (currentMovieIdx + 1) % CONFIG.MOVIES.length; updateMovieUI(currentMovieIdx); };
         document.getElementById('prev-movie').onclick = () => { currentMovieIdx = (currentMovieIdx - 1 + CONFIG.MOVIES.length) % CONFIG.MOVIES.length; updateMovieUI(currentMovieIdx); };
         document.getElementById('next-series').onclick = () => { currentSeriesIdx = (currentSeriesIdx + 1) % CONFIG.SERIES.length; updateSeriesUI(currentSeriesIdx); };
         document.getElementById('prev-series').onclick = () => { currentSeriesIdx = (currentSeriesIdx - 1 + CONFIG.SERIES.length) % CONFIG.SERIES.length; updateSeriesUI(currentSeriesIdx); };
     });
 })();
-
