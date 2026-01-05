@@ -48,10 +48,15 @@ onValue(allPresenceRef, (snapshot) => {
         const now = new Date();
         const dayOfYear = getDayOfYear();
         const year = now.getFullYear();
-        const cycle = Math.floor((dayOfYear + offset) / array.length);
+
+        const cycle = Math.floor(dayOfYear / array.length);
+        
         const indexInCycle = (dayOfYear + offset) % array.length;
+        
         let indices = Array.from({ length: array.length }, (_, i) => i);
-        let seed = year + (cycle * 128276) + offset;
+        
+        let seed = year + (cycle * 128276); 
+        
         for (let i = indices.length - 1; i > 0; i--) {
             const j = Math.floor(seededRandom(seed) * (i + 1));
             [indices[i], indices[j]] = [indices[j], indices[i]];
@@ -223,6 +228,3 @@ onValue(allPresenceRef, (snapshot) => {
         document.getElementById('prev-series').onclick = () => { currentSeriesIdx = (currentSeriesIdx - 1 + CONFIG.SERIES.length) % CONFIG.SERIES.length; updateSeriesUI(currentSeriesIdx); };
     });
 })();
-
-
-
