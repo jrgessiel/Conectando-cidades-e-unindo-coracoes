@@ -116,7 +116,7 @@ onValue(allPresenceRef, (snapshot) => {
             { title: "Outlander", year: "2014", stars: 5, date: "27 de Dezembro de 2025", progress: "T1 : E1", cover: "https://images.justwatch.com/backdrop/305389828/s1920/outlander.avif" },
         ],
         ANIMES: [
-            { title: "Overlord", year: "2015", stars: 5, date: "05 de Janeiro de 2026", progress: "T1 : E4", cover: "https://images.justwatch.com/backdrop/339630570/s1920/temporada-1.avif" },
+            { title: "Overlord", year: "2015", stars: 5, date: "05 de Janeiro de 2026", progress: "T1 : E5", cover: "https://images.justwatch.com/backdrop/339630570/s1920/temporada-1.avif" },
         ],
         MUSIC: [
             { t: "Sweater Weather", a: "The Neighbourhood" }, { t: "Softcore", a: "The Neighbourhood" },
@@ -245,3 +245,4 @@ onValue(allPresenceRef, (snapshot) => {
         document.getElementById('prev-anime').onclick = () => { currentAnimeIdx = (currentAnimeIdx - 1 + CONFIG.ANIMES.length) % CONFIG.ANIMES.length; updateAnimeUI(currentAnimeIdx); };
     });
 })();
+
