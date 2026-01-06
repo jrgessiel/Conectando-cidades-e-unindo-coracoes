@@ -254,7 +254,8 @@ body {
 
 .card--book,
 .card--movie,
-.card--series {
+.card--series,
+.card--anime {
     padding: 0;
     overflow: hidden;
 }
