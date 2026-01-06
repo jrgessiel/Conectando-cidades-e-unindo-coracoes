@@ -50,13 +50,13 @@ onValue(allPresenceRef, (snapshot) => {
         const year = now.getFullYear();
 
         const cycle = Math.floor(dayOfYear / array.length);
-        
+
         const indexInCycle = (dayOfYear + offset) % array.length;
-        
+
         let indices = Array.from({ length: array.length }, (_, i) => i);
-        
-        let seed = year + (cycle * 128276); 
-        
+
+        let seed = year + (cycle * 128276);
+
         for (let i = indices.length - 1; i > 0; i--) {
             const j = Math.floor(seededRandom(seed) * (i + 1));
             [indices[i], indices[j]] = [indices[j], indices[i]];
@@ -115,6 +115,9 @@ onValue(allPresenceRef, (snapshot) => {
         SERIES: [
             { title: "Outlander", year: "2014", stars: 5, date: "27 de Dezembro de 2025", progress: "T1 : E1", cover: "https://images.justwatch.com/backdrop/305389828/s1920/outlander.avif" },
         ],
+        ANIMES: [
+            { title: "Overlord", year: "2015", stars: 5, date: "05 de Janeiro de 2026", progress: "T1 : E4", cover: "https://images.justwatch.com/backdrop/339630570/s1920/temporada-1.avif" },
+        ],
         MUSIC: [
             { t: "Sweater Weather", a: "The Neighbourhood" }, { t: "Softcore", a: "The Neighbourhood" },
             { t: "Wires", a: "The Neighbourhood" }, { t: "505", a: "Arctic Monkeys" },
@@ -144,6 +147,7 @@ onValue(allPresenceRef, (snapshot) => {
 
     let currentMovieIdx = 0;
     let currentSeriesIdx = 0;
+    let currentAnimeIdx = 0;
 
     const renderStars = (containerId, rating) => {
         const container = document.getElementById(containerId);
@@ -178,6 +182,16 @@ onValue(allPresenceRef, (snapshot) => {
         renderStars('series-stars', s.stars);
     };
 
+    const updateAnimeUI = (idx) => {
+        const a = CONFIG.ANIMES[idx];
+        document.getElementById('anime-title').textContent = a.title;
+        document.getElementById('anime-year').textContent = a.year;
+        document.getElementById('anime-watch-date').textContent = a.date;
+        document.getElementById('anime-progress').textContent = a.progress;
+        document.getElementById('anime-cover').src = a.cover;
+        renderStars('anime-stars', a.stars);
+    };
+
     const updateUI = () => {
         const now = new Date();
         const hour = now.getHours();
@@ -194,6 +208,7 @@ onValue(allPresenceRef, (snapshot) => {
         document.getElementById('book-cover').src = b.cover;
         updateMovieUI(currentMovieIdx);
         updateSeriesUI(currentSeriesIdx);
+        updateAnimeUI(currentAnimeIdx);
         const music1 = getShuffledItem(CONFIG.MUSIC, 0);
         const music2 = getShuffledItem(CONFIG.MUSIC, 1);
         [music1, music2].forEach((s, i) => {
@@ -226,5 +241,7 @@ onValue(allPresenceRef, (snapshot) => {
         document.getElementById('prev-movie').onclick = () => { currentMovieIdx = (currentMovieIdx - 1 + CONFIG.MOVIES.length) % CONFIG.MOVIES.length; updateMovieUI(currentMovieIdx); };
         document.getElementById('next-series').onclick = () => { currentSeriesIdx = (currentSeriesIdx + 1) % CONFIG.SERIES.length; updateSeriesUI(currentSeriesIdx); };
         document.getElementById('prev-series').onclick = () => { currentSeriesIdx = (currentSeriesIdx - 1 + CONFIG.SERIES.length) % CONFIG.SERIES.length; updateSeriesUI(currentSeriesIdx); };
+        document.getElementById('next-anime').onclick = () => { currentAnimeIdx = (currentAnimeIdx + 1) % CONFIG.ANIMES.length; updateAnimeUI(currentAnimeIdx); };
+        document.getElementById('prev-anime').onclick = () => { currentAnimeIdx = (currentAnimeIdx - 1 + CONFIG.ANIMES.length) % CONFIG.ANIMES.length; updateAnimeUI(currentAnimeIdx); };
     });
 })();
