@@ -43,15 +43,17 @@ onValue(allPresenceRef, (snapshot) => {
         return Math.floor(diff / oneDay);
     };
 
-    const getShuffledItem = (array, offset = 0) => {
+    const getShuffledItem = (array, offset = 0, step = 1) => {
         if (!array || array.length === 0) return null;
         const now = new Date();
         const dayOfYear = getDayOfYear();
         const year = now.getFullYear();
 
-        const cycle = Math.floor(dayOfYear / array.length);
+        const globalIndex = (dayOfYear * step) + offset;
 
-        const indexInCycle = (dayOfYear + offset) % array.length;
+        const cycle = Math.floor(globalIndex / array.length);
+
+        const indexInCycle = globalIndex % array.length;
 
         let indices = Array.from({ length: array.length }, (_, i) => i);
 
@@ -116,16 +118,20 @@ onValue(allPresenceRef, (snapshot) => {
             { title: "Outlander", year: "2014", stars: 5, date: "27 de Dezembro de 2025", progress: "T1 : E1", cover: "https://images.justwatch.com/backdrop/305389828/s1920/outlander.avif" },
         ],
         ANIMES: [
-            { title: "Overlord", year: "2015", stars: 5, date: "06 de Janeiro de 2026", progress: "T1 : E7", cover: "https://images.justwatch.com/backdrop/339630570/s1920/temporada-1.avif" },
+            { title: "Overlord", year: "2015", stars: 5, date: "06 de Janeiro de 2026", progress: "T1 : E13", cover: "https://images.justwatch.com/backdrop/339630570/s1920/temporada-1.avif" },
         ],
         MUSIC: [
-            { t: "Sweater Weather", a: "The Neighbourhood" }, { t: "Softcore", a: "The Neighbourhood" },
-            { t: "Wires", a: "The Neighbourhood" }, { t: "505", a: "Arctic Monkeys" },
-            { t: "Meddle About", a: "Chase Atlantic" }, { t: "Don't Cry", a: "Guns N' Roses" },
-            { t: "No. 1 Party Anthem", a: "Arctic Monkeys" }, { t: "Sad Girl", a: "Lana Del Rey" },
-            { t: "Shut up My Moms Calling", a: "Hotel Ugly" }, { t: "RU Mine?", a: "Arctic Monkeys" },
-            { t: "Daddy Issues", a: "The Neighbourhood" }, { t: "Is There Someone Else?", a: "The Weeknd" },
-            { t: "Lose Control", a: "Teddy Swims" }, { t: "West Coast", a: "Lana Del Rey" },
+            { t: "In my head", a: "Bedroom" }, { t: "505", a: "Arctic Monkeys" },
+            { t: "Black", a: "Pearl Jam" }, { t: "Sweater Weather", a: "The Neighbourhood" },
+            { t: "L.L.L.", a: "MYTH & ROID" }, { t: "Sad Girl", a: "Lana Del Rey" },
+            { t: "Wicked Game", a: "Chris Isaak" }, { t: "Lose Control", a: "Teddy Swims" },
+            { t: "Mockingbird", a: "Eminem" }, { t: "Softcore", a: "The Neighbourhood" },
+            { t: "Lonely day", a: "System of a down" }, { t: "RU Mine?", a: "Arctic Monkeys" },
+            { t: "One Last Breath", a: "Creed" }, { t: "Wires", a: "The Neighbourhood" },
+            { t: "Demons", a: "Imagine Dragons" }, { t: "Meddle About", a: "Chase Atlantic" },
+            { t: "Don't Cry", a: "Guns N' Roses" }, { t: "No. 1 Party Anthem", a: "Arctic Monkeys" },
+            { t: "Shut up My Moms Calling", a: "Hotel Ugly" }, { t: "Daddy Issues", a: "The Neighbourhood" },
+            { t: "Is There Someone Else?", a: "The Weeknd" }, { t: "West Coast", a: "Lana Del Rey" },
             { t: "Snuff", a: "Corey Taylor" }, { t: "Bother", a: "Stone Sour" },
             { t: "Like a Stone", a: "Audioslave" }, { t: "I'll Keep Coming", a: "Low Roar" },
             { t: "Imperfect", a: "Stone Sour" }, { t: "True Faith", a: "Ashley Johnson" },
@@ -209,8 +215,8 @@ onValue(allPresenceRef, (snapshot) => {
         updateMovieUI(currentMovieIdx);
         updateSeriesUI(currentSeriesIdx);
         updateAnimeUI(currentAnimeIdx);
-        const music1 = getShuffledItem(CONFIG.MUSIC, 0);
-        const music2 = getShuffledItem(CONFIG.MUSIC, 1);
+        const music1 = getShuffledItem(CONFIG.MUSIC, 0, 2);
+        const music2 = getShuffledItem(CONFIG.MUSIC, 1, 2);
         [music1, music2].forEach((s, i) => {
             const idx = i + 1;
             document.getElementById(`music-title-${idx}`).textContent = s.t;
@@ -245,5 +251,4 @@ onValue(allPresenceRef, (snapshot) => {
         document.getElementById('prev-anime').onclick = () => { currentAnimeIdx = (currentAnimeIdx - 1 + CONFIG.ANIMES.length) % CONFIG.ANIMES.length; updateAnimeUI(currentAnimeIdx); };
     });
 })();
-
 
