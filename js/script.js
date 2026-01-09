@@ -27,6 +27,23 @@ onValue(allPresenceRef, (snapshot) => {
     }
 });
 
+const liveRef = ref(db, 'stream/');
+onValue(liveRef, (snapshot) => {
+    const data = snapshot.val();
+    const liveCard = document.getElementById('live-card');
+    const iframe = document.getElementById('live-iframe');
+    const title = document.getElementById('live-title');
+
+    if (data && data.isActive && data.url) {
+        liveCard.style.display = 'block';
+        if (iframe.src !== data.url) iframe.src = data.url;
+        if (data.title) title.textContent = data.title;
+    } else {
+        liveCard.style.display = 'none';
+        iframe.src = '';
+    }
+});
+
 (function () {
     "use-strict";
 
@@ -251,4 +268,3 @@ onValue(allPresenceRef, (snapshot) => {
         document.getElementById('prev-anime').onclick = () => { currentAnimeIdx = (currentAnimeIdx - 1 + CONFIG.ANIMES.length) % CONFIG.ANIMES.length; updateAnimeUI(currentAnimeIdx); };
     });
 })();
-
