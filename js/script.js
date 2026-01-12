@@ -133,9 +133,10 @@ onValue(liveRef, (snapshot) => {
         ],
         SERIES: [
             { title: "Outlander", year: "2014", stars: 5, date: "27 de Dezembro de 2025", progress: "T1 : E1", cover: "https://images.justwatch.com/backdrop/305389828/s1920/outlander.avif" },
+            { title: "The Vampire Diaries", year: "2009", stars: 5, date: "11 de Janeiro de 2026", progress: "T1 : E1", cover: "https://images.justwatch.com/backdrop/178039414/s1920/diarios-de-um-vampiro.avif" }
         ],
         ANIMES: [
-            { title: "Overlord", year: "2015", stars: 5, date: "06 de Janeiro de 2026", progress: "T1 : E13", cover: "https://images.justwatch.com/backdrop/339630570/s1920/temporada-1.avif" },
+            { title: "Overlord", year: "2015", stars: 5, date: "06 de Janeiro de 2026", progress: "T1 : E12", cover: "https://images.justwatch.com/backdrop/339630570/s1920/temporada-1.avif" }
         ],
         MUSIC: [
             { t: "In my head", a: "Bedroom" }, { t: "505", a: "Arctic Monkeys" },
