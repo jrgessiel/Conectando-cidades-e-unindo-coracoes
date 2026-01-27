@@ -124,19 +124,21 @@ onValue(liveRef, (snapshot) => {
             { title: "O Retrato de Dorian Gray", author: "Oscar Wilde", desc: "Um personagem que leva uma vida dupla, mantendo uma aparência de virtude enquanto se entrega ao hedonismo mais extremado.", cover: "https://m.media-amazon.com/images/I/51REmr5NmnL._SY342_.jpg" },
             { title: "Império do Vampiro", author: "Jay Kristoff", desc: "Já se passaram 27 longos anos desde o último nascer do sol. Por quase três décadas, os vampiros travaram uma guerra contra a humanidade, gora, apenas algumas pequenas faíscas de luz perduram em um mar de escuridão. Gabriel de León, metade humano e metade monstro, é o último Santo de Prata e narra a historia.", cover: "https://m.media-amazon.com/images/I/51cZ0MS4hmL._SY445_SX342_ControlCacheEqualizer_.jpg" }
         ],
-        MOVIES: [
+         MOVIES: [
             { title: "O amor move ondas", year: "2022", stars: 5, date: "25 de Dezembro de 2025 ", quote: "Onde tudo começou. Um bom filme que se tornou eterno para nós por ser o primeiro da nossa história assistida a dois.", cover: "https://images.justwatch.com/backdrop/301015537/s1920/pod-wiatr-2022.avif" },
             { title: "Nosso último verão", year: "2019", stars: 5, date: "26 de Dezembro de 2025 ", quote: "Onde o tempo parece parar e o verão se torna eterno. Um filme que reflete a leveza e a cumplicidade de estarmos construindo o nosso próprio caminho juntos.", cover: "https://images.justwatch.com/backdrop/132410010/s1920/the-last-summer.avif" },
             { title: "O par perfeito", year: "2019", stars: 5, date: "29 de Dezembro de 2025 ", quote: "Um lembrete de que pares perfeitos não precisam de grandes produções, apenas da pessoa certa. E um lembrete de que a minha pessoa certa é você!", cover: "https://images.justwatch.com/backdrop/240743378/s1920/the-perfect-date.avif" },
             { title: "Dançarina perfeita", year: "2020", stars: 5, date: "01 de Janeiro de 2026 ", quote: "O primeiro filme do ano. Entre passos de dança e risadas, mergulhamos em conversas profundas sobre perdas e vida.", cover: "https://images.justwatch.com/backdrop/194636335/s1920/work-it.avif" },
             { title: "A caminho do verão", year: "2022", stars: 5, date: "03 de Janeiro de 2026 ", quote: "Para quem sempre viveu nas sombras, você é o meu amanhecer. Mais um bom capítulo escrito na nossa historia. Gosto muito de você!", cover: "https://images.justwatch.com/backdrop/274890593/s1920/along-for-the-ride.avif" },
             { title: "Como treinar o seu dragão", year: "2010", stars: 5, date: "13 de Janeiro de 2026 ", quote: "Que sorte a minha poder assistir ao primeiro filme da minha franquia de animação favorita, agora com minha pessoa favorita.", cover: "https://images.justwatch.com/backdrop/246799588/s1920/como-treinar-o-seu-dragao.avif" },
-            { title: "Como treinar o seu dragão 2", year: "2014", stars: 5, date: "16 de Janeiro de 2026 ", quote: "A sorte se repete. Agora, com o melhor filme da franquia, continuo a saga com minha pessoa favorita. Você torna tudo mais especial.", cover: "https://images.justwatch.com/backdrop/301786713/s1920/drachenzahmen-leicht-gemacht-2.avif" }
+            { title: "Como treinar o seu dragão 2", year: "2014", stars: 5, date: "16 de Janeiro de 2026 ", quote: "A sorte se repete. Agora, com o melhor filme da franquia, continuo a saga ainda com minha pessoa favorita, tornando tudo ainda mais especial.", cover: "https://images.justwatch.com/backdrop/301786713/s1920/drachenzahmen-leicht-gemacht-2.avif" },
+            { title: "Your name", year: "2016", stars: 5, date: "23 de Janeiro de 2026 ", quote: "Nem o tempo e nem a distância mudam o que está destinado. Um filme sobre conexões de almas, assistida com a minha.", cover: "https://images.justwatch.com/backdrop/201593434/s1440/teu-nome.avif" },
+            { title: "Palavras que borbulham feito refrigente", year: "2021", stars: 5, date: "25 de Janeiro de 2026 ", quote: "Tão doce e refrescante quanto o título sugere. Um lembrete de que não precisamos esconder quem somos um com outro.", cover: "https://images.justwatch.com/backdrop/324388556/s1440/saidanoyouniyan-xie-gayong-kishang-garu.avif" }
         ],
         SERIES: [
             { title: "Outlander", year: "2014", stars: 5, date: "27 de Dezembro de 2025", progress: "T1 : E1", cover: "https://images.justwatch.com/backdrop/305389828/s1920/outlander.avif" },
             { title: "The Vampire Diaries", year: "2009", stars: 5, date: "11 de Janeiro de 2026", progress: "T1 : E1", cover: "https://images.justwatch.com/backdrop/178039414/s1920/diarios-de-um-vampiro.avif" },
-            { title: "A Knight of the Seven Kingdoms", year: "2026", stars: 5, date: "22 de Janeiro de 2026", progress: "T1 : E1", cover: "https://images.justwatch.com/backdrop/337757110/s1920/a-knight-of-the-seven-kingdoms-the-hedge-knight.avif" }
+            { title: "A Knight of the Seven Kingdoms", year: "2026", stars: 5, date: "26 de Janeiro de 2026", progress: "T1 : E2", cover: "https://images.justwatch.com/backdrop/337757110/s1920/a-knight-of-the-seven-kingdoms-the-hedge-knight.avif" }
         ],
         ANIMES: [
             { title: "Overlord", year: "2015", stars: 5, date: "06 de Janeiro de 2026", progress: "T1 : E12", cover: "https://images.justwatch.com/backdrop/339630570/s1920/temporada-1.avif" }
@@ -272,5 +274,6 @@ onValue(liveRef, (snapshot) => {
         document.getElementById('prev-anime').onclick = () => { currentAnimeIdx = (currentAnimeIdx - 1 + CONFIG.ANIMES.length) % CONFIG.ANIMES.length; updateAnimeUI(currentAnimeIdx); };
     });
 })();
+
 
 
