@@ -134,7 +134,8 @@ onValue(liveRef, (snapshot) => {
             { title: "Como treinar o seu dragão 2", year: "2014", stars: 5, date: "16 de Janeiro de 2026 ", quote: "A sorte se repete. Agora, com o melhor filme da franquia, continuo a saga ainda com minha pessoa favorita, tornando tudo ainda mais especial.", cover: "https://images.justwatch.com/backdrop/301786713/s1920/drachenzahmen-leicht-gemacht-2.avif" },
             { title: "Your name", year: "2016", stars: 5, date: "23 de Janeiro de 2026 ", quote: "Nem o tempo e nem a distância mudam o que está destinado. Um filme sobre conexões de almas, assistida com a minha.", cover: "https://images.justwatch.com/backdrop/201593434/s1440/teu-nome.avif" },
             { title: "Palavras que borbulham feito refrigente", year: "2021", stars: 5, date: "25 de Janeiro de 2026 ", quote: "Tão doce e refrescante quanto o título sugere. Um lembrete de que não precisamos esconder quem somos um com outro.", cover: "https://images.justwatch.com/backdrop/324388556/s1440/saidanoyouniyan-xie-gayong-kishang-garu.avif" },
-            { title: "La La Land: Cantando Estações", year: "2016", stars: 5, date: "27 de Janeiro de 2026 ", quote: "Entre cores vibrantes e melodias melancólicas, um lembrete de que o amor verdadeiro é o que nos ajuda a ser quem somos. Obrigado por tornar meu mundo mais colorido.", cover: "https://images.justwatch.com/backdrop/65048167/s1440/la-la-land.avif" }
+            { title: "La La Land: Cantando Estações", year: "2016", stars: 5, date: "27 de Janeiro de 2026 ", quote: "Entre cores e melodias, um lembrete de que o amor é o que nos ajuda a ser quem somos. Obrigado por tornar meu mundo mais colorido.", cover: "https://images.justwatch.com/backdrop/65048167/s1440/la-la-land.avif" },
+            { title: "Violet Evergarden: O Filme", year: "2020", stars: 5, date: "29 de Janeiro de 2026 ", quote: "Um filme sobre sentimentos que transcendem através de cartas, assistido com quem dá sentido aos meus.", cover: "https://images.justwatch.com/backdrop/332072869/s1920/violet-evergarden-the-movie.avif" }
         ],
         SERIES: [
             { title: "Outlander", year: "2014", stars: 5, date: "27 de Dezembro de 2025", progress: "T1 : E1", cover: "https://images.justwatch.com/backdrop/305389828/s1920/outlander.avif" },
@@ -143,7 +144,7 @@ onValue(liveRef, (snapshot) => {
         ],
         ANIMES: [
             { title: "Overlord", year: "2015", stars: 5, date: "06 de Janeiro de 2026", progress: "T1 : E12", cover: "https://images.justwatch.com/backdrop/339630570/s1920/temporada-1.avif" },
-            { title: "Violet Evergarden", year: "2018", stars: 5, date: "28 de Janeiro de 2026", progress: "T1 : E8", cover: "https://images.justwatch.com/backdrop/320205246/s640/vuaioretsutoevuagaden.avif" }
+            { title: "Violet Evergarden", year: "2018", stars: 5, date: "29 de Janeiro de 2026", progress: "T1 : E13", cover: "https://images.justwatch.com/backdrop/320205246/s640/vuaioretsutoevuagaden.avif" }
         ],
         MUSIC: [
             { t: "In my head", a: "Bedroom" }, { t: "505", a: "Arctic Monkeys" },
@@ -276,6 +277,7 @@ onValue(liveRef, (snapshot) => {
         document.getElementById('prev-anime').onclick = () => { currentAnimeIdx = (currentAnimeIdx - 1 + CONFIG.ANIMES.length) % CONFIG.ANIMES.length; updateAnimeUI(currentAnimeIdx); };
     });
 })();
+
 
 
 
