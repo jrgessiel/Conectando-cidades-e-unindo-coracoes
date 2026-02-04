@@ -124,7 +124,7 @@ onValue(liveRef, (snapshot) => {
             { title: "O Retrato de Dorian Gray", author: "Oscar Wilde", desc: "Um personagem que leva uma vida dupla, mantendo uma aparência de virtude enquanto se entrega ao hedonismo mais extremado.", cover: "https://m.media-amazon.com/images/I/51REmr5NmnL._SY342_.jpg" },
             { title: "Império do Vampiro", author: "Jay Kristoff", desc: "Já se passaram 27 longos anos desde o último nascer do sol. Por quase três décadas, os vampiros travaram uma guerra contra a humanidade, gora, apenas algumas pequenas faíscas de luz perduram em um mar de escuridão. Gabriel de León, metade humano e metade monstro, é o último Santo de Prata e narra a historia.", cover: "https://m.media-amazon.com/images/I/51cZ0MS4hmL._SY445_SX342_ControlCacheEqualizer_.jpg" }
         ],
-         MOVIES: [
+        MOVIES: [
             { title: "O amor move ondas", year: "2022", stars: 5, date: "25 de Dezembro de 2025 ", quote: "Onde tudo começou. Um bom filme que se tornou eterno para nós por ser o primeiro da nossa história assistida a dois.", cover: "https://images.justwatch.com/backdrop/301015537/s1920/pod-wiatr-2022.avif" },
             { title: "Nosso último verão", year: "2019", stars: 5, date: "26 de Dezembro de 2025 ", quote: "Onde o tempo parece parar e o verão se torna eterno. Um filme que reflete a leveza e a cumplicidade de estarmos construindo o nosso próprio caminho juntos.", cover: "https://images.justwatch.com/backdrop/132410010/s1920/the-last-summer.avif" },
             { title: "O par perfeito", year: "2019", stars: 5, date: "29 de Dezembro de 2025 ", quote: "Um lembrete de que pares perfeitos não precisam de grandes produções, apenas da pessoa certa. E um lembrete de que a minha pessoa certa é você!", cover: "https://images.justwatch.com/backdrop/240743378/s1920/the-perfect-date.avif" },
@@ -144,7 +144,9 @@ onValue(liveRef, (snapshot) => {
         ],
         ANIMES: [
             { title: "Overlord", year: "2015", stars: 5, date: "06 de Janeiro de 2026", progress: "T1 : E12", cover: "https://images.justwatch.com/backdrop/339630570/s1920/temporada-1.avif" },
-            { title: "Violet Evergarden", year: "2018", stars: 5, date: "29 de Janeiro de 2026", progress: "T1 : E13", cover: "https://images.justwatch.com/backdrop/320205246/s640/vuaioretsutoevuagaden.avif" }
+            { title: "Violet Evergarden", year: "2018", stars: 5, date: "29 de Janeiro de 2026", progress: "T1 : E13", cover: "https://images.justwatch.com/backdrop/320205246/s640/vuaioretsutoevuagaden.avif" },
+            { title: "The Fragrant Flower Blooms with Dignity", year: "2025", stars: 5, date: "01 de Fevereiro de 2026", progress: "T1 : E13", cover: "https://images.justwatch.com/backdrop/332746080/s1920/the-fragrant-flower-blooms-with-dignity.avif" },
+            { title: "Pelo Prisma do Amor", year: "2026", stars: 5, date: "03 de Fevereiro de 2026", progress: "T1 : E11", cover: "https://images.justwatch.com/backdrop/339085530/s1920/pelo-prisma-do-amor.avif" }
         ],
         MUSIC: [
             { t: "In my head", a: "Bedroom" }, { t: "505", a: "Arctic Monkeys" },
@@ -277,6 +279,7 @@ onValue(liveRef, (snapshot) => {
         document.getElementById('prev-anime').onclick = () => { currentAnimeIdx = (currentAnimeIdx - 1 + CONFIG.ANIMES.length) % CONFIG.ANIMES.length; updateAnimeUI(currentAnimeIdx); };
     });
 })();
+
 
 
 
