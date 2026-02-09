@@ -133,49 +133,73 @@ onValue(liveRef, (snapshot) => {
             { title: "Como treinar o seu dragão", year: "2010", stars: 5, date: "13 de Janeiro de 2026 ", quote: "Que sorte a minha poder assistir ao primeiro filme da minha franquia de animação favorita, agora com minha pessoa favorita.", cover: "https://images.justwatch.com/backdrop/246799588/s1920/como-treinar-o-seu-dragao.avif" },
             { title: "Como treinar o seu dragão 2", year: "2014", stars: 5, date: "16 de Janeiro de 2026 ", quote: "A sorte se repete. Agora, com o melhor filme da franquia, continuo a saga ainda com minha pessoa favorita, tornando tudo ainda mais especial.", cover: "https://images.justwatch.com/backdrop/301786713/s1920/drachenzahmen-leicht-gemacht-2.avif" },
             { title: "Your name", year: "2016", stars: 5, date: "23 de Janeiro de 2026 ", quote: "Nem o tempo e nem a distância mudam o que está destinado. Um filme sobre conexões de almas, assistida com a minha.", cover: "https://images.justwatch.com/backdrop/201593434/s1440/teu-nome.avif" },
-            { title: "Palavras que borbulham feito refrigente", year: "2021", stars: 5, date: "25 de Janeiro de 2026 ", quote: "Tão doce e refrescante quanto o título sugere. Um lembrete de que não precisamos esconder quem somos um com outro.", cover: "https://images.justwatch.com/backdrop/324388556/s1440/saidanoyouniyan-xie-gayong-kishang-garu.avif" },
+            { title: "Palavras que borbulham feito refrigente", year: "2021", stars: 4, date: "25 de Janeiro de 2026 ", quote: "Tão doce e refrescante quanto o título sugere. Um lembrete de que não precisamos esconder quem somos um com outro.", cover: "https://images.justwatch.com/backdrop/324388556/s1440/saidanoyouniyan-xie-gayong-kishang-garu.avif" },
             { title: "La La Land: Cantando Estações", year: "2016", stars: 5, date: "27 de Janeiro de 2026 ", quote: "Entre cores e melodias, um lembrete de que o amor é o que nos ajuda a ser quem somos. Obrigado por tornar meu mundo mais colorido.", cover: "https://images.justwatch.com/backdrop/65048167/s1440/la-la-land.avif" },
-            { title: "Violet Evergarden: O Filme", year: "2020", stars: 5, date: "29 de Janeiro de 2026 ", quote: "Um filme sobre sentimentos que transcendem através de cartas, assistido com quem dá sentido aos meus.", cover: "https://images.justwatch.com/backdrop/332072869/s1920/violet-evergarden-the-movie.avif" }
+            { title: "Violet Evergarden: O Filme", year: "2020", stars: 5, date: "29 de Janeiro de 2026 ", quote: "Um filme sobre sentimentos que transcendem através de cartas, assistido com quem dá sentido aos meus.", cover: "https://images.justwatch.com/backdrop/332072869/s1920/violet-evergarden-the-movie.avif" },
+            { title: "O último verão", year: "2016", stars: 5, date: "08 de Fevereiro de 2026 ", quote: "Um filme sobre despedidas, futuros incertos e o valor de amores e amizades, assistido com você. Obrigado por sempre me acompanhar.", cover: "https://images.justwatch.com/backdrop/319654071/s1440/o-ultimo-verao-2016.avif" }
         ],
         SERIES: [
             { title: "Outlander", year: "2014", stars: 5, date: "27 de Dezembro de 2025", progress: "T1 : E1", cover: "https://images.justwatch.com/backdrop/305389828/s1920/outlander.avif" },
             { title: "The Vampire Diaries", year: "2009", stars: 5, date: "11 de Janeiro de 2026", progress: "T1 : E1", cover: "https://images.justwatch.com/backdrop/178039414/s1920/diarios-de-um-vampiro.avif" },
-            { title: "A Knight of the Seven Kingdoms", year: "2026", stars: 5, date: "26 de Janeiro de 2026", progress: "T1 : E2", cover: "https://images.justwatch.com/backdrop/337757110/s1920/a-knight-of-the-seven-kingdoms-the-hedge-knight.avif" },
+            { title: "A Knight of the Seven Kingdoms", year: "2026", stars: 5, date: "05 de Fevereiro de 2026", progress: "T1 : E3", cover: "https://images.justwatch.com/backdrop/337757110/s1920/a-knight-of-the-seven-kingdoms-the-hedge-knight.avif" },
         ],
         ANIMES: [
-            { title: "Overlord", year: "2015", stars: 5, date: "06 de Janeiro de 2026", progress: "T1 : E12", cover: "https://images.justwatch.com/backdrop/339630570/s1920/temporada-1.avif" },
+            { title: "Overlord", year: "2015", stars: 4, date: "06 de Janeiro de 2026", progress: "T1 : E12", cover: "https://images.justwatch.com/backdrop/339630570/s1920/temporada-1.avif" },
             { title: "Violet Evergarden", year: "2018", stars: 5, date: "29 de Janeiro de 2026", progress: "T1 : E13", cover: "https://images.justwatch.com/backdrop/320205246/s640/vuaioretsutoevuagaden.avif" },
             { title: "The Fragrant Flower Blooms with Dignity", year: "2025", stars: 5, date: "01 de Fevereiro de 2026", progress: "T1 : E13", cover: "https://images.justwatch.com/backdrop/332746080/s1920/the-fragrant-flower-blooms-with-dignity.avif" },
-            { title: "Pelo Prisma do Amor", year: "2026", stars: 5, date: "03 de Fevereiro de 2026", progress: "T1 : E11", cover: "https://images.justwatch.com/backdrop/339085530/s1920/pelo-prisma-do-amor.avif" }
+            { title: "Pelo Prisma do Amor", year: "2026", stars: 1, date: "07 de Fevereiro de 2026", progress: "T1 : E20", cover: "https://images.justwatch.com/backdrop/339085530/s1920/pelo-prisma-do-amor.avif" }
         ],
         MUSIC: [
-            { t: "In my head", a: "Bedroom" }, { t: "505", a: "Arctic Monkeys" },
-            { t: "Black", a: "Pearl Jam" }, { t: "Sweater Weather", a: "The Neighbourhood" },
-            { t: "L.L.L.", a: "MYTH & ROID" }, { t: "Sad Girl", a: "Lana Del Rey" },
-            { t: "Wicked Game", a: "Chris Isaak" }, { t: "Lose Control", a: "Teddy Swims" },
-            { t: "Mockingbird", a: "Eminem" }, { t: "Softcore", a: "The Neighbourhood" },
-            { t: "Lonely day", a: "System of a down" }, { t: "RU Mine?", a: "Arctic Monkeys" },
-            { t: "One Last Breath", a: "Creed" }, { t: "Wires", a: "The Neighbourhood" },
-            { t: "Demons", a: "Imagine Dragons" }, { t: "Meddle About", a: "Chase Atlantic" },
-            { t: "Don't Cry", a: "Guns N' Roses" }, { t: "No. 1 Party Anthem", a: "Arctic Monkeys" },
-            { t: "Shut up My Moms Calling", a: "Hotel Ugly" }, { t: "Daddy Issues", a: "The Neighbourhood" },
-            { t: "Is There Someone Else?", a: "The Weeknd" }, { t: "West Coast", a: "Lana Del Rey" },
-            { t: "Snuff", a: "Corey Taylor" }, { t: "Bother", a: "Stone Sour" },
-            { t: "Like a Stone", a: "Audioslave" }, { t: "I'll Keep Coming", a: "Low Roar" },
-            { t: "Imperfect", a: "Stone Sour" }, { t: "True Faith", a: "Ashley Johnson" },
-            { t: "Home", a: "Corey Taylor" }, { t: "Taciturn", a: "Stone Sour" },
-            { t: "To the Wilder feat. Elle Fanning", a: "WOODKID" }, { t: "Raindrops Keep Falling on my Head", a: "B J Thomas" },
-            { t: "Soldier Side", a: "System of a Down" }, { t: "Don't Be so Serious", a: "Low Roar" },
-            { t: "Through the Valley", a: "Ashley Johnson" }, { t: "Future Days", a: "Troy Baker" },
-            { t: "Put It on Me", a: "Matt Maeson" }, { t: "Red Hearts", a: "Marlon Funaki" },
-            { t: "Love is a Bitch", a: "Two Feet" }, { t: "Nervous", a: "The Neighbourhood" },
-            { t: "Butterflies", a: "Abe Parker" }, { t: "Flawless", a: "The Neighbourhood" },
-            { t: "Moth To a Flame", a: "The Weeknd" }, { t: "Until Now", a: "Abe Parker" },
-            { t: "Something in The Way", a: "Nirvana" }, { t: "Fire In My Head", a: "Two Feet" },
-            { t: "My Life Is Going On", a: "Cecilia Krull" }, { t: "Cloud", a: "Elias" },
-            { t: "Last First Kiss", a: "Abe Parker" }, { t: "Sleep On The Floor", a: "The Lumineers" },
-            { t: "Exile (feat. Bon Iver)", a: "Taylor Swift" }, { t: "Crazy About You", a: "Abe Parker" },
-            { t: "Forever and a day", a: "Abe Parker" }, { t: "Sitting, Waiting, Wishing", a: "Jack Johnson" }
+            { t: "Like a Stone", a: "Audioslave" }, { t: "Tennessee Whiskey", a: "Chris Stapleton" },
+            { t: "Soldier Side", a: "System of a Down" }, { t: "Exile (feat. Bon Iver)", a: "Taylor Swift" },
+            { t: "Mockingbird", a: "Eminem" }, { t: "Snuff", a: "Corey Taylor" },
+            { t: "No. 1 Party Anthem", a: "Arctic Monkeys" }, { t: "Lose Control", a: "Teddy Swims" },
+            { t: "Disfruto", a: "Carla Morrison" }, { t: "Broken", a: "Seether" },
+            { t: "Outra Vida", a: "Armandinho" }, { t: "West Coast", a: "Lana Del Rey" },
+            { t: "Flawless", a: "The Neighbourhood" }, { t: "Home", a: "Corey Taylor" },
+            { t: "Lost in the fire", a: "The Weeknd" }, { t: "Something in The Way", a: "Nirvana" },
+            { t: "Wet dreams", a: "Artemas" }, { t: "Love is a Bitch", a: "Two Feet" },
+            { t: "Over my head", a: "updog" }, { t: "True Faith", a: "Ashley Johnson" },
+            { t: "In my head", a: "Bedroom" }, { t: "Imperfect", a: "Stone Sour" },
+            { t: "505", a: "Arctic Monkeys" }, { t: "Is There Someone Else?", a: "The Weeknd" },
+            { t: "Apocalypse", a: "Cigarettes After Sex" }, { t: "Future Days", a: "Troy Baker" },
+            { t: "3 Libras", a: "A Perfect Circle" }, { t: "Wires", a: "The Neighbourhood" },
+            { t: "Cloud", a: "Elias" }, { t: "K.", a: "Cigarettes After Sex" },
+            { t: "Alice in Chains", a: "Nutshell" }, { t: "Chão de Giz", a: "Zé Ramalho" },
+            { t: "One Last Breath", a: "Creed" }, { t: "Nervous", a: "The Neighbourhood" },
+            { t: "Butterflies", a: "Abe Parker" }, { t: "Te Regalo", a: "Carla Morrison" },
+            { t: "Last First Kiss", a: "Abe Parker" }, { t: "Na Sua Estante", a: "Pitty" },
+            { t: "Demons", a: "Imagine Dragons" }, { t: "I'll Keep Coming", a: "Low Roar" },
+            { t: "Red Hearts", a: "Marlon Funaki" }, { t: "Animals", a: "Maroon 5" },
+            { t: "Eres Tú", a: "Carla Morrison" }, { t: "Meddle About", a: "Chase Atlantic" },
+            { t: "Forever and a day", a: "Abe Parker" }, { t: "Don't Be so Serious", a: "Low Roar" },
+            { t: "Imposter Syndrome", a: "Abe Parker" }, { t: "Through the Valley", a: "Ashley Johnson" },
+            { t: "A Different Age", a: "Current Joys" }, { t: "Put It on Me", a: "Matt Maeson" },
+            { t: "Moth To a Flame", a: "The Weeknd" }, { t: "My Love Mine All Mine", a: "Mitski" },
+            { t: "Palavras Ao Vento", a: "Cássia Eller" }, { t: "To the Wilder feat. Elle Fanning", a: "WOODKID" },
+            { t: "Who Do You Want", a: "Ex Habit" }, { t: "Raindrops Keep Falling on my Head", a: "B J Thomas" },
+            { t: "Lonely day", a: "System of a down" }, { t: "Call Out My Name", a: "The Weeknd" },
+            { t: "Black", a: "Pearl Jam" }, { t: "My Life Is Going On", a: "Cecilia Krull" },
+            { t: "The Less I Know The Better", a: "Tame Impala" }, { t: "Pink Bathwater", a: "Favourite Daughter" },
+            { t: "Vermillion", a: "Slipknot" }, { t: "Sleep On The Floor", a: "The Lumineers" },
+            { t: "Until Now", a: "Abe Parker" }, { t: "Devotion", a: "Montell Fish" },
+            { t: "Ainda Gosto Dela", a: "Skank" }, { t: "Crazy About You", a: "Abe Parker" },
+            { t: "Daddy Issues", a: "The Neighbourhood" }, { t: "When I R.I.P.", a: "Labrinth" },
+            { t: "Compartir", a: "Carla Morrison" }, { t: "Blue Eyes", a: "Abe Parker" },
+            { t: "W.D.Y.W.F.M?", a: "The Neighbourhood" }, { t: "Just want u to feel something", a: "Artemas" },
+            { t: "Cherry Wine", a: "Hozier" }, { t: "One More Night", a: "Maroon 5" },
+            { t: "RU Mine?", a: "Arctic Monkeys" }, { t: "Você me faz tão bem", a: "Detonautas" },
+            { t: "Cage the Elephant", a: "Cigarette Daydreams" }, { t: "Don't Cry", a: "Guns N' Roses" },
+            { t: "Crying Lightning", a: "Arctic Monkeys" }, { t: "The Night We Met", a: "Lord Huron" },
+            { t: "Bother", a: "Stone Sour" }, { t: "Olhos Certos", a: "Detonautas" },
+            { t: "Sad Girl", a: "Lana Del Rey" }, { t: "Taciturn", a: "Stone Sour" },
+            { t: "Wicked Game", a: "Chris Isaak" }, { t: "Tempo Perdido", a: "Legião Urbana" },
+            { t: "Sitting, Waiting, Wishing", a: "Jack Johnson" }, { t: "Shut up My Moms Calling", a: "Hotel Ugly" },
+            { t: "Self Sabotage", a: "Abe Parker" }, { t: "Become The Warm Jets", a: "Current Joys" },
+            { t: "Do It For Me", a: "Rosenfeld" }, { t: "L.L.L.", a: "MYTH & ROID" },
+            { t: "Radio/Video", a: "System Of A Down" }, { t: "Fire In My Head", a: "Two Feet" },
+            { t: "Heartburn", a: "Wafia" }, { t: "The Color Violet", a: "Tory Lanez" },
+            { t: "Sweater Weather", a: "The Neighbourhood" }, { t: "Softcore", a: "The Neighbourhood" }
         ]
     };
 
@@ -279,9 +303,3 @@ onValue(liveRef, (snapshot) => {
         document.getElementById('prev-anime').onclick = () => { currentAnimeIdx = (currentAnimeIdx - 1 + CONFIG.ANIMES.length) % CONFIG.ANIMES.length; updateAnimeUI(currentAnimeIdx); };
     });
 })();
-
-
-
-
-
-
