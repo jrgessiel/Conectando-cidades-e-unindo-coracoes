@@ -91,29 +91,37 @@ onValue(liveRef, (snapshot) => {
             meeting: { year: 2025, month: 11, day: 22 }
         },
         QUOTES: [
-            { text: "Meu amor é profundo: quanto mais te dou, mais tenho.", author: "William Shakespeare" },
-            { text: "Em algum lugar, algo incrível está esperando para ser descoberto.", author: "Carl Sagan" },
-            { text: "Depois de tudo o que passamos juntos, não pode ser em vão.", author: "Ellie Miller" },
-            { text: "Mesmo na escuridão, eu te encontraria.", author: "Sarah J. Maas" },
-            { text: "A única maneira de livrar-se de uma tentação é ceder a ela.", author: "Oscar Wilde" },
-            { text: "É um amor pobre aquele que se pode medir.", author: "William Shakespeare" },
-            { text: "Você não pode ser um homem ruim e esperar que coisas boas aconteçam.", author: "Arthur Morgan" },
-            { text: "Perdoe-me, por todas as coisas que fiz, mas principalmente por aquelas que não fiz.", author: "Donna Tartt" },
+            { text: "Duvide do brilho das estrelas, duvide do movimento do sol, mas nunca duvide do meu amor.", author: "William Shakespeare" },
             { text: "Não há nada tão bárbaro e selvagem que não possa ser domado pela arte e pelo hábito.", author: "William Shakespeare" },
-            { text: "Ela era como uma borboleta rara, e eu a queria para mim.", author: "John Fowles" },
-            { text: "Não há nada mais difícil do que ser honesto consigo mesmo.", author: "Fiódor Dostoiévski" },
-            { text: "O coração humano é um mistério insondável.", author: "Fiódor Dostoiévski" },
-            { text: "Há mais coisas entre o céu e a terra do que sonha a nossa vã filosofia.", author: "William Shakespeare" },
-            { text: "O amor é uma fumaça feita do vapor dos suspiros.", author: "William Shakespeare" },
-            { text: "Se eu fosse perder você, eu certamente me perderia.", author: "Joel Miller" },
-            { text: "Tudo em mim ama tudo em você.", author: "John Legend" },
-            { text: "Eu gostaria de poder dizer que estou fazendo a diferença, mas não sei.", author: "Batman" },
-            { text: "Paramos de procurar monstros embaixo da nossa cama quando percebemos que eles estão dentro de nós.", author: "Batman" },
-            { text: "Eu prefiro confiar e me arrepender, do que duvidar e me arrepender.", author: "Kirito Kirigaya" },
             { text: "Não conte com o arrependimento. Ele vem tarde demais.", author: "Kratos" },
+            { text: "Eu não quero apenas viver. Eu quero que você viva ao meu lado.", author: "Connor" },
+            { text: "Em algum lugar, algo incrível está esperando para ser descoberto.", author: "Carl Sagan" },
+            { text: "Não há nada mais difícil do que ser honesto consigo mesmo.", author: "Fiódor Dostoiévski" },
+            { text: "Não faz sentido ter o mundo inteiro se eu não tiver você.", author: "Geralt de Rivia" },
+            { text: "Paramos de procurar monstros embaixo da nossa cama quando percebemos que eles estão dentro de nós.", author: "Batman" },
             { text: "O amor é a única coisa que somos capazes de perceber que transcende as dimensões do tempo e do espaço.", author: "Amelia Brand" },
+            { text: "Ela era como uma borboleta rara, e eu a queria para mim.", author: "John Fowles" },
+            { text: "Se eu fosse perder você, eu certamente me perderia.", author: "Joel Miller" },
+            { text: "O amor é uma fumaça feita do vapor dos suspiros.", author: "William Shakespeare" },
+            { text: "Eu prefiro confiar e me arrepender, do que duvidar e me arrepender.", author: "Kirito Kirigaya" },
+            { text: "O coração humano é um mistério insondável.", author: "Fiódor Dostoiévski" },
+            { text: "Ninguém pode nos dizer quem somos. Nós mesmos decidimos o nosso destino.", author: "Markus" },
+            { text: "Eu te amaria em qualquer vida, em qualquer mundo, em qualquer tempo.", author: "Rick Grimes" },
+            { text: "Não importa onde você esteja no mundo, eu prometo que vou te encontrar de novo.", author: "Taki Tachibana" },
+            { text: "Meu amor é profundo: quanto mais te dou, mais tenho.", author: "William Shakespeare" },
+            { text: "Há mais coisas entre o céu e a terra do que sonha a nossa vã filosofia.", author: "William Shakespeare" },
+            { text: "Tudo em mim ama tudo em você.", author: "John Legend" },
+            { text: "A única maneira de livrar-se de uma tentação é ceder a ela.", author: "Oscar Wilde" },
+            { text: "Perdoe-me, por todas as coisas que fiz, mas principalmente por aquelas que não fiz.", author: "Donna Tartt" },
+            { text: "Se você está comigo, eu não preciso de mais nada. Eu não me importo com o resto do mundo.", author: "Asuna Yuuki" },
+            { text: "O amor é a única coisa que não precisa de lógica para existir.", author: "Violet Evergarden" },
+            { text: "É um amor pobre aquele que se pode medir.", author: "William Shakespeare" },
+            { text: "Eu gostaria de poder dizer que estou fazendo a diferença, mas não sei.", author: "Batman" },
+            { text: "Feche o seu coração para a dor deles. Feche o seu coração para o sofrimento deles, mas nunca o feche para quem você ama.", author: "Kratos" },
+            { text: "Mesmo na escuridão, eu te encontraria.", author: "Sarah J. Maas" },
             { text: "Em todo o tempo em que estivemos juntos, eu nunca quis estar em nenhum outro lugar.", author: "Joel Miller" },
-            { text: "Ninguém pode nos dizer quem somos. Nós mesmos decidimos o nosso destino.", author: "Markus" }
+            { text: "Depois de tudo o que passamos juntos, não pode ser em vão.", author: "Ellie Miller" },
+            { text: "Você não pode ser um homem ruim e esperar que coisas boas aconteçam.", author: "Arthur Morgan" }
         ],
         BOOKS: [
             { title: "Corte de Espinhos e Rosas", author: "Sarah J. Maas", desc: "Feyre Archeron é uma caçadora. A pele de um lobo poderia trazer ouro o suficiente para alimentar sua família por um mês inteiro. Mas tirar a vida de uma criatura mágica tem um custo alto, e Feyre acabou de matar o lobo errado.", cover: "https://m.media-amazon.com/images/I/91-HZzQ3naL._SY342_.jpg" },
@@ -136,12 +144,13 @@ onValue(liveRef, (snapshot) => {
             { title: "Palavras que borbulham feito refrigente", year: "2021", stars: 4, date: "25 de Janeiro de 2026 ", quote: "Tão doce e refrescante quanto o título sugere. Um lembrete de que não precisamos esconder quem somos um com outro.", cover: "https://images.justwatch.com/backdrop/324388556/s1440/saidanoyouniyan-xie-gayong-kishang-garu.avif" },
             { title: "La La Land: Cantando Estações", year: "2016", stars: 5, date: "27 de Janeiro de 2026 ", quote: "Entre cores e melodias, um lembrete de que o amor é o que nos ajuda a ser quem somos. Obrigado por tornar meu mundo mais colorido.", cover: "https://images.justwatch.com/backdrop/65048167/s1440/la-la-land.avif" },
             { title: "Violet Evergarden: O Filme", year: "2020", stars: 5, date: "29 de Janeiro de 2026 ", quote: "Um filme sobre sentimentos que transcendem através de cartas, assistido com quem dá sentido aos meus.", cover: "https://images.justwatch.com/backdrop/332072869/s1920/violet-evergarden-the-movie.avif" },
-            { title: "O último verão", year: "2016", stars: 5, date: "08 de Fevereiro de 2026 ", quote: "Um filme sobre despedidas, futuros incertos e o valor de amores e amizades, assistido com você. Obrigado por sempre me acompanhar.", cover: "https://images.justwatch.com/backdrop/319654071/s1440/o-ultimo-verao-2016.avif" }
+            { title: "O último verão", year: "2016", stars: 5, date: "08 de Fevereiro de 2026 ", quote: "Um filme sobre despedidas, futuros incertos e o valor de amores e amizades, assistido com você. Obrigado por sempre me acompanhar.", cover: "https://images.justwatch.com/backdrop/319654071/s1440/o-ultimo-verao-2016.avif" },
+            { title: "Tick, Tick... Booom!", year: "2021", stars: 4, date: "11 de Fevereiro de 2026 ", quote: "Para quem não curte tanto musicais, esse toca o coração. O tique-taque nos lembra que o tempo pode ser curto, mas que bom que estamos passando juntos.", cover: "https://images.justwatch.com/backdrop/257956729/s1440/tick-tick-boom.avif" },
         ],
         SERIES: [
-            { title: "Outlander", year: "2014", stars: 5, date: "27 de Dezembro de 2025", progress: "T1 : E1", cover: "https://images.justwatch.com/backdrop/305389828/s1920/outlander.avif" },
+            { title: "Outlander", year: "2014", stars: 5, date: "09 de Fevereiro de 2026", progress: "T1 : E2", cover: "https://images.justwatch.com/backdrop/305389828/s1920/outlander.avif" },
             { title: "The Vampire Diaries", year: "2009", stars: 5, date: "11 de Janeiro de 2026", progress: "T1 : E1", cover: "https://images.justwatch.com/backdrop/178039414/s1920/diarios-de-um-vampiro.avif" },
-            { title: "A Knight of the Seven Kingdoms", year: "2026", stars: 5, date: "05 de Fevereiro de 2026", progress: "T1 : E3", cover: "https://images.justwatch.com/backdrop/337757110/s1920/a-knight-of-the-seven-kingdoms-the-hedge-knight.avif" },
+            { title: "A Knight of the Seven Kingdoms", year: "2026", stars: 5, date: "09 de Fevereiro de 2026", progress: "T1 : E4", cover: "https://images.justwatch.com/backdrop/337757110/s1920/a-knight-of-the-seven-kingdoms-the-hedge-knight.avif" },
         ],
         ANIMES: [
             { title: "Overlord", year: "2015", stars: 4, date: "06 de Janeiro de 2026", progress: "T1 : E12", cover: "https://images.justwatch.com/backdrop/339630570/s1920/temporada-1.avif" },
@@ -200,6 +209,7 @@ onValue(liveRef, (snapshot) => {
             { t: "Radio/Video", a: "System Of A Down" }, { t: "Fire In My Head", a: "Two Feet" },
             { t: "Heartburn", a: "Wafia" }, { t: "The Color Violet", a: "Tory Lanez" },
             { t: "Sweater Weather", a: "The Neighbourhood" }, { t: "Softcore", a: "The Neighbourhood" }
+
         ]
     };
 
@@ -303,4 +313,3 @@ onValue(liveRef, (snapshot) => {
         document.getElementById('prev-anime').onclick = () => { currentAnimeIdx = (currentAnimeIdx - 1 + CONFIG.ANIMES.length) % CONFIG.ANIMES.length; updateAnimeUI(currentAnimeIdx); };
     });
 })();
-
