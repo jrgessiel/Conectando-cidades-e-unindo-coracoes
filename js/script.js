@@ -62,26 +62,20 @@ onValue(liveRef, (snapshot) => {
 
     const getShuffledItem = (array, offset = 0, step = 1) => {
         if (!array || array.length === 0) return null;
-        const now = new Date();
+        
         const dayOfYear = getDayOfYear();
-        const year = now.getFullYear();
-
         const globalIndex = (dayOfYear * step) + offset;
-
-        const cycle = Math.floor(globalIndex / array.length);
-
-        const indexInCycle = globalIndex % array.length;
-
-        let indices = Array.from({ length: array.length }, (_, i) => i);
-
-        let seed = year + (cycle * 128276);
+        
+        let indices = Array.from(array.keys());
+        
+        let seed = array.length * 42; 
 
         for (let i = indices.length - 1; i > 0; i--) {
-            const j = Math.floor(seededRandom(seed) * (i + 1));
+            const j = Math.floor(seededRandom(seed + i) * (i + 1));
             [indices[i], indices[j]] = [indices[j], indices[i]];
-            seed++;
         }
-        return array[indices[indexInCycle]];
+
+        return array[indices[globalIndex % indices.length]];
     };
 
     const CONFIG = {
@@ -123,15 +117,6 @@ onValue(liveRef, (snapshot) => {
             { text: "Depois de tudo o que passamos juntos, não pode ser em vão.", author: "Ellie Miller" },
             { text: "Você não pode ser um homem ruim e esperar que coisas boas aconteçam.", author: "Arthur Morgan" }
         ],
-        BOOKS: [
-            { title: "Corte de Espinhos e Rosas", author: "Sarah J. Maas", desc: "Feyre Archeron é uma caçadora. A pele de um lobo poderia trazer ouro o suficiente para alimentar sua família por um mês inteiro. Mas tirar a vida de uma criatura mágica tem um custo alto, e Feyre acabou de matar o lobo errado.", cover: "https://m.media-amazon.com/images/I/91-HZzQ3naL._SY342_.jpg" },
-            { title: "Quarta Asa", author: "Rebecca Yarros", desc: "Em Quarta Asa, conhecemos Violet Sorrengail, uma jovem destinada a lutar pela sobrevivência em universo onde coragem, poder e desejo se entrelaçam em meio a dragões, batalhas e segredos que podem mudar tudo.", cover: "https://m.media-amazon.com/images/I/61rNwZ710JL._SY342_.jpg" },
-            { title: "Helena", author: "Machado de Assis", desc: "Narrado em terceira pessoa, este romance machadiano ambientado durante o século XIX traduz as surpresas e desgraças de um amor proibido.", cover: "https://m.media-amazon.com/images/I/61KDbIA7t6L._SY342_.jpg" },
-            { title: "Hamlet", author: "William Shakespeare", desc: "Neste clássico da literatura mundial, um jovem príncipe se reúne com o fantasma de seu pai, que alega que seu próprio irmão, agora casado com sua viúva, o assassinou.", cover: "https://m.media-amazon.com/images/I/41FcApYkpIL._SY445_SX342_ControlCacheEqualizer_.jpg" },
-            { title: "Suicidas", author: "Raphael Montes", desc: "Conhecemos a história de Alê e seus colegas, jovens da elite carioca encontrados mortos no porão do sítio em condições misteriosas que indicam que os nove amigos participaram de um perigoso e fatídico jogo de roleta russa.", cover: "https://m.media-amazon.com/images/I/81XqiNjr5OL._SY342_.jpg" },
-            { title: "O Retrato de Dorian Gray", author: "Oscar Wilde", desc: "Um personagem que leva uma vida dupla, mantendo uma aparência de virtude enquanto se entrega ao hedonismo mais extremado.", cover: "https://m.media-amazon.com/images/I/51REmr5NmnL._SY342_.jpg" },
-            { title: "Império do Vampiro", author: "Jay Kristoff", desc: "Já se passaram 27 longos anos desde o último nascer do sol. Por quase três décadas, os vampiros travaram uma guerra contra a humanidade, gora, apenas algumas pequenas faíscas de luz perduram em um mar de escuridão. Gabriel de León, metade humano e metade monstro, é o último Santo de Prata e narra a historia.", cover: "https://m.media-amazon.com/images/I/51cZ0MS4hmL._SY445_SX342_ControlCacheEqualizer_.jpg" }
-        ],
         MOVIES: [
             { title: "O amor move ondas", year: "2022", stars: 5, date: "25 de Dezembro de 2025 ", quote: "Onde tudo começou. Um bom filme que se tornou eterno para nós por ser o primeiro da nossa história assistida a dois.", cover: "https://images.justwatch.com/backdrop/301015537/s1920/pod-wiatr-2022.avif" },
             { title: "Nosso último verão", year: "2019", stars: 5, date: "26 de Dezembro de 2025 ", quote: "Onde o tempo parece parar e o verão se torna eterno. Um filme que reflete a leveza e a cumplicidade de estarmos construindo o nosso próprio caminho.", cover: "https://images.justwatch.com/backdrop/132410010/s1920/the-last-summer.avif" },
@@ -146,12 +131,12 @@ onValue(liveRef, (snapshot) => {
             { title: "Violet Evergarden: O Filme", year: "2020", stars: 5, date: "29 de Janeiro de 2026 ", quote: "Um filme sobre sentimentos que transcendem através de cartas, assistido com quem dá sentido aos meus.", cover: "https://images.justwatch.com/backdrop/332072869/s1920/violet-evergarden-the-movie.avif" },
             { title: "O último verão", year: "2016", stars: 5, date: "08 de Fevereiro de 2026 ", quote: "Um filme sobre despedidas, futuros incertos e o valor de amores e amizades, assistido com você. Obrigado por sempre me acompanhar.", cover: "https://images.justwatch.com/backdrop/319654071/s1440/o-ultimo-verao-2016.avif" },
             { title: "Tick, Tick... Booom!", year: "2021", stars: 4, date: "11 de Fevereiro de 2026 ", quote: "Para quem não curte tanto musicais, esse toca o coração. O tique-taque nos lembra que o tempo pode ser curto, mas que bom que estamos passando juntos.", cover: "https://images.justwatch.com/backdrop/257956729/s1440/tick-tick-boom.avif" },
-            { title: "As Leis da Termodinâmica", year: "2018", stars: 5, date: "18 de Fevereiro de 2026 ", quote: "Eles podem até tentar explicar a atração e o caos do universo, mas nenhuma ciência explica a sorte que é estarmos orbitando um ao outro.", cover: "https://images.justwatch.com/backdrop/7295266/s1440/the-laws-of-thermodynamics.avif" },
+            { title: "As Leis da Termodinâmica", year: "2018", stars: 5, date: "18 de Fevereiro de 2026 ", quote: "Eles podem até tentar explicar a atração e o caos do universo, mas nenhuma ciência explica a sorte que é estarmos orbitando um ao outro.", cover: "https://images.justwatch.com/backdrop/7295266/s1440/the-laws-of-thermodynamics.avif" }
         ],
         SERIES: [
             { title: "Outlander", year: "2014", stars: 5, date: "09 de Fevereiro de 2026", progress: "T1 : E2", cover: "https://images.justwatch.com/backdrop/305389828/s1920/outlander.avif" },
             { title: "The Vampire Diaries", year: "2009", stars: 5, date: "11 de Janeiro de 2026", progress: "T1 : E1", cover: "https://images.justwatch.com/backdrop/178039414/s1920/diarios-de-um-vampiro.avif" },
-            { title: "A Knight of the Seven Kingdoms", year: "2026", stars: 1, date: "16 de Fevereiro de 2026", progress: "T1 : E5", cover: "https://images.justwatch.com/backdrop/337757110/s1920/a-knight-of-the-seven-kingdoms-the-hedge-knight.avif" },
+            { title: "A Knight of the Seven Kingdoms", year: "2026", stars: 1, date: "16 de Fevereiro de 2026", progress: "T1 : E5", cover: "https://images.justwatch.com/backdrop/337757110/s1920/a-knight-of-the-seven-kingdoms-the-hedge-knight.avif" }
         ],
         ANIMES: [
             { title: "Overlord", year: "2015", stars: 4, date: "06 de Janeiro de 2026", progress: "T1 : E12", cover: "https://images.justwatch.com/backdrop/339630570/s1920/temporada-1.avif" },
@@ -210,7 +195,6 @@ onValue(liveRef, (snapshot) => {
             { t: "Radio/Video", a: "System Of A Down" }, { t: "Fire In My Head", a: "Two Feet" },
             { t: "Heartburn", a: "Wafia" }, { t: "The Color Violet", a: "Tory Lanez" },
             { t: "Sweater Weather", a: "The Neighbourhood" }, { t: "Softcore", a: "The Neighbourhood" }
-
         ]
     };
 
@@ -270,11 +254,6 @@ onValue(liveRef, (snapshot) => {
         const q = getShuffledItem(CONFIG.QUOTES);
         document.getElementById('quote-text').textContent = `"${q.text}"`;
         document.getElementById('quote-author').textContent = q.author;
-        const b = getShuffledItem(CONFIG.BOOKS);
-        document.getElementById('book-title').textContent = b.title;
-        document.getElementById('book-author').textContent = b.author;
-        document.getElementById('book-desc').textContent = b.desc;
-        document.getElementById('book-cover').src = b.cover;
         updateMovieUI(currentMovieIdx);
         updateSeriesUI(currentSeriesIdx);
         updateAnimeUI(currentAnimeIdx);
