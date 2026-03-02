@@ -1,13 +1,28 @@
+/* ==========================================================================
+   RESET & CONFIGURAÇÕES BASE
+   ========================================================================== */
 :root {
-    --bg-page: #fcfcfc;
-    --bg-card: #ffffff;
-    --text-main: #121212;
-    --text-muted: #666666;
-    --text-extra-muted: #999999;
-    --border-color: #f0f0f0;
-    --accent-soft: #f7f7f7;
-    --shadow-elegant: 0 4px 20px rgba(0, 0, 0, 0.03);
-    --radius: 0%;
+    /* Cores */
+    --color-bg: #f8f9f8;
+    --color-surface: #ffffff;
+    --color-text-main: #333333;
+    --color-text-muted: #71717a;
+    --color-border: #e4e4e7;
+
+    --color-accent-green: #52b788;
+    --color-accent-blue: #60a5fa;
+    --color-accent-orange: #fb923c;
+    --color-accent-pink: #ec4899;
+
+    /* Espaçamento e bordas */
+    --radius-lg: 6px;
+    --radius-md: 2px;
+    --container-pad: 2rem;
+    --gap-main: 1.5rem;
+
+    /* Sombras */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
 }
 
 * {
@@ -16,392 +31,59 @@
     box-sizing: border-box;
 }
 
-html {
-    font-size: 62.5%;
-}
-
 body {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    background-color: var(--bg-page);
-    color: var(--text-main);
-    font-size: 1.6rem;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-text-main);
+    line-height: 1.5;
     -webkit-font-smoothing: antialiased;
 }
 
-.page-container {
-    padding: 2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-}
-
-.dashboard-wrapper {
-    width: 100%;
-    max-width: 1400px;
-}
-
-.dashboard-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-bottom: 3rem;
-}
-
-.header-greeting h1 {
-    font-size: 4rem;
-    font-weight: 700;
-    letter-spacing: -1px;
-}
-
-.header-greeting p {
-    color: var(--text-muted);
-    font-size: 1.8rem;
-    margin-top: 0.8rem;
-}
-
-.info-pill {
-    background: var(--bg-card);
-    padding: 1.2rem 2.4rem;
-    border-radius: 5px;
-    border: 1px solid var(--border-color);
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    font-weight: 600;
-    color: var(--text-muted);
-    box-shadow: var(--shadow-elegant);
-}
-
-.dashboard-layout {
-    display: grid;
-    grid-template-columns: 450px 1fr;
-    gap: 2.5rem;
-}
-
-.card {
-    background: var(--bg-card);
-    border-radius: var(--radius);
-    padding: 2.5rem;
-    border: 1px solid var(--border-color);
-    box-shadow: var(--shadow-elegant);
-    margin-bottom: 2rem;
-}
-
-.card__header {
-    display: flex;
-    align-items: center;
-    gap: 1.2rem;
-    margin-bottom: 2rem;
-    color: var(--text-main);
-}
-
-.card__header h3 {
-    font-size: 1.4rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.dates-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.4rem;
-}
-
-.date-box {
-    background: var(--accent-soft);
-    padding: 1.8rem;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-}
-
-.date-box--wide {
-    grid-column: span 2;
-}
-
-.date-label {
-    font-size: 1.1rem;
-    color: var(--text-muted);
-    font-weight: 600;
-    text-transform: uppercase;
-}
-
-.date-value {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-top: 0.4rem;
-}
-
-.weather-display {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.weather-divider {
-    width: 1px;
-    height: 45px;
-    background: var(--border-color);
-    margin: 0 2rem;
-}
-
-.temp {
-    font-size: 3rem;
-    font-weight: 700;
-}
-
-.icon {
-    font-size: 3rem;
-    color: var(--text-extra-muted);
-}
-
-.desc {
-    font-size: 1.4rem;
-    color: var(--text-muted);
-    text-transform: capitalize;
-}
-
-.music-container {
-    display: flex;
-    flex-direction: column;
-    gap: 1.8rem;
-}
-
-.music-card-link {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-    transition: transform 0.2s;
-}
-
-.music-card-link:hover {
-    transform: translateX(5px);
-}
-
-.music-card {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-}
-
-.music-img {
-    width: 5.5rem;
-    height: 5.5rem;
-    border-radius: 8px;
-    object-fit: cover;
-    background: #eee;
-}
-
-.music-details {
-    flex: 1;
-}
-
-.music-details strong {
-    display: block;
-    font-size: 1.5rem;
-}
-
-.music-details span {
-    font-size: 1.3rem;
-    color: var(--text-muted);
-}
-
-.play-icon {
-    color: var(--text-extra-muted);
-    font-size: 2.8rem;
-    transition: color 0.2s;
-}
-
-.music-card-link:hover .play-icon {
-    color: var(--text-main);
-}
-
-.card--quote {
-    text-align: center;
-    padding: 4.5rem 4rem;
-}
-
-.card-tag {
-    display: inline-block;
-    padding: 0.5rem 1.4rem;
-    background: var(--accent-soft);
-    font-size: 1.1rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    margin-bottom: 1.5rem;
-    border-radius: 4px;
-    width: fit-content;
-}
-
-.quote-content p {
-    font-size: 2.5rem;
-    font-weight: 400;
-    line-height: 1.2;
-    color: var(--text-main);
-    max-width: 90%;
+/* ==========================================================================
+   LAYOUT PRINCIPAL
+   ========================================================================= */
+.app-container {
+    max-width: 65%;
     margin: 0 auto;
+    padding: var(--container-pad);
 }
 
-.quote-content cite {
-    display: block;
-    margin-top: 2rem;
-    color: var(--text-extra-muted);
-    font-size: 1.3rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+.header {
+    margin-bottom: 2rem;
 }
 
-.card--movie,
-.card--series,
-.card--anime {
-    padding: 0;
-    overflow: hidden;
-}
-
-.media-flex {
-    display: flex;
-    min-height: 300px;
-}
-
-.media-cover-area {
-    width: 32%;
-    background: var(--accent-soft);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-}
-
-.media-cover-shadow {
-    width: 100%;
-    box-shadow: 8px 12px 25px rgba(0, 0, 0, 0.1);
-    border-radius: 4px;
-}
-
-.media-info-area {
-    width: 68%;
-    padding: 2.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.media-info-area h2 {
-    font-size: 2.6rem;
-    margin: 0.5rem 0;
-    letter-spacing: -0.5px;
-}
-
-.movie-header-nav {
+.header__content {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 0.5rem;
+    align-items: center;
 }
 
-.nav-arrows {
-    display: flex;
-    gap: 1rem;
-    color: var(--text-extra-muted);
+.header__title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #18181b;
 }
 
-.nav-arrows span {
-    cursor: pointer;
-    font-size: 2.4rem;
-    transition: 0.2s;
-}
-
-.nav-arrows span:hover {
-    color: var(--text-main);
-}
-
-.movie-title-row {
-    display: flex;
-    align-items: baseline;
-    gap: 1rem;
-}
-
-.movie-year-tag {
-    font-size: 1.8rem;
-    color: var(--text-extra-muted);
-}
-
-.movie-rating {
-    color: #FFB800;
-    margin: 0.5rem 0 1.2rem;
-}
-
-.movie-rating span {
-    font-size: 1.8rem;
-}
-
-.movie-meta {
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: var(--text-muted);
+.header__subtitle {
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
     margin-bottom: 1rem;
 }
 
-.movie-quote-text {
-    font-style: normal;
-    font-size: 1.4rem;
-    line-height: 1.5;
-    color: var(--text-muted);
-    border-left: 3px solid var(--accent-soft);
-    padding: 1.5rem;
+.header__date-badge {
+    background: var(--color-surface);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+    font-size: 0.75rem;
+    font-weight: 600;
+    box-shadow: var(--shadow-sm);
 }
 
-.series-progress-container {
-    margin-top: 1.5rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--border-color);
-}
-
-.progress-label {
-    display: block;
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--text-extra-muted);
-    letter-spacing: 1px;
-    margin-bottom: 0.5rem;
-    text-transform: uppercase;
-}
-
-.progress-value {
-    font-size: 2.8rem;
-    font-weight: 800;
-    color: var(--text-main);
-}
-
-.video-wrapper {
-    position: relative;
-    padding-bottom: 56.25%;
-    height: 0;
-    overflow: hidden;
-    border-radius: 8px;
-    background: #000;
-}
-
-.video-wrapper iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: 0;
-}
-
-.card--live {
-    transition: all 0.3s ease;
-}
-
-@keyframes heartBeat {
-    0% { transform: scale(1); }
-    14% { transform: scale(1.3); }
-    28% { transform: scale(1); }
-    42% { transform: scale(1.3); }
-    70% { transform: scale(1); }
+.layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--gap-main);
 }
 
 .pulse-heart {
@@ -410,33 +92,604 @@ body {
     color: #ff4d4d;
 }
 
-@media (max-width: 1100px) {
-    .dashboard-layout {
-        grid-template-columns: 1fr;
+.card {
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    padding: 1.25rem;
+    margin-bottom: var(--gap-main);
+    box-shadow: var(--shadow-sm);
+}
+
+/* ==========================================================================
+   COMPONENTES DA SIDEBAR 
+   ========================================================================== */
+
+.card__title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--color-text-muted);
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+/* Sentimento Atual */
+.sentiment-list {
+    list-style: none;
+}
+
+.sentiment-item {
+    display: flex;
+    align-items: center;
+    background: #fdfdfd;
+    padding: 0.75rem;
+    border-radius: var(--radius-md);
+    margin-bottom: 0.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.02);
+}
+
+.sentiment-item__avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: var(--radius-md);
+    object-fit: cover;
+    margin-right: 0.75rem;
+}
+
+.sentiment-item__name {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-text-main);
+}
+
+.sentiment-item__status {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+}
+
+/* Datas Especiais */
+.date-list {
+    list-style: none;
+}
+
+.date-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.date-item__marker {
+    width: 20px;
+    height: 20px;
+    border-radius: 2px;
+    margin-right: 0.75rem;
+    margin-top: 3px;
+    opacity: 0.2;
+}
+
+.date-item__marker--pink {
+    background-color: #ec4899;
+}
+
+.date-item__marker--blue {
+    background-color: #3b82f6;
+}
+
+.date-item__marker--yellow {
+    background-color: #eab308;
+}
+
+.date-item__day {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #a1a1aa;
+}
+
+.date-item__event {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* Clima Agora */
+.weather-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.weather-item__location {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #a1a1aa;
+    margin-bottom: 0.25rem;
+}
+
+.weather-item__temp {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #18181b;
+}
+
+.weather-item__condition {
+    display: flex;
+    align-items: center;
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+}
+
+.weather-item--right {
+    text-align: right;
+}
+
+/* ==========================================================================
+   COMPONENTES DA SIDEBAR 
+   ========================================================================== */
+
+/* Música do Dia */
+.music-list {
+    list-style: none;
+}
+
+.music-item {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.music-item:last-child {
+    border-bottom: none;
+}
+
+.music-item__cover {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 0.85rem;
+}
+
+.music-item__info {
+    flex-grow: 1;
+}
+
+.music-item__name {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.music-item__artist {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+}
+
+.music-item__play {
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    color: #cbd5e1;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.music-item__play:hover {
+    color: var(--color-accent-blue);
+    transform: scale(1.1);
+}
+
+/* Mascote - Display */
+.mascot-display {
+    position: relative;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    margin-bottom: 1.25rem;
+}
+
+.mascot-display__image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+}
+
+.mascot-display__name {
+    position: absolute;
+    bottom: 10px;
+    left: 12px;
+    color: white;
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Mascote - Status */
+.mascot-stats {
+    margin-bottom: 1.25rem;
+}
+
+.stat-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.6rem;
+}
+
+.stat-row__label {
+    width: 60px;
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: #a1a1aa;
+}
+
+.stat-row__bar-container {
+    flex-grow: 1;
+    height: 6px;
+    background: #f1f5f9;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.stat-row__bar {
+    height: 100%;
+    border-radius: 10px;
+    transition: width 0.3s ease;
+}
+
+.stat-row__bar--humor {
+    background-color: var(--color-accent-green);
+}
+
+.stat-row__bar--hunger {
+    background-color: var(--color-accent-orange);
+}
+
+.stat-row__bar--sleep {
+    background-color: var(--color-accent-blue);
+}
+
+.stat-row__bar--dirt {
+    background-color: var(--color-accent-pink);
+}
+
+/* Mascote - Botões de Ação */
+.mascot-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+}
+
+.btn-action {
+    background: white;
+    border: 1px solid var(--color-border);
+    padding: 0.5rem;
+    border-radius: 6px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-action:hover {
+    background: var(--color-bg);
+    border-color: #cbd5e1;
+    color: var(--color-text-main);
+}
+
+/* ==========================================================================
+   CONTEÚDO PRINCIPAL 
+   ========================================================================== */
+
+/* Transmissão ao vivo */
+.video-banner {
+    position: relative;
+    margin-bottom: var(--gap-main);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.video-banner__badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: rgba(239, 68, 68, 0.9);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 2px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.video-banner__badge .dot {
+    width: 6px;
+    height: 6px;
+    background: white;
+    border-radius: 50%;
+    animation: blink 1.5s infinite;
+}
+
+.video-banner__container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: black;
+}
+
+.video-banner__container iframe {
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    object-fit: cover; 
+}
+
+.video-banner__overlay {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+    cursor: pointer;
+}
+
+.video-banner__play-icon {
+    font-size: 4rem;
+    color: rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
+}
+
+.video-banner__overlay:hover .video-banner__play-icon {
+    transform: scale(1.15);
+    color: #fff;
+}
+
+/* Frase do Dia */
+.card--quote {
+    text-align: center;
+    padding: 2rem 2rem;
+}
+
+.card__tag {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    background: #f1f5f9;
+    padding: 4px 12px;
+    border-radius: 4px;
+    color: #64748b;
+    margin-bottom: 1.5rem;
+}
+
+.quote__text {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #1e293b;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.quote__author {
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: #cbd5e1;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+/* ==========================================================================
+   FILMES, SERIES E ANIMES
+   ========================================================================== */
+
+.media-card {
+    display: flex;
+    padding: 0;
+    overflow: hidden;
+    min-height: 240px;
+    transition: transform 0.2s;
+}
+
+.media-card__visual {
+    margin: auto;
+    width: 40%;
+    flex-shrink: 0;
+}
+
+.media-card__img {
+    width: 100%;
+    object-fit: fill;
+    border-radius: 2px;
+}
+
+.media-card__content {
+    flex-grow: 1;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.media-card__type {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+.badge {
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: #64748b;
+    background: #f1f5f9;
+    padding: 3px 8px;
+    border-radius: 4px;
+}
+
+.media-card__nav {
+    display: flex;
+    gap: 8px;
+    color: #cbd5e1;
+    font-size: 0.75rem;
+    cursor: pointer;
+}
+
+.media-card__nav i:hover {
+    color: var(--color-text-main);
+}
+
+.media-card__title {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.media-card__year {
+    font-weight: 400;
+    color: #a1a1aa;
+    font-size: 1rem;
+    margin-left: 5px;
+}
+
+.media-card__rating {
+    color: #fbbf24;
+    font-size: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.media-card__date {
+    display: block;
+    font-size: 0.75rem;
+    color: #a1a1aa;
+    margin-bottom: 0.75rem;
+}
+
+.media-card__review {
+    font-size: 0.75rem;
+    color: #71717a;
+    line-height: 1.5;
+}
+
+.media-card__progress {
+    margin-top: auto;
+}
+
+.progress-label {
+    display: block;
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: #cbd5e1;
+    margin-bottom: 0.25rem;
+}
+
+.progress-value {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-text-main);
+}
+
+/* ==========================================================================
+   LISTAS DE ANIMAÇÕES
+   ========================================================================== */
+
+@keyframes heartBeat {
+    0% {
+        transform: scale(1);
     }
 
-    .page-container {
-        padding: 4rem 2rem;
-        align-items: flex-start;
+    14% {
+        transform: scale(1.2);
     }
 
-    .media-flex {
-        flex-direction: column;
-        min-height: auto;
+    28% {
+        transform: scale(1);
     }
 
-    .media-cover-area {
-        width: 100%;
-        padding: 3rem;
+    42% {
+        transform: scale(1.5);
     }
 
-    .media-info-area {
-        width: 100%;
+    70% {
+        transform: scale(1);
     }
 }
 
-@media (max-width: 480px) {
-    .header-greeting h1 {
-        font-size: 3.2rem;
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.4;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/* ==========================================================================
+   CONFIGURAÇÕES DE TELAS
+   ========================================================================== */
+
+@media (min-width: 640px) {
+
+    .layout {
+        grid-template-columns: 280px 1fr;
+        align-items: start;
+    }
+}
+
+@media (min-width: 1080px) {
+
+    .layout {
+        grid-template-columns: 320px 1fr;
+        align-items: start;
+    }
+}
+
+
+@media (max-width: 1080px) {
+    .app-container {
+        max-width: 95%;
+    }
+
+    .quote__text {
+        font-size: 1rem;
+    }
+
+    .media-card {
+        flex-direction: column;
+    }
+
+    .media-card__visual {
+        width: 100%;
+        height: 100%;
+    }
+
+    .media-card__title {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .header__content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
     }
 }
