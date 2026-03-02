@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -7,194 +7,315 @@
     <title>Nosso Cantinho</title>
     <meta name="author" content="Gessiel Junior">
     <meta name="description"
-        content="Explore o painel digital para casal que foi baseado na historia de romance chamada Conectando Cidades e Unindo Corações do escritor Gessiel José Januário Júnior.">
+        content="Explore o painel digital para casal baseado na historia de romance chamada Conectando Cidades e Unindo Corações do escritor Gessiel José Januário Júnior.">
     <link rel="icon" href="assets/icons/wedding-icon.png" type="image/x-icon">
     <link rel="apple-touch-icon" href="assets/icons/wedding-icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="stylesheet" href="css/style.css">
     <script src="js/script.js" type="module" defer></script>
 </head>
 
 <body>
-    <div class="page-container">
-        <div class="dashboard-wrapper">
-            <header class="dashboard-header">
-                <div class="header-greeting">
-                    <h1 id="greeting-text">Bom dia, meu bem <span id="heart-icon">🤍</span></h1>
-                    <p>Um resumo de hoje e parte da nossa história.</p>
+
+    <div class="app-container">
+        <header class="header">
+            <div class="header__content">
+                <div class="header__greeting">
+                    <h1 class="header__title">Boa noite, meu bem</h1>
+                    <p class="header__subtitle">Um resumo de hoje e parte da nossa história.</p>
                 </div>
-                <div class="header-info">
-                    <div class="info-pill">
-                        <span class="material-symbols-outlined">calendar_today</span>
-                        <span id="current-date">...</span>
-                    </div>
+                <div class="header__date-badge">
+                    <span>Domingo, 01 de Março</span>
                 </div>
-            </header>
+            </div>
+        </header>
 
-            <main class="dashboard-layout">
-                <section class="layout-col-left">
-                    <article class="card card--live" id="live-card" style="display: none;">
-                        <div class="card__header">
-                            <span class="material-symbols-outlined" style="color: #ff4d4d;">sensors</span>
-                            <h3 id="live-title">Transmissão ativa</h3>
-                        </div>
-                        <div class="video-wrapper">
-                            <iframe id="live-iframe" src="" frameborder="0" allowfullscreen 
-                                allow="autoplay; fullscreen; picture-in-picture"></iframe>
-                        </div>
-                    </article>
+        <div class="layout">
+            <aside class="layout__sidebar">
 
-                    <article class="card">
-                        <div class="card__header">
-                            <span class="material-symbols-outlined">event</span>
-                            <h3>Datas Especiais</h3>
-                        </div>
-                        <div class="dates-grid">
-                            <div class="date-box"><span class="date-label">Aniversário dela</span><span
-                                    class="date-value">12 de Agosto</span></div>
-                            <div class="date-box"><span class="date-label">Aniversário dele</span><span
-                                    class="date-value">27 de Junho</span></div>
-                            <div class="date-box date-box--wide"><span class="date-label">Nossa história</span><span
-                                    class="date-value">22 de Dezembro de 2025</span></div>
-                        </div>
-                    </article>
-
-                    <article class="card">
-                        <div class="card__header"><span class="material-symbols-outlined">thermostat</span>
-                            <h3>Clima nas Cidades</h3>
-                        </div>
-                        <div class="weather-display">
-                            <div class="city-weather">
-                                <span class="city-name">Manaus, AM</span>
-                                <div class="weather-main"><span class="temp" id="temp-manaus">--°</span><span
-                                        class="material-symbols-outlined icon">cloud</span></div>
-                                <p class="desc" id="desc-manaus">Carregando...</p>
-                            </div>
-                            <div class="weather-divider"></div>
-                            <div class="city-weather">
-                                <span class="city-name">Bambuí, MG</span>
-                                <div class="weather-main"><span class="temp" id="temp-bambui">--°</span><span
-                                        class="material-symbols-outlined icon">cloud</span></div>
-                                <p class="desc" id="desc-bambui">Carregando...</p>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="card">
-                        <div class="card__header"><span class="material-symbols-outlined">library_music</span>
-                            <h3>Músicas para hoje</h3>
-                        </div>
-                        <div class="music-container">
-                            <a href="#" id="music-link-1" target="_blank" class="music-card-link">
-                                <div class="music-card">
-                                    <img src="" id="music-img-1" class="music-img">
-                                    <div class="music-details"><strong id="music-title-1">...</strong><span
-                                            id="music-artist-1">...</span></div>
-                                    <span class="material-symbols-outlined play-icon">play_circle</span>
+                <section id="sidebar-top">
+                    <article class="card card--sentiment">
+                        <h3 class="card__title">SENTIMENTO ATUAL</h3>
+                        <ul class="sentiment-list">
+                            <li class="sentiment-item">
+                                <img src="https://i.pinimg.com/736x/f0/40/fc/f040fc2dc6aa0a02d1a7adc5fd223984.jpg"
+                                    alt="Avatar Heloise" class="sentiment-item__avatar">
+                                <div class="sentiment-item__info">
+                                    <span class="sentiment-item__name">Heloise</span>
+                                    <span class="sentiment-item__status">Humor: Contente</span>
                                 </div>
-                            </a>
-                            <a href="#" id="music-link-2" target="_blank" class="music-card-link">
-                                <div class="music-card">
-                                    <img src="" id="music-img-2" class="music-img">
-                                    <div class="music-details"><strong id="music-title-2">...</strong><span
-                                            id="music-artist-2">...</span></div>
-                                    <span class="material-symbols-outlined play-icon">play_circle</span>
+                            </li>
+                            <li class="sentiment-item">
+                                <img src="https://i.pinimg.com/474x/54/a3/3c/54a33c634e025079255fdca7ed129426.jpg"
+                                    alt="Avatar Gessiel" class="sentiment-item__avatar">
+                                <div class="sentiment-item__info">
+                                    <span class="sentiment-item__name">Gessiel</span>
+                                    <span class="sentiment-item__status">Humor: Apaixonado</span>
                                 </div>
-                            </a>
+                            </li>
+                        </ul>
+                    </article>
+
+                    <article class="card card--dates">
+                        <h3 class="card__title">DATAS ESPECIAIS</h3>
+                        <ul class="date-list">
+                            <li class="date-item">
+                                <div class="date-item__marker date-item__marker--pink"></div>
+                                <div class="date-item__info">
+                                    <span class="date-item__day">12 DE AGOSTO</span>
+                                    <span class="date-item__event">Aniversário</span>
+                                </div>
+                            </li>
+                            <li class="date-item">
+                                <div class="date-item__marker date-item__marker--blue"></div>
+                                <div class="date-item__info">
+                                    <span class="date-item__day">27 DE JUNHO</span>
+                                    <span class="date-item__event">Aniversário</span>
+                                </div>
+                            </li>
+                            <li class="date-item">
+                                <div class="date-item__marker date-item__marker--yellow"></div>
+                                <div class="date-item__info">
+                                    <span class="date-item__day">22 DE NOVEMBRO</span>
+                                    <span class="date-item__event">Onde tudo começou</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </article>
+
+                    <article class="card card--weather">
+                        <h3 class="card__title">CLIMA AGORA</h3>
+                        <div class="weather-grid">
+                            <div class="weather-item">
+                                <span class="weather-item__location">MANAUS, AM</span>
+                                <div class="weather-item__main">
+                                    <span class="weather-item__temp">--°</span>
+                                </div>
+                                <span class="weather-item__condition">
+                                    Procurando...
+                                </span>
+                            </div>
+                            <div class="weather-item weather-item--right">
+                                <span class="weather-item__location">BAMBUÍ, MG</span>
+                                <div class="weather-item__main">
+                                    <span class="weather-item__temp">--°</span>
+                                </div>
+                                <span class="weather-item__condition">
+                                    Procurando...
+                                </span>
+                            </div>
                         </div>
                     </article>
                 </section>
 
-                <section class="layout-col-right">
+                <section id="sidebar-bottom">
+                    <article class="card card--music">
+                        <h3 class="card__title">MÚSICAS DO DIA</h3>
+                        <ul class="music-list">
+                            <li class="music-item">
+                                <img src="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/63/11/1b/63111b50-00ce-2734-e09f-94fb791c9dee/0d6bb465-1f3e-457c-99e5-a786f63c3fbb.jpg/600x600bb.jpg"
+                                    alt="Capa Album" class="music-item__cover">
+                                <div class="music-item__info">
+                                    <span class="music-item__name">Shut up My Moms Calling</span>
+                                    <span class="music-item__artist">Hotel Ugly</span>
+                                </div>
+                                <button class="music-item__play"><i class="ph ph-play-circle"></i></button>
+                            </li>
+                            <li class="music-item">
+                                <img src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/56/9d/b7/569db797-d858-4a92-6824-e11fed729219/322657.jpg/600x600bb.jpg"
+                                    alt="Capa Album" class="music-item__cover">
+                                <div class="music-item__info">
+                                    <span class="music-item__name">Crazy About You</span>
+                                    <span class="music-item__artist">Abe Parker</span>
+                                </div>
+                                <button class="music-item__play"><i class="ph ph-play-circle"></i></button>
+                            </li>
+                        </ul>
+                    </article>
+                    <article class="card card--mascot">
+                        <h3 class="card__title">NOSSA MASCOTE</h3>
+
+                        <div class="mascot-display">
+                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5DylLFQZrcu8mPCf61rk4xYa_ok3NNPueCFu8Ep8Dwvct-eSvG4lhokcztEmUn8C7uVN734227EB0zGdOzFUtBkW_PfNZJgjO9ZpsYTD0ov5ohEKEcUEQoRrCZ7KrsBmD5OyR8h40M8zbp1VXkZPTXMlxpOVSj2nmbXolpOvEBjLWgpIZLoxHcd78c16cz0eP3whf7jUV95ij7vvGzoQikDNPt-42l3gf8x26gfxjv5kizxm8GIHKOr3yAY2gpHz4LdltCIydqIV-"
+                                alt="Bulbasaur Margo" class="mascot-display__image">
+                            <span class="mascot-display__name">Margo</span>
+                        </div>
+
+                        <div class="mascot-stats">
+                            <div class="stat-row">
+                                <span class="stat-row__label">HUMOR</span>
+                                <div class="stat-row__bar-container">
+                                    <div class="stat-row__bar stat-row__bar--humor" style="width: 80%;"></div>
+                                </div>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-row__label">FOME</span>
+                                <div class="stat-row__bar-container">
+                                    <div class="stat-row__bar stat-row__bar--hunger" style="width: 45%;"></div>
+                                </div>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-row__label">SONO</span>
+                                <div class="stat-row__bar-container">
+                                    <div class="stat-row__bar stat-row__bar--sleep" style="width: 90%;"></div>
+                                </div>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-row__label">SUJO</span>
+                                <div class="stat-row__bar-container">
+                                    <div class="stat-row__bar stat-row__bar--dirt" style="width: 60%;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mascot-actions">
+                            <button class="btn-action">COMER</button>
+                            <button class="btn-action">BRINCAR</button>
+                            <button class="btn-action">BANHO</button>
+                            <button class="btn-action">DORMIR</button>
+                        </div>
+                    </article>
+                </section>
+            </aside>
+
+            <main class="layout__main">
+
+                <section id="main-content-top">
+                    <article class="video-banner" id="stream-container" style="display: none;">
+                        <div class="video-banner__badge">
+                            <span class="dot"></span> AO VIVO: <span id="stream-title">Carregando...</span>
+                        </div>
+
+                        <div class="video-banner__container" id="video-wrapper">
+                            <div class="video-banner__overlay" id="video-overlay">
+                                <i class="ph ph-play-circle video-banner__play-icon"></i>
+                            </div>
+                        </div>
+                    </article>
                     <article class="card card--quote">
-                        <span class="card-tag">Frase do dia</span>
-                        <div class="quote-content">
-                            <p id="quote-text">"..."</p><cite id="quote-author">...</cite>
-                        </div>
+                        <span class="card__tag">FRASE DO DIA</span>
+                        <blockquote class="quote">
+                            <p class="quote__text">"Ninguém pode nos dizer quem somos. Nós mesmos decidimos o nosso
+                                destino."</p>
+                            <footer class="quote__author">MARKUS</footer>
+                        </blockquote>
                     </article>
+                </section>
 
-                    <article class="card card--movie">
-                        <div class="media-flex">
-                            <div class="media-cover-area"><img src="" id="movie-cover" class="media-cover-shadow"></div>
-                            <div class="media-info-area">
-                                <div class="movie-header-nav">
-                                    <span class="card-tag">Filme Assistido</span>
-                                    <div class="nav-arrows">
-                                        <span class="material-symbols-outlined" id="prev-movie">chevron_left</span>
-                                        <span class="material-symbols-outlined" id="next-movie">chevron_right</span>
-                                    </div>
-                                </div>
-                                <div class="movie-title-row">
-                                    <h2 id="movie-title">...</h2>
-                                    <span id="movie-year" class="movie-year-tag">...</span>
-                                </div>
-                                <div class="movie-rating" id="movie-stars"></div>
-                                <div class="movie-meta"><span id="movie-watch-date">...</span></div>
-                                <p id="movie-quote" class="movie-quote-text">"..."</p>
+                <section id="main-content-lists">
+                    <div class="media-container">
+
+                        <article class="card media-card">
+                            <div class="media-card__visual">
+                                <img src="https://images.justwatch.com/backdrop/301015537/s1920/pod-wiatr-2022.avif"
+                                    alt="Capa do Filme" class="media-card__img">
                             </div>
-                        </div>
-                    </article>
-
-                    <article class="card card--series">
-                        <div class="media-flex">
-                            <div class="media-cover-area"><img src="" id="series-cover" class="media-cover-shadow"></div>
-                            <div class="media-info-area">
-                                <div class="movie-header-nav">
-                                    <span class="card-tag">Série Assistida</span>
-                                    <div class="nav-arrows">
-                                        <span class="material-symbols-outlined" id="prev-series">chevron_left</span>
-                                        <span class="material-symbols-outlined" id="next-series">chevron_right</span>
+                            <div class="media-card__content">
+                                <header class="media-card__header">
+                                    <div class="media-card__type">
+                                        <span class="badge">FILME ASSISTIDO</span>
+                                        <div class="media-card__nav">
+                                            <i class="ph ph-caret-left"></i>
+                                            <i class="ph ph-caret-right"></i>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="movie-title-row">
-                                    <h2 id="series-title">...</h2>
-                                    <span id="series-year" class="movie-year-tag">...</span>
-                                </div>
-                                <div class="movie-rating" id="series-stars"></div>
-                                <div class="movie-meta"><span id="series-watch-date">...</span></div>
-                                <div class="series-progress-container">
-                                    <span class="progress-label">PARAMOS EM</span>
-                                    <h3 id="series-progress" class="progress-value">...</h3>
+                                    <h2 class="media-card__title">O amor move ondas <span
+                                            class="media-card__year">2022</span></h2>
+                                    <div class="media-card__rating">
+                                        <i class="ph-fill ph-star"></i>
+                                        <i class="ph-fill ph-star"></i>
+                                        <i class="ph-fill ph-star"></i>
+                                        <i class="ph-fill ph-star"></i>
+                                        <i class="ph-fill ph-star"></i>
+                                    </div>
+                                </header>
+
+                                <div class="media-card__body">
+                                    <time class="media-card__date">25 de Dezembro de 2025</time>
+                                    <p class="media-card__review">
+                                        "Onde tudo começou. Um bom filme que se tornou eterno para nós por ser o
+                                        primeiro da nossa história assistida a dois."
+                                    </p>
                                 </div>
                             </div>
-                        </div>
-                    </article>
+                        </article>
 
-                    <article class="card card--anime">
-                        <div class="media-flex">
-                            <div class="media-cover-area"><img src="" id="anime-cover" class="media-cover-shadow"></div>
-                            <div class="media-info-area">
-                                <div class="movie-header-nav">
-                                    <span class="card-tag">Anime Assistido</span>
-                                    <div class="nav-arrows">
-                                        <span class="material-symbols-outlined" id="prev-anime">chevron_left</span>
-                                        <span class="material-symbols-outlined" id="next-anime">chevron_right</span>
+                        <article class="card media-card">
+                            <div class="media-card__visual">
+                                <img src="https://images.justwatch.com/backdrop/305389828/s1920/outlander.avif"
+                                    alt="Capa da Série" class="media-card__img">
+                            </div>
+                            <div class="media-card__content">
+                                <header class="media-card__header">
+                                    <div class="media-card__type">
+                                        <span class="badge">SÉRIE ASSISTIDA</span>
+                                        <div class="media-card__nav">
+                                            <i class="ph ph-caret-left"></i>
+                                            <i class="ph ph-caret-right"></i>
+                                        </div>
+                                    </div>
+                                    <h2 class="media-card__title">Outlander <span class="media-card__year">2014</span>
+                                    </h2>
+                                    <div class="media-card__rating">
+                                        <i class="ph-fill ph-star"></i>
+                                        <i class="ph-fill ph-star"></i>
+                                        <i class="ph-fill ph-star"></i>
+                                        <i class="ph-fill ph-star"></i>
+                                        <i class="ph-fill ph-star"></i>
+                                    </div>
+                                </header>
+
+                                <div class="media-card__body">
+                                    <time class="media-card__date">09 de Fevereiro de 2026</time>
+                                    <div class="media-card__progress">
+                                        <span class="progress-label">PARAMOS EM</span>
+                                        <span class="progress-value">T1 : E2</span>
                                     </div>
                                 </div>
-                                <div class="movie-title-row">
-                                    <h2 id="anime-title">...</h2>
-                                    <span id="anime-year" class="movie-year-tag">...</span>
-                                </div>
-                                <div class="movie-rating" id="anime-stars"></div>
-                                <div class="movie-meta"><span id="anime-watch-date">...</span></div>
-                                <div class="series-progress-container">
-                                    <span class="progress-label">PARAMOS EM</span>
-                                    <h3 id="anime-progress" class="progress-value">...</h3>
+                            </div>
+                        </article>
+
+                        <article class="card media-card">
+                            <div class="media-card__visual">
+                                <img src="https://images.justwatch.com/backdrop/339630570/s1920/temporada-1.avif"
+                                    alt="Capa do Anime" class="media-card__img">
+                            </div>
+                            <div class="media-card__content">
+                                <header class="media-card__header">
+                                    <div class="media-card__type">
+                                        <span class="badge">ANIME ASSISTIDO</span>
+                                        <div class="media-card__nav">
+                                            <i class="ph ph-caret-left"></i>
+                                            <i class="ph ph-caret-right"></i>
+                                        </div>
+                                    </div>
+                                    <h2 class="media-card__title">Overlord <span class="media-card__year">2015</span>
+                                    </h2>
+                                    <div class="media-card__rating">
+                                        <i class="ph-fill ph-star"></i>
+
+                                    </div>
+                                </header>
+
+                                <div class="media-card__body">
+                                    <time class="media-card__date">06 de Janeiro de 2026</time>
+                                    <div class="media-card__progress">
+                                        <span class="progress-label">PARAMOS EM</span>
+                                        <span class="progress-value">T1 : E12</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </article>
+                        </article>
 
+                    </div>
                 </section>
             </main>
         </div>
     </div>
+
 </body>
 
 </html>
