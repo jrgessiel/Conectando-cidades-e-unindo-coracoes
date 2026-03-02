@@ -59,14 +59,14 @@ body {
 }
 
 .header__title {
-    font-size: 2rem;
+    font-size: 2.4rem;
     font-weight: 700;
     color: #18181b;
 }
 
 .header__subtitle {
     color: var(--color-text-muted);
-    font-size: 0.85rem;
+    font-size: 1rem;
     margin-bottom: 1rem;
 }
 
@@ -75,7 +75,7 @@ body {
     padding: 0.5rem 1rem;
     border-radius: var(--radius-md);
     border: 1px solid var(--color-border);
-    font-size: 0.75rem;
+    font-size: 1.2rem;
     font-weight: 600;
     box-shadow: var(--shadow-sm);
 }
@@ -430,13 +430,13 @@ body {
 }
 
 .video-banner__container iframe {
-    position: absolute; 
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     border: none;
-    object-fit: cover; 
+    object-fit: cover;
 }
 
 .video-banner__overlay {
@@ -674,6 +674,24 @@ body {
         padding: 1rem;
     }
 
+    .header__content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .header__title {
+        font-size: 2rem;
+    }
+
+    .header__subtitle {
+        font-size: 0.85rem;
+    }
+
+    .header__date-badge {
+        font-size: 1rem;
+    }
+
     .quote__text {
         font-size: 1rem;
     }
@@ -697,5 +715,17 @@ body {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
+    }
+
+    .header__title {
+        font-size: 1.65rem;
+    }
+
+    .header__subtitle {
+        font-size: 0.85rem;
+    }
+
+    .header__date-badge {
+        font-size: 0.75rem;
     }
 }
