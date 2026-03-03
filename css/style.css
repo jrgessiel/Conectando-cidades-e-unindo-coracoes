@@ -394,6 +394,9 @@ body {
     margin-bottom: var(--gap-main);
     border-radius: var(--radius-md);
     overflow: hidden;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
 }
 
 .video-banner__badge {
@@ -411,7 +414,7 @@ body {
     align-items: center;
     gap: 6px;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.7px;
 }
 
 .video-banner__badge .dot {
@@ -419,14 +422,14 @@ body {
     height: 6px;
     background: white;
     border-radius: 50%;
-    animation: blink 1.5s infinite;
+    animation: blink 1.2s infinite;
 }
 
 .video-banner__container {
     position: relative;
     width: 100%;
     aspect-ratio: 16 / 9;
-    background: black;
+    background: #18181b;
 }
 
 .video-banner__container iframe {
@@ -451,15 +454,42 @@ body {
 }
 
 .video-banner__play-icon {
-    font-size: 4rem;
-    color: rgba(255, 255, 255, 0.8);
+    font-size: 2.2rem;
+    color: #fdfdfd;
+    opacity: 0.7;
     transition: all 0.3s ease;
-    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
 }
 
 .video-banner__overlay:hover .video-banner__play-icon {
-    transform: scale(1.15);
-    color: #fff;
+    transform: scale(1.4);
+    opacity: 1;
+}
+
+.video-banner--offline .video-banner__badge {
+    background: #858585; 
+}
+
+.video-banner--offline .video-banner__badge .dot {
+    animation: none; 
+    background: #f8f8f8;
+}
+
+.video-banner--offline .video-banner__play-icon {
+    display: none; 
+}
+
+.video-banner--offline .video-banner__overlay {
+    cursor: default ;
+    background-color: #18181b;
+}
+
+.video-banner--offline .video-banner__overlay::after {
+    content: "Transmissão encerrada, aguarde!";
+    color: #f8f8f8;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 /* Frase do Dia */
