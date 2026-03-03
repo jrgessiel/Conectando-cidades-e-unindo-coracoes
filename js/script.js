@@ -433,34 +433,41 @@ const App = {
     },
 
     handleStreamUpdate(data) {
-        const container = document.getElementById('stream-container');
-        const titleEl = document.getElementById('stream-title');
-        const overlay = document.getElementById('video-overlay');
-        const wrapper = document.getElementById('video-wrapper');
+    const container = document.getElementById('stream-container');
+    const titleEl = document.getElementById('stream-title');
+    const overlay = document.getElementById('video-overlay');
+    const wrapper = document.getElementById('video-wrapper');
 
-        if (!data || !data.isActive) {
-            if (container) container.style.display = 'none';
-            if (wrapper) wrapper.innerHTML = '';
-            return;
-        }
+    if (!data || !data.isActive) {
+        if (container) container.style.display = 'none';
+        if (wrapper) wrapper.innerHTML = '';
+        return;
+    }
 
-        if (container) container.style.display = 'block';
-        if (titleEl) titleEl.textContent = data.title || "Transmissão";
+    if (container) {
+        container.style.display = 'block';
+        container.classList.toggle('video-banner--offline', !data.isOnline);
+    }
 
-        if (overlay) {
-            overlay.onclick = () => {
-                overlay.style.display = 'none';
-                if (wrapper) {
-                    wrapper.innerHTML = `
-                        <iframe 
-                            src="${data.url}" 
-                            allow="autoplay; camera; microphone; fullscreen" 
-                            style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;">
-                        </iframe>`;
-                }
-            };
-        }
-    },
+    if (titleEl) {
+        const statusPrefix = data.isOnline ? "AO VIVO: " : "OFFLINE: ";
+        titleEl.textContent = statusPrefix + (data.title || "Transmissão");
+    }
+
+    if (overlay) {
+        overlay.onclick = data.isOnline ? () => {
+            overlay.style.display = 'none';
+            if (wrapper) {
+                wrapper.innerHTML = `
+                    <iframe 
+                        src="${data.url}" 
+                        allow="autoplay; camera; microphone; fullscreen" 
+                        style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;">
+                    </iframe>`;
+            }
+        } : null;
+    }
+},
 
     async fetchWeatherData() {
         APP_DATA.LOCATIONS.forEach(async (loc, index) => {
