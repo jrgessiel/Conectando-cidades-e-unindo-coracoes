@@ -843,7 +843,7 @@ body {
     color: #9ca3af;
 }
 
-html:has(.auth-modal) {
+html.auth-locked {
     overflow: hidden;
     padding-right: thin;
 }

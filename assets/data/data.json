@@ -1,0 +1,28 @@
+{
+  "online": {
+    "info": ""
+  },
+  "stream": {
+    "isActive": true,
+    "isOnline": false,
+    "title": "",
+    "url": ""
+  },
+  "mascot": {
+    "stats": {
+      "hunger": 100,
+      "energy": 100,
+      "hygiene": 100,
+      "humor": 100
+    },
+    "status": {
+      "currentState": "idle",
+      "busyUntil": 0,
+      "lastUpdate": 0,
+      "isTogether": false
+    },
+    "history": {
+      "lastHungerCheck": ""
+    }
+  }
+}
