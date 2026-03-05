@@ -1,9 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getDatabase, ref, onValue, set, onDisconnect } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+import { getDatabase, ref, onValue, set, update, onDisconnect } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
-/**
- * APPLICATION CONFIGURATION
- */
 const FIREBASE_CONFIG = {
     apiKey: "AIzaSyA1Z1IlvPTn9AmHTj5yeT3SvqfOSdzqgd0",
     authDomain: "nosso-cantinho-d78ac.firebaseapp.com",
@@ -14,9 +11,6 @@ const FIREBASE_CONFIG = {
     databaseURL: "https://nosso-cantinho-d78ac-default-rtdb.firebaseio.com"
 };
 
-/**
- * APPLICATION DATA CONFIGURATION
- */
 const APP_DATA = {
     IMPORTANT_DATES: {
         herBirthday: { month: 7, day: 12 },
@@ -120,7 +114,7 @@ const APP_DATA = {
         { title: "Wires", artist: "The Neighbourhood" },
         { title: "Cloud", artist: "Elias" },
         { title: "K.", artist: "Cigarettes After Sex" },
-        { title: "Alice in Chains", artist: "Nutshell" },
+        { title: "Nutshell", artist: "Alice in Chains" },
         { title: "Chão de Giz", artist: "Zé Ramalho" },
         { title: "One Last Breath", artist: "Creed" },
         { title: "Nervous", artist: "The Neighbourhood" },
@@ -168,7 +162,7 @@ const APP_DATA = {
         { title: "One More Night", artist: "Maroon 5" },
         { title: "RU Mine?", artist: "Arctic Monkeys" },
         { title: "Você me faz tão bem", artist: "Detonautas" },
-        { title: "Cage the Elephant", artist: "Cigarette Daydreams" },
+        { title: "Cigarette Daydreams", artist: "Cage the Elephant" },
         { title: "Don't Cry", artist: "Guns N' Roses" },
         { title: "Crying Lightning", artist: "Arctic Monkeys" },
         { title: "The Night We Met", artist: "Lord Huron" },
@@ -193,52 +187,65 @@ const APP_DATA = {
     ]
 };
 
-/**
- * UTILITY HELPERS
- */
-const Utils = {
-    seededRandom(seed) {
-        const x = Math.sin(seed++) * 10000;
-        return x - Math.floor(x);
-    },
-
-    getDayOfYear() {
-        const now = new Date();
-        const start = new Date(now.getFullYear(), 0, 0);
-        return Math.floor((now - start) / (1000 * 60 * 60 * 24));
-    },
-
-    getDailyShuffledItem(array, offset = 0, step = 1) {
-        if (!array?.length) return null;
-        const globalIndex = (this.getDayOfYear() * step) + offset;
-        const indices = Array.from(array.keys());
-        const seed = array.length * 42;
-
-        for (let i = indices.length - 1; i > 0; i--) {
-            const j = Math.floor(this.seededRandom(seed + i) * (i + 1));
-            [indices[i], indices[j]] = [indices[j], indices[i]];
-        }
-        return array[indices[globalIndex % indices.length]];
-    },
-
-    clamp(val, min = 0, max = 100) {
-        return Math.max(min, Math.min(max, val));
-    }
-};
-
-/**
- * CORE APPLICATION ENGINE
- */
 const App = {
     state: {
         indices: { movie: 0, series: 0, anime: 0 },
-        mascot: { humor: 80, hunger: 40, sleep: 90, dirt: 60 },
+        mascot: { hunger: 80, energy: 80, hygiene: 100, humor: 100 },
+        mascotStatus: { currentState: 'idle', busyUntil: 0, lastUpdate: 0 },
+        isTogether: false,
         audio: { current: null, button: null }
     },
+    currentUser: null,
+    db: null,
 
     init() {
-        this.firebaseApp = initializeApp(FIREBASE_CONFIG);
-        this.db = getDatabase(this.firebaseApp);
+        const savedRole = localStorage.getItem('mascot_user_role');
+        if (savedRole) {
+            this.currentUser = savedRole;
+            const modal = document.getElementById('pin-modal');
+            if (modal) modal.remove();
+            document.documentElement.classList.remove('auth-locked');
+            this.startEngine();
+        } else {
+            document.documentElement.classList.add('auth-locked');
+            this.setupAuth();
+        }
+    },
+
+    setupAuth() {
+        const modal = document.getElementById('pin-modal');
+        const digit1 = document.getElementById('digit-1');
+        const digit2 = document.getElementById('digit-2');
+        const btnSubmit = document.getElementById('btn-auth-submit');
+
+        digit1.addEventListener('input', (e) => { if (e.target.value.length === 1) digit2.focus(); });
+        digit2.addEventListener('keydown', (e) => { if (e.key === 'Backspace' && e.target.value === '') digit1.focus(); });
+
+        const handleLogin = () => {
+            const pin = digit1.value + digit2.value;
+            let role = 'visitante';
+            if (pin === '12') role = 'ela';
+            else if (pin === '27') role = 'ele';
+
+            localStorage.setItem('mascot_user_role', role);
+            this.currentUser = role;
+            document.documentElement.classList.remove('auth-locked');
+            modal.style.transition = 'opacity 0.3s ease';
+            modal.style.opacity = '0';
+
+            setTimeout(() => {
+                modal.remove();
+                this.startEngine();
+            }, 300);
+        };
+
+        btnSubmit.addEventListener('click', handleLogin);
+        digit2.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleLogin(); });
+    },
+
+    startEngine() {
+        const firebaseApp = initializeApp(FIREBASE_CONFIG);
+        this.db = getDatabase(firebaseApp);
 
         this.registerEventListeners();
         this.setupFirebaseSync();
@@ -246,82 +253,297 @@ const App = {
         this.fetchWeatherData();
     },
 
-    registerEventListeners() {
-        // Media Navigation
-        const navs = document.querySelectorAll('.media-card__nav');
-        const types = ['movie', 'series', 'anime'];
 
-        navs.forEach((nav, i) => {
-            const [prevBtn, nextBtn] = nav.querySelectorAll('i');
-            const type = types[i];
-            const collectionKey = type.toUpperCase() + (type === 'series' ? '' : 'S'); // MOVIES, SERIES, ANIMES
+    setupFirebaseSync() {
+        if (this.currentUser !== 'visitante') {
+            const presenceRef = ref(this.db, `online/${this.currentUser}_${Math.random().toString(36).substring(2, 5)}`);
+            set(presenceRef, true);
+            onDisconnect(presenceRef).remove();
+        }
 
-            prevBtn.onclick = () => this.navigateMedia(type, APP_DATA[collectionKey], -1, i);
-            nextBtn.onclick = () => this.navigateMedia(type, APP_DATA[collectionKey], 1, i);
+        onValue(ref(this.db, 'online/'), (snapshot) => {
+            this.state.isTogether = snapshot.size >= 2;
+            this.updateTogetherStatus();
         });
 
-        // Mascot Actions
-        const mascotBtns = document.querySelectorAll('.btn-action');
-        mascotBtns.forEach((btn, index) => {
-            btn.onclick = () => this.handleMascotAction(index);
+        onValue(ref(this.db, 'mascot/'), (snapshot) => {
+            const data = snapshot.val();
+            if (data) {
+                this.state.mascot = data.stats;
+                this.state.mascotStatus = data.status;
+                this.state.mascotHistory = data.history || [];
+
+                const now = Date.now();
+                if (this.currentUser !== 'visitante' && (now - data.status.lastUpdate > 60000)) {
+                    this.applyPassiveDecay(data);
+                }
+                this.updateMascotDisplay();
+            }
+        });
+
+        onValue(ref(this.db, 'stream/'), (snapshot) => {
+            this.handleStreamUpdate(snapshot.val());
         });
     },
 
-    /** UI RENDERING */
+    updateMascotDisplay() {
+        const stats = this.state.mascot;
+        const status = this.state.mascotStatus;
+        const history = this.state.mascotHistory || [];
+        const now = Date.now();
+
+
+        const mascotImages = {
+            'eating': './assets/images/margo/eating.jpg',
+            'playing': './assets/images/margo/playing.jpg',
+            'bathing': './assets/images/margo/bathing.jpg',
+            'sleeping': './assets/images/margo/sleeping.jpg',
+            'idle': './assets/images/margo/idle.jpg'
+        };
+
+
+        const mascotImgElement = document.querySelector('.mascot-display__image');
+        if (mascotImgElement) {
+            const currentImage = mascotImages[status.currentState] || mascotImages['idle'];
+            if (!mascotImgElement.src.includes(currentImage.replace('./', ''))) {
+                mascotImgElement.src = currentImage;
+            }
+        }
+
+        const isBusy = status.busyUntil > now;
+        if (!isBusy && !['idle', 'sleeping'].includes(status.currentState)) {
+            update(ref(this.db, 'mascot/status'), { currentState: 'idle' });
+            return;
+        }
+
+        const bars = {
+            hunger: document.querySelector('.stat-row__bar--hunger'),
+            humor: document.querySelector('.stat-row__bar--humor'),
+            energy: document.querySelector('.stat-row__bar--energy'),
+            hygiene: document.querySelector('.stat-row__bar--hygiene')
+        };
+        if (bars.hunger) bars.hunger.style.width = `${stats.hunger}%`;
+        if (bars.humor) bars.humor.style.width = `${stats.humor}%`;
+        if (bars.energy) bars.energy.style.width = `${stats.energy}%`;
+        if (bars.hygiene) bars.hygiene.style.width = `${stats.hygiene}%`;
+
+        const speechBubble = document.querySelector('.mascot-speech');
+        if (speechBubble) {
+            const phrases = {
+                'eating': 'QUE COMIDA BOA',
+                'playing': 'ISSO É MUITO DIVERTIDO',
+                'bathing': 'TÔ FICANDO LIMPINHA',
+                'sleeping': 'ZZZZZZZ',
+                'idle': stats.hunger < 30 ? 'ESTOU COM FOMINHA' :
+                    stats.energy < 30 ? 'QUE SONINHO' :
+                        stats.hygiene < 40 ? 'QUERO UM BANHO' :
+                            'QUE BELO DIA'
+            };
+            speechBubble.textContent = phrases[status.currentState] || phrases['idle'];
+        }
+
+        const historyContainer = document.querySelector('.mascot-history__log');
+        if (historyContainer && history.length > 0) {
+            historyContainer.innerHTML = history.map(log => {
+                const time = new Date(log.timestamp).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+                return `
+                    <div style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 8px;">
+                        <i class="ph ph-info mascot-history__icon"></i>
+                        <p class="mascot-history__text">
+                            <span class="mascot-history__user">${log.user}</span>
+                            ${log.text} às ${time} horas.
+                        </p>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        const actionButtons = document.querySelectorAll('.btn-action');
+        const labels = ['COMER', 'BRINCAR', 'BANHO', 'DORMIR'];
+        const isSleeping = status.currentState === 'sleeping';
+        const stateToIndex = { 'eating': 0, 'playing': 1, 'bathing': 2 };
+
+        actionButtons.forEach((btn, index) => {
+            if (this.currentUser === 'visitante') {
+                btn.style.opacity = '0.5'; btn.style.cursor = 'not-allowed';
+                return;
+            }
+
+            const isSleepBtn = (index === 3);
+
+            if (isBusy && index === stateToIndex[status.currentState]) {
+                const secondsLeft = Math.ceil((status.busyUntil - now) / 1000);
+                btn.textContent = `${secondsLeft}s`;
+                btn.classList.add('btn-action--active');
+            } else {
+                btn.classList.remove('btn-action--active');
+                if (isSleepBtn) btn.textContent = isSleeping ? 'ACORDAR' : 'DORMIR';
+                else btn.textContent = labels[index];
+
+                const shouldBlock = isBusy || (isSleeping && !isSleepBtn);
+                btn.style.opacity = shouldBlock ? '0.5' : '1';
+                btn.style.cursor = shouldBlock ? 'not-allowed' : 'pointer';
+            }
+        });
+
+        if (isBusy) {
+            if (this.timerTimeout) clearTimeout(this.timerTimeout);
+            this.timerTimeout = setTimeout(() => this.updateMascotDisplay(), 1000);
+        }
+    },
+
+    async handleMascotAction(index) {
+        const now = Date.now();
+        const status = this.state.mascotStatus;
+        const stats = { ...this.state.mascot };
+
+        if (status.busyUntil > now && index !== 3) return;
+
+        let mutation = {};
+        let newState = 'idle';
+        let duration = 0;
+        let actionText = '';
+
+
+        if (index === 3) {
+            const isSleeping = status.currentState === 'sleeping';
+            newState = isSleeping ? 'idle' : 'sleeping';
+            actionText = isSleeping ? 'acordou ela' : 'colocou a mascote para dormir';
+        } else {
+            if (status.currentState === 'sleeping') return;
+
+            switch (index) {
+                case 0:
+                    mutation = { hunger: 30, hygiene: -5, energy: -5, humor: 5 };
+                    newState = 'eating'; duration = 30000; actionText = 'alimentou';
+                    break;
+                case 1:
+                    mutation = { humor: 25, hygiene: -15, hunger: -10, energy: -20 };
+                    newState = 'playing'; duration = 30000; actionText = 'brincou com ela';
+                    break;
+                case 2:
+                    mutation = { hygiene: 100 - stats.hygiene, energy: 5, humor: 10 };
+                    newState = 'bathing'; duration = 30000; actionText = 'deu banho nela';
+                    break;
+            }
+
+            const modifier = (stats.humor < 30 ? 0.5 : 1) * (this.state.isTogether ? 2 : 1);
+            for (let key in mutation) {
+                stats[key] = Utils.clamp(stats[key] + (mutation[key] > 0 ? mutation[key] * modifier : mutation[key]));
+            }
+        }
+
+        const userName = this.currentUser === 'ela' ? 'Heloise' : 'Gessiel';
+        const history = [{
+            user: userName,
+            text: actionText,
+            timestamp: now
+        }];
+
+        await update(ref(this.db, 'mascot'), {
+            stats: stats,
+            status: {
+                currentState: newState,
+                busyUntil: now + duration,
+                lastUpdate: now
+            },
+            history: history
+        });
+    },
+
+    updateTogetherStatus() {
+        const heart = document.getElementById('heart-icon');
+        if (heart) {
+            heart.textContent = this.state.isTogether ? '❤️' : '🤍';
+            heart.className = this.state.isTogether ? 'pulse-heart' : '';
+        }
+    },
+
+    applyPassiveDecay(data) {
+        const now = new Date();
+        const lastUpdate = new Date(data.status.lastUpdate);
+        const diffInHours = (now - lastUpdate) / (1000 * 60 * 60);
+        if (diffInHours < 0.5) return;
+
+        let { hunger, energy, hygiene, humor } = { ...data.stats };
+        let needsUpdate = true;
+
+        if (data.status.currentState === 'sleeping') {
+            energy = Math.min(100, energy + (20 * diffInHours));
+        } else {
+            energy = Math.max(0, energy - (10 * diffInHours));
+        }
+
+        hygiene = Math.max(0, hygiene - (10 * diffInHours));
+        humor = Math.max(0, humor - (5 * diffInHours));
+
+        [10, 13, 16, 20].forEach(h => {
+            const targetTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), h, 0, 0);
+
+            if (lastUpdate < targetTime && now >= targetTime) {
+                hunger = Math.max(0, hunger - (h === 13 || h === 20 ? 40 : 10));
+            }
+        });
+
+        update(ref(this.db, 'mascot/stats'), { hunger, energy, hygiene, humor });
+        update(ref(this.db, 'mascot/status'), { lastUpdate: Date.now() });
+    },
+
     refreshUI() {
         this.updateGreetings();
         this.updateDailyQuote();
         this.updateDailyMusic();
-        this.updateMascotDisplay();
         this.renderMediaCards();
     },
 
     updateGreetings() {
-        const now = new Date();
-        const hour = now.getHours();
-        let greeting = "Boa noite, meu bem";
+        const agora = new Date();
+        const hora = agora.getHours();
 
-        if (hour >= 5 && hour < 12) greeting = "Bom dia, meu bem";
-        else if (hour >= 12 && hour < 18) greeting = "Boa tarde, meu bem";
+        let greet = "Boa noite, meu bem";
+        if (hora >= 5 && hora < 12) greet = "Bom dia, meu bem";
+        else if (hora >= 12 && hora < 18) greet = "Boa tarde, meu bem";
 
-        document.querySelector('.header__title').innerHTML = `${greeting} <span id="heart-icon">🤍</span>`;
-        document.querySelector('.header__date-badge span').textContent = now.toLocaleDateString('pt-BR', {
-            weekday: 'long', day: 'numeric', month: 'long'
-        });
+        const title = document.querySelector('.header__title');
+        if (title) title.innerHTML = `${greet} <span id="heart-icon">🤍</span>`;
+
+        const dateBadge = document.querySelector('.header__date-badge span');
+        if (dateBadge) {
+            const opcoes = { weekday: 'long', day: '2-digit', month: 'long' };
+            let dataFormatada = agora.toLocaleDateString('pt-BR', opcoes);
+
+            dataFormatada = dataFormatada.charAt(0).toUpperCase() + dataFormatada.slice(1);
+
+            dateBadge.textContent = dataFormatada;
+        }
     },
 
     updateDailyQuote() {
         const quote = Utils.getDailyShuffledItem(APP_DATA.QUOTES);
-        if (!quote) return;
-        document.querySelector('.quote__text').textContent = `"${quote.text}"`;
-        document.querySelector('.quote__author').textContent = quote.author;
+        if (quote) {
+            document.querySelector('.quote__text').textContent = `"${quote.text}"`;
+            document.querySelector('.quote__author').textContent = quote.author;
+        }
     },
 
     async updateDailyMusic() {
         const musicItems = document.querySelectorAll('.music-item');
-
         for (let i = 0; i < 2; i++) {
             const song = Utils.getDailyShuffledItem(APP_DATA.MUSIC, i, 2);
-            const item = musicItems[i];
-            if (!song || !item) continue;
+            if (!song || !musicItems[i]) continue;
 
-            item.querySelector('.music-item__name').textContent = song.title;
-            item.querySelector('.music-item__artist').textContent = song.artist;
+            musicItems[i].querySelector('.music-item__name').textContent = song.title;
+            musicItems[i].querySelector('.music-item__artist').textContent = song.artist;
 
             try {
-                const response = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(song.title + ' ' + song.artist)}&entity=musicTrack&limit=1`);
-                const data = await response.json();
-
+                const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(song.title + ' ' + song.artist)}&entity=musicTrack&limit=1`);
+                const data = await res.json();
                 if (data.results?.[0]) {
                     const track = data.results[0];
-                    const playBtn = item.querySelector('.music-item__play');
-                    item.querySelector('.music-item__cover').src = track.artworkUrl100.replace('100x100bb.jpg', '600x600bb.jpg');
-
-                    playBtn.onclick = () => this.handleMusicPlayback(track.previewUrl, playBtn);
+                    musicItems[i].querySelector('.music-item__cover').src = track.artworkUrl100.replace('100x100bb.jpg', '600x600bb.jpg');
+                    musicItems[i].querySelector('.music-item__play').onclick = (e) => this.handleMusicPlayback(track.previewUrl, e.currentTarget);
                 }
-            } catch (error) {
-                console.error("Music Fetch Error:", error);
-            }
+            } catch (e) { console.error(e); }
         }
     },
 
@@ -330,16 +552,16 @@ const App = {
             this.state.audio.current.pause();
             if (this.state.audio.button) this.state.audio.button.innerHTML = '<i class="ph ph-play-circle"></i>';
         }
-
         if (!this.state.audio.current || this.state.audio.current.src !== url) {
             this.state.audio.current = new Audio(url);
             this.state.audio.button = button;
-            this.state.audio.current.onended = () => {
-                button.innerHTML = '<i class="ph ph-play-circle"></i>';
-                this.state.audio.current = null;
-            };
-        }
 
+            this.state.audio.current.addEventListener('ended', () => {
+                if (this.state.audio.button) {
+                    this.state.audio.button.innerHTML = '<i class="ph ph-play-circle"></i>';
+                }
+            });
+        }
         if (this.state.audio.current.paused) {
             this.state.audio.current.play();
             button.innerHTML = '<i class="ph-fill ph-pause-circle"></i>';
@@ -349,8 +571,8 @@ const App = {
         }
     },
 
-    /** MEDIA LOGIC */
     navigateMedia(type, collection, direction, cardIndex) {
+        if (!collection) return;
         const total = collection.length;
         this.state.indices[type] = (this.state.indices[type] + direction + total) % total;
         this.renderMediaCard(cardIndex, collection[this.state.indices[type]]);
@@ -365,131 +587,112 @@ const App = {
     renderMediaCard(index, data) {
         const card = document.querySelectorAll('.media-card')[index];
         if (!card || !data) return;
-
         card.querySelector('.media-card__img').src = data.cover;
         card.querySelector('.media-card__title').innerHTML = `${data.title} <span class="media-card__year">${data.year}</span>`;
         card.querySelector('.media-card__date').textContent = data.date;
-
-        const review = card.querySelector('.media-card__review');
-        if (review) review.textContent = data.quote || "";
-
-        const progress = card.querySelector('.progress-value');
-        if (progress) progress.textContent = data.progress || "";
-
         const stars = card.querySelectorAll('.media-card__rating i');
-        stars.forEach((star, i) => {
-            star.className = i < data.stars ? 'ph-fill ph-star' : 'ph ph-star';
-        });
-    },
-
-    /** MASCOT LOGIC */
-    handleMascotAction(actionType) {
-        const mutations = [
-            { hunger: 30, humor: 10, sleep: -15 },
-            { humor: 25, hunger: -15, sleep: -20, dirt: -30 },
-            { dirt: 60, humor: 5 },
-            { sleep: 65, hunger: -20, dirt: -5 }
-        ];
-
-        const action = mutations[actionType];
-        for (const [stat, delta] of Object.entries(action)) {
-            const mappedStat = this.mapStatName(stat);
-            this.state.mascot[mappedStat] = Utils.clamp(this.state.mascot[mappedStat] + delta);
+        stars.forEach((s, i) => s.className = i < data.stars ? 'ph-fill ph-star' : 'ph ph-star');
+        if (data.quote) {
+            const reviewEl = card.querySelector('.media-card__review');
+            if (reviewEl) reviewEl.textContent = `"${data.quote}"`;
         }
-        this.updateMascotDisplay();
-    },
-
-    mapStatName(stat) {
-        const map = { hunger: 'hunger', humor: 'humor', sleep: 'sleep', dirt: 'dirt' };
-        return map[stat] || stat;
-    },
-
-    updateMascotDisplay() {
-        Object.keys(this.state.mascot).forEach(key => {
-            const bar = document.querySelector(`.stat-row__bar--${key}`);
-            if (bar) bar.style.width = `${this.state.mascot[key]}%`;
-        });
-    },
-
-    /** EXTERNAL SERVICES */
-    setupFirebaseSync() {
-        const presenceRef = ref(this.db, `online/${Math.random().toString(36).substring(2, 11)}`);
-        set(presenceRef, true);
-        onDisconnect(presenceRef).remove();
-
-        onValue(ref(this.db, 'online/'), (snapshot) => {
-            const heart = document.getElementById('heart-icon');
-            if (!heart) return;
-            const isTogether = snapshot.size >= 2;
-            heart.textContent = isTogether ? '❤️' : '🤍';
-            heart.className = isTogether ? 'pulse-heart' : '';
-        });
-
-        onValue(ref(this.db, 'stream/'), (snapshot) => {
-            const data = snapshot.val();
-            this.handleStreamUpdate(data);
-        });
-
+        if (data.progress) {
+            const progressEl = card.querySelector('.progress-value');
+            if (progressEl) progressEl.textContent = data.progress;
+        }
     },
 
     handleStreamUpdate(data) {
-    const container = document.getElementById('stream-container');
-    const titleEl = document.getElementById('stream-title');
-    const overlay = document.getElementById('video-overlay');
-    const wrapper = document.getElementById('video-wrapper');
+        const container = document.getElementById('stream-container');
+        const titleEl = document.getElementById('stream-title');
+        const overlay = document.getElementById('video-overlay');
+        const wrapper = document.getElementById('video-wrapper');
 
-    if (!data || !data.isActive) {
-        if (container) container.style.display = 'none';
-        if (wrapper) wrapper.innerHTML = '';
-        return;
-    }
+        if (!data || !data.isActive) {
+            if (container) container.style.display = 'none';
+            if (wrapper) wrapper.innerHTML = '';
+            return;
+        }
 
-    if (container) {
-        container.style.display = 'block';
-        container.classList.toggle('video-banner--offline', !data.isOnline);
-    }
+        if (container) {
+            container.style.display = 'block';
+            container.classList.toggle('video-banner--offline', !data.isOnline);
+        }
 
-    if (titleEl) {
-        const statusPrefix = data.isOnline ? "AO VIVO: " : "OFFLINE: ";
-        titleEl.textContent = statusPrefix + (data.title || "Transmissão");
-    }
+        if (titleEl) {
+            const statusPrefix = data.isOnline ? "AO VIVO: " : "OFFLINE: ";
+            titleEl.textContent = statusPrefix + (data.title || "Transmissão");
+        }
 
-    if (overlay) {
-        overlay.onclick = data.isOnline ? () => {
-            overlay.style.display = 'none';
-            if (wrapper) {
-                wrapper.innerHTML = `
+        if (overlay) {
+            overlay.onclick = data.isOnline ? () => {
+                overlay.style.display = 'none';
+                if (wrapper) {
+                    wrapper.innerHTML = `
                     <iframe 
                         src="${data.url}" 
                         allow="autoplay; camera; microphone; fullscreen" 
                         style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;">
                     </iframe>`;
-            }
-        } : null;
-    }
-},
+                }
+            } : null;
+        }
+    },
 
     async fetchWeatherData() {
         APP_DATA.LOCATIONS.forEach(async (loc, index) => {
             try {
-                const response = await fetch(`https://wttr.in/${encodeURIComponent(loc.city)}?format=j1`);
-                if (!response.ok) throw new Error("Weather API Error");
-
-                const data = await response.json();
-                const condition = data.current_condition[0];
-                const weatherItems = document.querySelectorAll('.weather-item');
-
-                if (weatherItems[index]) {
-                    const desc = condition.lang_pt?.[0]?.value || condition.weatherDesc[0].value;
-                    weatherItems[index].querySelector('.weather-item__temp').textContent = `${condition.temp_C}°`;
-                    weatherItems[index].querySelector('.weather-item__condition').innerHTML = `${desc}`;
+                const res = await fetch(`https://wttr.in/${encodeURIComponent(loc.city)}?format=j1&lang=pt`);
+                const data = await res.json();
+                const items = document.querySelectorAll('.weather-item');
+                if (items[index]) {
+                    items[index].querySelector('.weather-item__temp').textContent = `${data.current_condition[0].temp_C}°`;
+                    items[index].querySelector('.weather-item__condition').textContent = data.current_condition[0].lang_pt?.[0]?.value || data.current_condition[0].weatherDesc[0].value;
                 }
-            } catch (error) {
-                console.warn(error.message);
-            }
+            } catch (e) { console.warn(e); }
         });
     },
 
+    registerEventListeners() {
+        const types = ['movie', 'series', 'anime'];
+        document.querySelectorAll('.media-card__nav').forEach((nav, i) => {
+            const icons = nav.querySelectorAll('i');
+            const type = types[i];
+            const key = type.toUpperCase() + (type === 'series' ? '' : 'S');
+            icons[0].onclick = () => this.navigateMedia(type, APP_DATA[key], -1, i);
+            icons[1].onclick = () => this.navigateMedia(type, APP_DATA[key], 1, i);
+        });
+
+        document.querySelectorAll('.btn-action').forEach((btn, i) => {
+            btn.onclick = () => this.handleMascotAction(i);
+        });
+    }
+};
+
+const Utils = {
+    getDailyShuffledItem: (array, offset = 0, step = 1) => {
+        if (!array?.length) return null;
+
+        const diffInDays = Math.floor((new Date() - new Date(2002, 5, 27)) / 86400000);
+        const globalIndex = (diffInDays * step) + offset;
+
+        const indices = Array.from(array.keys());
+        const seed = 122227;
+
+        for (let i = indices.length - 1; i > 0; i--) {
+            const j = Math.floor(Utils.predictableRandom(seed + i) * (i + 1));
+            [indices[i], indices[j]] = [indices[j], indices[i]];
+        }
+
+        return array[indices[globalIndex % indices.length]];
+    },
+
+    predictableRandom: (x) => {
+        const s = Math.sin(x) * 10000;
+        return s - Math.floor(s);
+    },
+
+    clamp: (val, min = 0, max = 100) => Math.min(max, Math.max(min, val))
 };
 
 document.addEventListener('DOMContentLoaded', () => App.init());
