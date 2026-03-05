@@ -41,19 +41,19 @@
                         <h3 class="card__title">SENTIMENTO ATUAL</h3>
                         <ul class="sentiment-list">
                             <li class="sentiment-item">
-                                <img src="https://i.pinimg.com/736x/f0/40/fc/f040fc2dc6aa0a02d1a7adc5fd223984.jpg"
-                                    alt="Avatar Heloise" class="sentiment-item__avatar">
-                                <div class="sentiment-item__info">
-                                    <span class="sentiment-item__name">Heloise</span>
-                                    <span class="sentiment-item__status">Humor: Contente</span>
-                                </div>
-                            </li>
-                            <li class="sentiment-item">
                                 <img src="https://i.pinimg.com/474x/54/a3/3c/54a33c634e025079255fdca7ed129426.jpg"
                                     alt="Avatar Gessiel" class="sentiment-item__avatar">
                                 <div class="sentiment-item__info">
                                     <span class="sentiment-item__name">Gessiel</span>
                                     <span class="sentiment-item__status">Humor: Apaixonado</span>
+                                </div>
+                            </li>
+                            <li class="sentiment-item">
+                                <img src="https://i.pinimg.com/736x/f0/40/fc/f040fc2dc6aa0a02d1a7adc5fd223984.jpg"
+                                    alt="Avatar Heloise" class="sentiment-item__avatar">
+                                <div class="sentiment-item__info">
+                                    <span class="sentiment-item__name">Heloise</span>
+                                    <span class="sentiment-item__status">Humor: Contente</span>
                                 </div>
                             </li>
                         </ul>
@@ -63,9 +63,9 @@
                         <h3 class="card__title">DATAS ESPECIAIS</h3>
                         <ul class="date-list">
                             <li class="date-item">
-                                <div class="date-item__marker date-item__marker--pink"></div>
+                                <div class="date-item__marker date-item__marker--yellow"></div>
                                 <div class="date-item__info">
-                                    <span class="date-item__day">12 DE AGOSTO</span>
+                                    <span class="date-item__day">05 DE MARÇO</span>
                                     <span class="date-item__event">Aniversário</span>
                                 </div>
                             </li>
@@ -77,7 +77,14 @@
                                 </div>
                             </li>
                             <li class="date-item">
-                                <div class="date-item__marker date-item__marker--yellow"></div>
+                                <div class="date-item__marker date-item__marker--pink"></div>
+                                <div class="date-item__info">
+                                    <span class="date-item__day">12 DE AGOSTO</span>
+                                    <span class="date-item__event">Aniversário</span>
+                                </div>
+                            </li>
+                            <li class="date-item">
+                                <div class="date-item__marker date-item__marker--green"></div>
                                 <div class="date-item__info">
                                     <span class="date-item__day">22 DE NOVEMBRO</span>
                                     <span class="date-item__event">Onde tudo começou</span>
@@ -137,8 +144,9 @@
                         <h3 class="card__title">NOSSA MASCOTE</h3>
 
                         <div class="mascot-display">
-                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5DylLFQZrcu8mPCf61rk4xYa_ok3NNPueCFu8Ep8Dwvct-eSvG4lhokcztEmUn8C7uVN734227EB0zGdOzFUtBkW_PfNZJgjO9ZpsYTD0ov5ohEKEcUEQoRrCZ7KrsBmD5OyR8h40M8zbp1VXkZPTXMlxpOVSj2nmbXolpOvEBjLWgpIZLoxHcd78c16cz0eP3whf7jUV95ij7vvGzoQikDNPt-42l3gf8x26gfxjv5kizxm8GIHKOr3yAY2gpHz4LdltCIydqIV-"
-                                alt="Bulbasaur Margo" class="mascot-display__image">
+                            <div class="mascot-speech">UAU, QUE DIA LINDO</div>
+                            <img src="./assets/images/margo/idle.jpg"
+                                alt="Mascote imagem" class="mascot-display__image">
                             <span class="mascot-display__name">Margo</span>
                         </div>
 
@@ -146,25 +154,25 @@
                             <div class="stat-row">
                                 <span class="stat-row__label">HUMOR</span>
                                 <div class="stat-row__bar-container">
-                                    <div class="stat-row__bar stat-row__bar--humor" style="width: 80%;"></div>
+                                    <div class="stat-row__bar stat-row__bar--humor" style="width: 100%;"></div>
                                 </div>
                             </div>
                             <div class="stat-row">
                                 <span class="stat-row__label">FOME</span>
                                 <div class="stat-row__bar-container">
-                                    <div class="stat-row__bar stat-row__bar--hunger" style="width: 45%;"></div>
+                                    <div class="stat-row__bar stat-row__bar--hunger" style="width: 100%;"></div>
                                 </div>
                             </div>
                             <div class="stat-row">
                                 <span class="stat-row__label">SONO</span>
                                 <div class="stat-row__bar-container">
-                                    <div class="stat-row__bar stat-row__bar--sleep" style="width: 90%;"></div>
+                                    <div class="stat-row__bar stat-row__bar--energy" style="width: 100%;"></div>
                                 </div>
                             </div>
                             <div class="stat-row">
                                 <span class="stat-row__label">SUJO</span>
                                 <div class="stat-row__bar-container">
-                                    <div class="stat-row__bar stat-row__bar--dirt" style="width: 60%;"></div>
+                                    <div class="stat-row__bar stat-row__bar--hygiene" style="width: 100%;"></div>
                                 </div>
                             </div>
                         </div>
@@ -175,6 +183,20 @@
                             <button class="btn-action">BANHO</button>
                             <button class="btn-action">DORMIR</button>
                         </div>
+
+                        <footer class="mascot-history">
+                            <h4 class="mascot-history__title">
+                                ÚLTIMAS INTERAÇÕES
+                            </h4>
+
+                            <div class="mascot-history__log">
+                                <i class="ph ph-info mascot-history__icon"></i>
+                                <p class="mascot-history__text">
+                                    <span class="mascot-history__user"></span>
+                                    
+                                </p>
+                            </div>
+                        </footer>
                     </article>
                 </section>
             </aside>
@@ -313,12 +335,36 @@
                                 </div>
                             </div>
                         </article>
-
                     </div>
                 </section>
             </main>
         </div>
     </div>
+
+    <section id="pin-modal" class="auth-modal">
+        <article class="auth-modal__card">
+            <header class="auth-modal__header">
+                <div class="auth-modal__icon">
+                    <i class="ph-fill ph-lock-simple"></i>
+                </div>
+                <h2 class="auth-modal__title">CÓDIGO DE ACESSO</h2>
+                <p class="auth-modal__description">Chave de dois digitos</p>
+            </header>
+
+            <div class="auth-modal__pin-group">
+                <input type="text" maxlength="1" inputmode="numeric" class="auth-modal__input" id="digit-1">
+                <input type="text" maxlength="1" inputmode="numeric" class="auth-modal__input" id="digit-2">
+            </div>
+
+            <button class="auth-modal__button" id="btn-auth-submit">
+                CONFIRMAR
+            </button>
+
+            <footer class="auth-modal__footer">
+                ACESSO RESTRITO
+            </footer>
+        </article>
+    </section>
 
 </body>
 
