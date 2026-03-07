@@ -58,6 +58,7 @@ export const APP_DATA = {
         { title: "Tick, Tick... Booom!", year: "2021", stars: 4, date: "11 de Fevereiro de 2026 ", quote: "Para quem não curte tanto musicais, esse toca o coração. O tique-taque nos lembra que o tempo pode ser curto, mas que bom que estamos passando juntos.", cover: "https://images.justwatch.com/backdrop/257956729/s1440/tick-tick-boom.avif" },
         { title: "As Leis da Termodinâmica", year: "2018", stars: 5, date: "18 de Fevereiro de 2026 ", quote: "Eles podem até tentar explicar a atração e o caos do universo, mas nenhuma ciência explica a sorte que é estarmos orbitando um ao outro.", cover: "https://images.justwatch.com/backdrop/7295266/s1440/the-laws-of-thermodynamics.avif" },
         { title: "De repetente é amor", year: "2005", stars: 5, date: "01 de Março de 2026 ", quote: "Sete anos ou sete segundos: não importa quanto tempo leve, quando é a pessoa certa o amor deixa de ser um conceito e passa a ter um nome.", cover: "https://images.justwatch.com/backdrop/147960455/s1920/de-repente-e-amor.avif" },
+        { title: "Passageiros", year: "2016", stars: 5, date: "05 de Março de 2026 ", quote: "Um filme sobre escolhas e o tempo que temos. Felizmente minha melhor decisão sempre será acordar e saber que estou com você.", cover: "https://images.justwatch.com/backdrop/176246256/s1920/passengers.avif" },
     ],
 
     SERIES: [
@@ -173,4 +174,5 @@ export const APP_DATA = {
         { title: "Sweater Weather", artist: "The Neighbourhood" },
         { title: "Softcore", artist: "The Neighbourhood" }
     ]
+
 };
