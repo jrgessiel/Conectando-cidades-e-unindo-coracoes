@@ -1,6 +1,5 @@
 {
   "online": {
-    "info": ""
   },
   "stream": {
     "isActive": true,
@@ -25,4 +24,5 @@
       "lastHungerCheck": ""
     }
   }
+
 }
