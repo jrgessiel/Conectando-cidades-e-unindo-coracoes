@@ -10,7 +10,9 @@ export class MascotModule {
         };
         this.currentUser = null;
         this.isTogether = false;
-        this.timer = null;
+
+        this.completionTimer = null;
+        this.buttonUpdateTimer = null;
     }
 
     init(currentUser) {
@@ -50,7 +52,7 @@ export class MascotModule {
         console.log(`[Mascot Decay] Aplicando decaimento (${diffInHours.toFixed(2)} horas)`);
 
         if (data.status.currentState === 'sleeping') {
-            energy = Math.min(100, energy + (25 * diffInHours));   
+            energy = Math.min(100, energy + (25 * diffInHours));
         } else {
             energy = Math.max(0, energy - (5 * diffInHours));
         }
@@ -78,6 +80,8 @@ export class MascotModule {
     async handleAction(index) {
         if (this.currentUser === 'visitante') return;
 
+        this.clearAllTimers();
+
         const now = Date.now();
         const status = this.state.status;
         let stats = { ...this.state.stats };
@@ -89,7 +93,7 @@ export class MascotModule {
         let duration = 0;
         let actionText = '';
 
-        if (index === 3) { 
+        if (index === 3) {
             const isSleeping = status.currentState === 'sleeping';
             newState = isSleeping ? 'idle' : 'sleeping';
             actionText = isSleeping ? 'acordou ela' : 'colocou a mascote para dormir';
@@ -97,15 +101,15 @@ export class MascotModule {
             if (status.currentState === 'sleeping') return;
 
             switch (index) {
-                case 0: 
+                case 0:
                     mutation = { hunger: 30, hygiene: -5, energy: -5, humor: 10 };
                     newState = 'eating'; duration = 30000; actionText = 'alimentou';
                     break;
-                case 1: 
+                case 1:
                     mutation = { humor: 25, hygiene: -10, hunger: -5, energy: -10 };
                     newState = 'playing'; duration = 30000; actionText = 'brincou com ela';
                     break;
-                case 2: 
+                case 2:
                     mutation = { hygiene: 100 - stats.hygiene, energy: 10, humor: 10 };
                     newState = 'bathing'; duration = 30000; actionText = 'deu banho nela';
                     break;
@@ -126,7 +130,33 @@ export class MascotModule {
             status: { currentState: newState, busyUntil: now + duration, lastUpdate: now },
             history: historyEntry
         });
+
+        if (duration > 0 && newState !== 'idle' && newState !== 'sleeping') {
+            this.startCompletionTimer(duration);
+        }
     }
+
+    startCompletionTimer(duration) {
+        this.completionTimer = setTimeout(async () => {
+            console.log(`[Mascot] 30s finalizado → resetando para idle`);
+            await this.firebase.updateMascot({
+                status: { currentState: 'idle', busyUntil: 0, lastUpdate: Date.now() }
+            });
+            this.completionTimer = null;
+        }, duration);
+    }
+
+    clearAllTimers() {
+        if (this.completionTimer) {
+            clearTimeout(this.completionTimer);
+            this.completionTimer = null;
+        }
+        if (this.buttonUpdateTimer) {
+            clearTimeout(this.buttonUpdateTimer);
+            this.buttonUpdateTimer = null;
+        }
+    }
+
 
     updateDisplay() {
         const { stats, status } = this.state;
@@ -191,7 +221,7 @@ export class MascotModule {
 
         buttons.forEach((btn, i) => {
             if (this.currentUser === 'visitante') {
-                btn.style.opacity = '0.5'; 
+                btn.style.opacity = '0.5';
                 btn.style.cursor = 'not-allowed';
                 return;
             }
@@ -212,8 +242,13 @@ export class MascotModule {
         });
 
         if (isBusy) {
-            clearTimeout(this.timer);
-            this.timer = setTimeout(() => this.updateDisplay(), 1000);
+            if (this.buttonUpdateTimer) clearTimeout(this.buttonUpdateTimer);
+            this.buttonUpdateTimer = setTimeout(() => this.updateDisplay(), 1000);
+        } else {
+            if (this.buttonUpdateTimer) {
+                clearTimeout(this.buttonUpdateTimer);
+                this.buttonUpdateTimer = null;
+            }
         }
     }
 }
