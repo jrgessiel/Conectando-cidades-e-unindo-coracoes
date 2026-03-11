@@ -59,6 +59,7 @@ export const APP_DATA = {
         { title: "As Leis da Termodinâmica", year: "2018", stars: 5, date: "18 de Fevereiro de 2026 ", quote: "Eles podem até tentar explicar a atração e o caos do universo, mas nenhuma ciência explica a sorte que é estarmos orbitando um ao outro.", cover: "https://images.justwatch.com/backdrop/7295266/s1440/the-laws-of-thermodynamics.avif" },
         { title: "De repetente é amor", year: "2005", stars: 5, date: "01 de Março de 2026 ", quote: "Sete anos ou sete segundos: não importa quanto tempo leve, quando é a pessoa certa o amor deixa de ser um conceito e passa a ter um nome.", cover: "https://images.justwatch.com/backdrop/147960455/s1920/de-repente-e-amor.avif" },
         { title: "Passageiros", year: "2016", stars: 5, date: "05 de Março de 2026 ", quote: "Um filme sobre escolhas e o tempo que temos. Felizmente minha melhor decisão sempre será acordar e saber que estou com você.", cover: "https://images.justwatch.com/backdrop/176246256/s1920/passengers.avif" },
+        { title: "Fall Guy", year: "2024", stars: 5, date: "09 de Março de 2026 ", quote: "Entre saltos, riscos e cenas de ação, o filme nos lembra que por amor a gente enfrenta qualquer queda. Ao seu lado, eu me sinto um verdadeiro protagonista de história romântica.", cover: "https://images.justwatch.com/backdrop/312569653/s1920/the-fall-guy.avif" },
     ],
 
     SERIES: [
@@ -176,3 +177,4 @@ export const APP_DATA = {
     ]
 
 };
+
