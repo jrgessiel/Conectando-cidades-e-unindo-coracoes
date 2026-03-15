@@ -60,6 +60,8 @@ export const APP_DATA = {
         { title: "De repetente é amor", year: "2005", stars: 5, date: "01 de Março de 2026 ", quote: "Sete anos ou sete segundos: não importa quanto tempo leve, quando é a pessoa certa o amor deixa de ser um conceito e passa a ter um nome.", cover: "https://images.justwatch.com/backdrop/147960455/s1920/de-repente-e-amor.avif" },
         { title: "Passageiros", year: "2016", stars: 5, date: "05 de Março de 2026 ", quote: "Um filme sobre escolhas e o tempo que temos. Felizmente minha melhor decisão sempre será acordar e saber que estou com você.", cover: "https://images.justwatch.com/backdrop/176246256/s1920/passengers.avif" },
         { title: "Fall Guy", year: "2024", stars: 5, date: "09 de Março de 2026 ", quote: "Entre saltos, riscos e cenas de ação, o filme nos lembra que por amor a gente enfrenta qualquer queda. Ao seu lado, eu me sinto um verdadeiro protagonista de história romântica.", cover: "https://images.justwatch.com/backdrop/312569653/s1920/the-fall-guy.avif" },
+        { title: "O plano imperfeito", year: "2018", stars: 4, date: "13 de Março de 2026 ", quote: "Planos as vezes podem ser úteis para juntar pessoas, mas o que sinto por você não precisou de estratégia ou roteiro. Amo muito você!", cover: "https://images.justwatch.com/backdrop/341002844/s1440/set-it-up.avif" },
+        { title: "Vida", year: "2017", stars: 1, date: "14 de Março de 2026 ", quote: "O primeiro filme horroroso da nossa lista. Em meio a vastidão do espaço e um roteiro sem vida, o melhor foi ter sua companhia.", cover: "https://images.justwatch.com/backdrop/4983582/s1440/vida.avif" },
     ],
 
     SERIES: [
@@ -71,7 +73,8 @@ export const APP_DATA = {
         { title: "Overlord", year: "2015", stars: 4, date: "06 de Janeiro de 2026", progress: "T1 : E12", cover: "https://images.justwatch.com/backdrop/339630570/s1920/temporada-1.avif" },
         { title: "Violet Evergarden", year: "2018", stars: 5, date: "29 de Janeiro de 2026", progress: "T1 : E13", cover: "https://images.justwatch.com/backdrop/320205246/s640/vuaioretsutoevuagaden.avif" },
         { title: "The Fragrant Flower Blooms with Dignity", year: "2025", stars: 5, date: "01 de Fevereiro de 2026", progress: "T1 : E13", cover: "https://images.justwatch.com/backdrop/332746080/s1920/the-fragrant-flower-blooms-with-dignity.avif" },
-        { title: "Pelo Prisma do Amor", year: "2026", stars: 2, date: "07 de Fevereiro de 2026", progress: "T1 : E20", cover: "https://images.justwatch.com/backdrop/339085530/s1920/pelo-prisma-do-amor.avif" }
+        { title: "Pelo Prisma do Amor", year: "2026", stars: 2, date: "07 de Fevereiro de 2026", progress: "T1 : E20", cover: "https://images.justwatch.com/backdrop/339085530/s1920/pelo-prisma-do-amor.avif" },
+        { title: "Great Pretender", year: "2020", stars: 4, date: "11 de Março de 2026", progress: "T1 : E07", cover: "https://images.justwatch.com/backdrop/198362352/s1920/great-pretender.avif" }
     ],
     MUSIC: [
         { title: "Like a Stone", artist: "Audioslave" },
@@ -139,7 +142,7 @@ export const APP_DATA = {
         { title: "Vermillion", artist: "Slipknot" },
         { title: "Sleep On The Floor", artist: "The Lumineers" },
         { title: "Until Now", artist: "Abe Parker" },
-        { title: "Devotion", artist: "Montell Fish" },
+        { title: "Devotion (feat. DJ Gummy Bear)", artist: "Montell Fish" },
         { title: "Ainda Gosto Dela", artist: "Skank" },
         { title: "Crazy About You", artist: "Abe Parker" },
         { title: "Daddy Issues", artist: "The Neighbourhood" },
@@ -175,6 +178,4 @@ export const APP_DATA = {
         { title: "Sweater Weather", artist: "The Neighbourhood" },
         { title: "Softcore", artist: "The Neighbourhood" }
     ]
-
 };
-
