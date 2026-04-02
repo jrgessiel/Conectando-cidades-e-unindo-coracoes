@@ -582,7 +582,7 @@ body {
 }
 
 .video-banner--offline .video-banner__overlay::after {
-    content: "Transmissão encerrada, aguarde!";
+    content: "O monitor desligou, mas meu pensamento continua em você!";
     color: #f8f8f8;
     font-size: 0.85rem;
     font-weight: 600;
