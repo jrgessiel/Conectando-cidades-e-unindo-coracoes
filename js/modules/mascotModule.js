@@ -103,15 +103,15 @@ export class MascotModule {
             switch (index) {
                 case 0:
                     mutation = { hunger: 30, hygiene: -5, energy: -5, humor: 10 };
-                    newState = 'eating'; duration = 30000; actionText = 'alimentou';
+                    newState = 'eating'; duration = 10000; actionText = 'alimentou';
                     break;
                 case 1:
                     mutation = { humor: 25, hygiene: -10, hunger: -5, energy: -10 };
-                    newState = 'playing'; duration = 30000; actionText = 'brincou com ela';
+                    newState = 'playing'; duration = 10000; actionText = 'brincou com ela';
                     break;
                 case 2:
                     mutation = { hygiene: 100 - stats.hygiene, energy: 10, humor: 10 };
-                    newState = 'bathing'; duration = 30000; actionText = 'deu banho nela';
+                    newState = 'bathing'; duration = 10000; actionText = 'deu banho nela';
                     break;
             }
 
@@ -138,7 +138,7 @@ export class MascotModule {
 
     startCompletionTimer(duration) {
         this.completionTimer = setTimeout(async () => {
-            console.log(`[Mascot] 30s finalizado → resetando para idle`);
+            console.log(`[Mascot] 10s finalizado → resetando para idle`);
             await this.firebase.updateMascot({
                 status: { currentState: 'idle', busyUntil: 0, lastUpdate: Date.now() }
             });
