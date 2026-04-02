@@ -582,7 +582,7 @@ body {
 }
 
 .video-banner--offline .video-banner__overlay::after {
-    content: "MONITOR DESLIGADO. APENAS A GENTE AGORA!";
+    content: "ISSO É TUDO. APENAS A GENTE AGORA!";
     color: #f8f8f8;
     font-size: 0.85rem;
     font-weight: 600;
