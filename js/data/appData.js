@@ -62,19 +62,24 @@ export const APP_DATA = {
         { title: "Fall Guy", year: "2024", stars: 5, date: "09 de Março de 2026 ", quote: "Entre saltos, riscos e cenas de ação, o filme nos lembra que por amor a gente enfrenta qualquer queda. Ao seu lado, eu me sinto um verdadeiro protagonista de história romântica.", cover: "https://images.justwatch.com/backdrop/312569653/s1920/the-fall-guy.avif" },
         { title: "O plano imperfeito", year: "2018", stars: 4, date: "13 de Março de 2026 ", quote: "Planos as vezes podem ser úteis para juntar pessoas, mas o que sinto por você não precisou de estratégia ou roteiro. Amo muito você!", cover: "https://images.justwatch.com/backdrop/341002844/s1440/set-it-up.avif" },
         { title: "Vida", year: "2017", stars: 1, date: "14 de Março de 2026 ", quote: "O primeiro filme horroroso da nossa lista. Em meio a vastidão do espaço e um roteiro sem vida, o melhor foi ter sua companhia.", cover: "https://images.justwatch.com/backdrop/4983582/s1440/vida.avif" },
+        { title: "Quase 18", year: "2016", stars: 4, date: "24 de Março de 2026 ", quote: "Amadurecer é um processo complicado, mas ter você ao meu lado faz com que a vida, por mais confusa que pareça, faça sentido.", cover: "https://images.justwatch.com/backdrop/9903274/s1440/the-edge-of-seventeen.avif" },
+        { title: "O Diabo veste prada", year: "2006", stars: 5, date: "27 de Março de 2026 ", quote: "No meio de tanta cobrança por perfeição, minha única escolha certa e autêntica continua sendo você.", cover: "https://images.justwatch.com/backdrop/304525006/s1920/o-diabo-veste-prada.avif" },
+        { title: "A semana da minha vida", year: "2021", stars: 3, date: "28 de Março de 2026 ", quote: "Um filme leve para passar o tempo. Ter sua parceria em cada cena, mesmo naquelas que não são sua praia é o que torna tudo especial.", cover: "https://images.justwatch.com/backdrop/243867523/s1440/a-week-away.avif" },  
     ],
 
     SERIES: [
         { title: "Outlander", year: "2014", stars: 5, date: "09 de Fevereiro de 2026", progress: "T1 : E2", cover: "https://images.justwatch.com/backdrop/305389828/s1920/outlander.avif" },
         { title: "The Vampire Diaries", year: "2009", stars: 5, date: "11 de Janeiro de 2026", progress: "T1 : E1", cover: "https://images.justwatch.com/backdrop/178039414/s1920/diarios-de-um-vampiro.avif" },
-        { title: "A Knight of the Seven Kingdoms", year: "2026", stars: 1, date: "16 de Fevereiro de 2026", progress: "T1 : E5", cover: "https://images.justwatch.com/backdrop/337757110/s1920/a-knight-of-the-seven-kingdoms-the-hedge-knight.avif" }
+        { title: "A Knight of the Seven Kingdoms", year: "2026", stars: 1, date: "16 de Fevereiro de 2026", progress: "T1 : E5", cover: "https://images.justwatch.com/backdrop/337757110/s1920/a-knight-of-the-seven-kingdoms-the-hedge-knight.avif" },
+        { title: "The Silent Sea", year: "2021", stars: 5, date: "19 de Março de 2026", progress: "T1 : E5", cover: "https://images.justwatch.com/backdrop/259487076/s1920/season-1.avif" },
+        { title: "Bridgerton", year: "2020", stars: 5, date: "01 de Abril de 2026", progress: "T2 : E7", cover: "https://images.justwatch.com/backdrop/340527514/s1440/bridgerton.avif" },
     ],
     ANIMES: [
         { title: "Overlord", year: "2015", stars: 4, date: "06 de Janeiro de 2026", progress: "T1 : E12", cover: "https://images.justwatch.com/backdrop/339630570/s1920/temporada-1.avif" },
         { title: "Violet Evergarden", year: "2018", stars: 5, date: "29 de Janeiro de 2026", progress: "T1 : E13", cover: "https://images.justwatch.com/backdrop/320205246/s640/vuaioretsutoevuagaden.avif" },
         { title: "The Fragrant Flower Blooms with Dignity", year: "2025", stars: 5, date: "01 de Fevereiro de 2026", progress: "T1 : E13", cover: "https://images.justwatch.com/backdrop/332746080/s1920/the-fragrant-flower-blooms-with-dignity.avif" },
         { title: "Pelo Prisma do Amor", year: "2026", stars: 2, date: "07 de Fevereiro de 2026", progress: "T1 : E20", cover: "https://images.justwatch.com/backdrop/339085530/s1920/pelo-prisma-do-amor.avif" },
-        { title: "Great Pretender", year: "2020", stars: 4, date: "11 de Março de 2026", progress: "T1 : E07", cover: "https://images.justwatch.com/backdrop/198362352/s1920/great-pretender.avif" }
+        { title: "Great Pretender", year: "2020", stars: 4, date: "25 de Março de 2026", progress: "T1 : E08", cover: "https://images.justwatch.com/backdrop/198362352/s1920/great-pretender.avif" }
     ],
     MUSIC: [
         { title: "Like a Stone", artist: "Audioslave" },
