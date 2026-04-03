@@ -71,8 +71,8 @@ export const APP_DATA = {
         { title: "Outlander", year: "2014", stars: 5, date: "09 de Fevereiro de 2026", progress: "T1 : E2", cover: "https://images.justwatch.com/backdrop/305389828/s1920/outlander.avif" },
         { title: "The Vampire Diaries", year: "2009", stars: 5, date: "11 de Janeiro de 2026", progress: "T1 : E1", cover: "https://images.justwatch.com/backdrop/178039414/s1920/diarios-de-um-vampiro.avif" },
         { title: "A Knight of the Seven Kingdoms", year: "2026", stars: 1, date: "16 de Fevereiro de 2026", progress: "T1 : E5", cover: "https://images.justwatch.com/backdrop/337757110/s1920/a-knight-of-the-seven-kingdoms-the-hedge-knight.avif" },
-        { title: "The Silent Sea", year: "2021", stars: 5, date: "19 de Março de 2026", progress: "T1 : E5", cover: "https://images.justwatch.com/backdrop/259487076/s1920/season-1.avif" },
-        { title: "Bridgerton", year: "2020", stars: 5, date: "01 de Abril de 2026", progress: "T2 : E7", cover: "https://images.justwatch.com/backdrop/340527514/s1440/bridgerton.avif" },
+        { title: "The Silent Sea", year: "2021", stars: 5, date: "19 de Março de 2026", progress: "T1 : E8", cover: "https://images.justwatch.com/backdrop/259487076/s1920/season-1.avif" },
+        { title: "Bridgerton", year: "2020", stars: 5, date: "01 de Abril de 2026", progress: "T3 : E1", cover: "https://images.justwatch.com/backdrop/340527514/s1440/bridgerton.avif" },
     ],
     ANIMES: [
         { title: "Overlord", year: "2015", stars: 4, date: "06 de Janeiro de 2026", progress: "T1 : E12", cover: "https://images.justwatch.com/backdrop/339630570/s1920/temporada-1.avif" },
