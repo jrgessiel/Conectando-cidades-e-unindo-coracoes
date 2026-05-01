@@ -65,6 +65,10 @@ export const APP_DATA = {
         { title: "Quase 18", year: "2016", stars: 4, date: "24 de Março de 2026 ", quote: "Amadurecer é um processo complicado, mas ter você ao meu lado faz com que a vida, por mais confusa que pareça, faça sentido.", cover: "https://images.justwatch.com/backdrop/9903274/s1440/the-edge-of-seventeen.avif" },
         { title: "O Diabo veste prada", year: "2006", stars: 5, date: "27 de Março de 2026 ", quote: "No meio de tanta cobrança por perfeição, minha única escolha certa e autêntica continua sendo você.", cover: "https://images.justwatch.com/backdrop/304525006/s1920/o-diabo-veste-prada.avif" },
         { title: "A semana da minha vida", year: "2021", stars: 3, date: "28 de Março de 2026 ", quote: "Um filme leve para passar o tempo. Ter sua parceria em cada cena, mesmo naquelas que não são sua praia é o que torna tudo especial.", cover: "https://images.justwatch.com/backdrop/243867523/s1440/a-week-away.avif" },  
+        { title: "Crush à Altura", year: "2019", stars: 5, date: "06 de Abril de 2026", quote: "Um filme sobre vencer inseguranças e encontrar o seu lugar. Não importa a altura ou os obstáculos, quero estar com você.", cover: "https://images.justwatch.com/backdrop/147942663/s1920/tall-girl.avif" }, 
+        { title: "Crush à Altura 2", year: "2022", stars: 5, date: "08 de Abril de 2026", quote: "Mais uma sequência na nossa lista. O amor é o que nos dá confiança para enfrentar qualquer voz de dúvida em nossas cabeças.", cover: "https://images.justwatch.com/backdrop/302456657/s1920/tall-girl-2.avif" }, 
+        { title: "Sinta a minha voz", year: "2026", stars: 5, date: "16 de Abril de 2026", quote: "Às vezes o que o coração sente não precisa de palavras, apenas de sintonia. Um filme sensível que me lembra que, de todas as vozes do mundo, a sua é a que eu quero ouvir para sempre.", cover: "https://images.justwatch.com/backdrop/342796794/s1440/feel-my-voice.avif" },
+        { title: "Leo", year: "2023", stars: 4, date: "30 de Abril de 2026", quote: "Quem diria que um largato velho teria tanto a ensinar sobre a vida? Entre conselhos e risadas, o filme nos mostra que o tempo pode passar rápido.", cover: "https://images.justwatch.com/backdrop/309927935/s1440/leo-2023-0.avif" }, 
     ],
 
     SERIES: [
@@ -72,7 +76,8 @@ export const APP_DATA = {
         { title: "The Vampire Diaries", year: "2009", stars: 5, date: "11 de Janeiro de 2026", progress: "T1 : E1", cover: "https://images.justwatch.com/backdrop/178039414/s1920/diarios-de-um-vampiro.avif" },
         { title: "A Knight of the Seven Kingdoms", year: "2026", stars: 1, date: "16 de Fevereiro de 2026", progress: "T1 : E5", cover: "https://images.justwatch.com/backdrop/337757110/s1920/a-knight-of-the-seven-kingdoms-the-hedge-knight.avif" },
         { title: "The Silent Sea", year: "2021", stars: 5, date: "19 de Março de 2026", progress: "T1 : E8", cover: "https://images.justwatch.com/backdrop/259487076/s1920/season-1.avif" },
-        { title: "Bridgerton", year: "2020", stars: 5, date: "01 de Abril de 2026", progress: "T3 : E1", cover: "https://images.justwatch.com/backdrop/340527514/s1440/bridgerton.avif" },
+        { title: "Bridgerton", year: "2020", stars: 5, date: "28 de Abril de 2026", progress: "T4 : E4", cover: "https://images.justwatch.com/backdrop/340527514/s1440/bridgerton.avif" },
+        { title: "As Leis de Lidia Poët", year: "2023", stars: 5, date: "23 de Abril de 2026", progress: "T3 : E6", cover: "https://images.justwatch.com/backdrop/321992459/s1440/the-law-according-to-lidia-poet.avif" },
     ],
     ANIMES: [
         { title: "Overlord", year: "2015", stars: 4, date: "06 de Janeiro de 2026", progress: "T1 : E12", cover: "https://images.justwatch.com/backdrop/339630570/s1920/temporada-1.avif" },
